@@ -1,9 +1,13 @@
 const express = require('express');
+const connectDB = require('./config/db');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const colors = require('colors');
 
 dotenv.config();
+
+// CONNECT MONGODB
+connectDB();
 
 const app = express();
 
