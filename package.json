@@ -7,7 +7,8 @@
     "start": "node backend/server",
     "server": "nodemon server/server",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client \""
+    "dev": "concurrently \"npm run server\" \"npm run client \"",
+    "data:import": "node server/data/seeder"
   },
   "author": "Edgar Wu",
   "license": "ISC",
