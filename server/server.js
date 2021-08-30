@@ -3,6 +3,9 @@ const connectDB = require('./config/db');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const colors = require('colors');
+const userRoutes = require('./routes/userRoutes');
+const courseRoutes = require('./routes/courseRoutes');
+const instructorRoutes = require('./routes/instructorRoutes');
 
 dotenv.config();
 
@@ -13,6 +16,11 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(express.json());
+
+// ROUTES
+app.use('/api/users', userRoutes);
+app.use('/api/courses', courseRoutes);
+app.use('/api/instructors', instructorRoutes);
 
 // START SERVER
 const PORT = process.env.PORT || 5000;

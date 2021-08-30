@@ -35,12 +35,13 @@ const importData = async () => {
     const createInstructors = await Instructor.insertMany(instructors);
     const instructor = createInstructors[0]._id;
 
-    // Insert Author into Course
+    // Insert instructor into Course
     const sampleCourses = courses.map(course => {
       return { ...course, instructor: instructor };
     });
 
     await Course.insertMany(sampleCourses);
+
     console.log('Product Data Imported.'.green.inverse);
     process.exit();
   } catch (error) {
