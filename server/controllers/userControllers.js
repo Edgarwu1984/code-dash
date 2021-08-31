@@ -1,3 +1,4 @@
+const { remove } = require('../models/userModel');
 const User = require('../models/userModel');
 const generateToken = require('../utils/generateToken');
 
@@ -175,6 +176,23 @@ const updateUser = async (req, res) => {
   }
 };
 
+// @description Delete User
+// @route DELETE /api/users/:id
+// @access Private/Admin
+const deleteUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (user) {
+      await user.remove();
+      res.status(200).send({ message: 'User removed.' });
+    } else {
+      res.status(404).send({ message: 'User not found.' });
+    }
+  } catch (error) {
+    res.status(404).send({ message: `${error}` });
+  }
+};
+
 module.exports = {
   loginUser,
   registerUser,
@@ -183,4 +201,5 @@ module.exports = {
   getUsers,
   getUserById,
   updateUser,
+  deleteUser,
 };

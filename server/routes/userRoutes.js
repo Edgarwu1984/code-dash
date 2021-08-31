@@ -8,6 +8,7 @@ const {
   getUsers,
   getUserById,
   updateUser,
+  deleteUser,
 } = require('../controllers/userControllers');
 
 const router = express.Router();
@@ -25,6 +26,7 @@ router.route('/').get(protect, isAdmin, getUsers);
 router
   .route('/:id')
   .get(protect, isAdmin, getUserById)
-  .put(protect, isAdmin, updateUser);
+  .put(protect, isAdmin, updateUser)
+  .delete(protect, isAdmin, deleteUser);
 
 module.exports = router;
