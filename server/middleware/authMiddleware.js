@@ -27,4 +27,12 @@ const protect = async (req, res, next) => {
   }
 };
 
-module.exports = { protect };
+const isAdmin = (req, res, next) => {
+  if (req.user && req.user.isAdmin) {
+    next();
+  } else {
+    res.status(401).send({ message: 'Not authorized user account.' });
+  }
+};
+
+module.exports = { protect, isAdmin };

@@ -9,7 +9,7 @@ const getCourses = async (req, res) => {
       'instructor',
       'firstName lastName'
     );
-    res.status(200).send(courses);
+    res.status(200).json(courses);
   } catch (error) {
     res.status(404).send({ message: `${error}` });
   }
@@ -27,7 +27,7 @@ const getCourseById = async (req, res) => {
     );
 
     if (course) {
-      res.status(200).send(course);
+      res.status(200).json(course);
     } else {
       res.status(404).send({ message: 'Can not found course.' });
     }
@@ -69,7 +69,7 @@ const createCourseReview = async (req, res) => {
 
         await course.save();
 
-        res.status(201).json({ message: 'New review addeed.' });
+        res.status(201).send({ message: 'New review addeed.' });
       }
     } else {
       res.status(404).send({ message: 'Course not found.' });

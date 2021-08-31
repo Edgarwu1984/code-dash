@@ -69,7 +69,7 @@ const getUserProfile = async (req, res) => {
     const user = await User.findById(req.user._id);
 
     if (user) {
-      res.status(200).send({
+      res.status(200).json({
         _id: user._id,
         username: user.username,
         email: user.email,
@@ -77,7 +77,7 @@ const getUserProfile = async (req, res) => {
         isAdmin: user.isAdmin,
       });
     } else {
-      res.status(400).send({ message: 'User not found' });
+      res.status(404).send({ message: 'User not found' });
     }
   } catch (error) {
     res.status(404).send({ message: `${error}` });
@@ -99,20 +99,88 @@ const updateUserProfile = async (req, res) => {
 
       const updatedUser = await user.save();
 
-      res.status(200).send({
+      res.status(200).json({
         _id: updatedUser._id,
         username: updatedUser.username,
         email: updatedUser.email,
         photo: updatedUser.photo,
-        isAdmin: updatedUser.isAdmin,
         token: generateToken(updatedUser._id),
       });
     } else {
-      res.status(400).send({ message: 'User not found' });
+      res.status(404).send({ message: 'User not found' });
     }
   } catch (error) {
     res.status(404).send({ message: `${error}` });
   }
 };
 
-module.exports = { loginUser, registerUser, getUserProfile, updateUserProfile };
+// @description Get All Users
+// @route GET /api/users
+// @access Private/Admin
+const getUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    if (users) {
+      res.status(200).json(users);
+    } else {
+      res.status(404).send({ message: 'No users' });
+    }
+  } catch (error) {
+    res.status(404).send({ message: `${error}` });
+  }
+};
+
+// @description Get User by ID
+// @route GET /api/users/:id
+// @access Private/Admin
+const getUserById = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (user) {
+      res.status(200).json(user);
+    } else {
+      res.status(404).send({ message: 'User not found.' });
+    }
+  } catch (error) {
+    res.status(404).send({ message: `${error}` });
+  }
+};
+
+// @description Update User
+// @route PUT /api/users/:id
+// @access Private/Admin
+const updateUser = async (req, res) => {
+  try {
+    const { username, email, isAdmin } = req.body;
+    const user = await User.findById(req.params.id);
+    if (user) {
+      user.username = username || user.username;
+      user.email = email || user.email;
+      user.isAdmin = isAdmin;
+
+      const updatedUser = user.save();
+
+      res.status(200).json({
+        _id: updatedUser._id,
+        username: updatedUser.username,
+        email: updatedUser.email,
+        isAdmin: updatedUser.isAdmin,
+        message: 'User profile updated.',
+      });
+    } else {
+      res.status(404).send({ message: 'User not found.' });
+    }
+  } catch (error) {
+    res.status(404).send({ message: `${error}` });
+  }
+};
+
+module.exports = {
+  loginUser,
+  registerUser,
+  getUserProfile,
+  updateUserProfile,
+  getUsers,
+  getUserById,
+  updateUser,
+};
