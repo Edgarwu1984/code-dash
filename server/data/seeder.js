@@ -4,7 +4,7 @@ const instructors = require('./instructors');
 const courses = require('./courses');
 
 // MODELS
-const User = require('../models/userModal');
+const User = require('../models/userModel');
 const Instructor = require('../models/instructorModel');
 const Course = require('../models/courseModel');
 

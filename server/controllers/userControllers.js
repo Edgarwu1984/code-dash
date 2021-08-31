@@ -1,4 +1,4 @@
-const User = require('../models/userModal');
+const User = require('../models/userModel');
 const generateToken = require('../utils/generateToken');
 
 // @description User Login
@@ -61,4 +61,58 @@ const registerUser = async (req, res) => {
   }
 };
 
-module.exports = { loginUser, registerUser };
+// @description Get User profile
+// @route GET /api/users/profile
+// @access Private
+const getUserProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+
+    if (user) {
+      res.status(200).send({
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        photo: user.photo,
+        isAdmin: user.isAdmin,
+      });
+    } else {
+      res.status(400).send({ message: 'User not found' });
+    }
+  } catch (error) {
+    res.status(404).send({ message: `${error}` });
+  }
+};
+
+// @description Update User profile
+// @route PUT /api/users/profile
+// @access Private
+const updateUserProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    const { username, email, photo, password } = req.body;
+    if (user) {
+      user.username = username || user.username;
+      user.email = email || user.email;
+      user.photo = photo || user.photo;
+      user.password = password || user.password;
+
+      const updatedUser = await user.save();
+
+      res.status(200).send({
+        _id: updatedUser._id,
+        username: updatedUser.username,
+        email: updatedUser.email,
+        photo: updatedUser.photo,
+        isAdmin: updatedUser.isAdmin,
+        token: generateToken(updatedUser._id),
+      });
+    } else {
+      res.status(400).send({ message: 'User not found' });
+    }
+  } catch (error) {
+    res.status(404).send({ message: `${error}` });
+  }
+};
+
+module.exports = { loginUser, registerUser, getUserProfile, updateUserProfile };
