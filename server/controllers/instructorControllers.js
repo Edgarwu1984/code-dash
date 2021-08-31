@@ -5,7 +5,7 @@ const getInstructors = async (req, res) => {
     const instructors = await Instructor.find();
     res.status(200).send(instructors);
   } catch (error) {
-    res.status(404).send(error.message);
+    res.status(404).send({ message: `${error}` });
   }
 };
 
@@ -19,7 +19,7 @@ const getInstructorById = async (req, res) => {
       res.status(404).send({ message: 'Can not found instructor.' });
     }
   } catch (error) {
-    res.status(404).send({ message: `${error.reason}` });
+    res.status(404).send({ message: `${error}` });
   }
 };
 

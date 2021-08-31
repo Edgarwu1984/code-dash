@@ -22,7 +22,7 @@ const loginUser = async (req, res) => {
       res.status(401).send({ message: 'Invalid email or password' });
     }
   } catch (error) {
-    res.status(404).send({ message: `${error.reason}` });
+    res.status(404).send({ message: `${error}` });
   }
 };
 
@@ -57,7 +57,7 @@ const registerUser = async (req, res) => {
       res.status(400).send({ message: 'Invalid user data.' });
     }
   } catch (error) {
-    res.status(404).send({ message: `${error.reason}` });
+    res.status(404).send({ message: `${error}` });
   }
 };
 
