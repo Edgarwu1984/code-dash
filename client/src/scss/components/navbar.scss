@@ -1,0 +1,166 @@
+@use '../utils' as *;
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: rem(0) rem(200);
+  z-index: 1000;
+  //   @include shadow($y: 4px);
+
+  @include breakpoint-down(large) {
+    padding: rem(0) rem(64);
+  }
+  @include breakpoint-down(medium) {
+    flex-direction: column;
+    padding: rem(0) rem(24);
+  }
+
+  &__menu {
+    &-brand {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .logo {
+        height: auto;
+        width: rem(130);
+        margin-right: rem(8);
+        padding: rem(28) 0;
+      }
+    }
+
+    &-toggler {
+      margin-left: auto;
+      display: none;
+      align-items: center;
+      background: none;
+      border: none;
+      font-size: rem(24);
+      color: var(--dark-text2);
+      cursor: pointer;
+      @include breakpoint-down(medium) {
+        display: flex;
+      }
+    }
+
+    @include breakpoint-down(medium) {
+      width: 100%;
+      display: flex;
+    }
+  }
+
+  &-nav {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    @include transition;
+    .nav__list {
+      display: flex;
+      list-style: none;
+      @include breakpoint-down(medium) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      &-item {
+        position: relative;
+        display: flex;
+        margin: 0 rem(16);
+        height: 100%;
+        z-index: 1;
+        @include breakpoint-down(medium) {
+          margin-bottom: rem(30);
+        }
+
+        &__link {
+          color: var(--dark);
+          font-weight: 500;
+          font-size: rem(17);
+          position: relative;
+          &::before {
+            position: absolute;
+            bottom: rem(-10);
+            left: 50%;
+            transform: translateX(-50%);
+            content: ' ';
+            height: rem(3);
+            width: 0;
+            background-color: var(--primary);
+          }
+          &:hover {
+            @include transition;
+            color: var(--primary);
+            &::before {
+              @include transition;
+              width: rem(24);
+            }
+          }
+        }
+      }
+    }
+
+    @include breakpoint-down(medium) {
+      flex-direction: column;
+      display: none;
+    }
+  }
+  .collapse {
+    display: flex;
+    @include transition;
+    @include breakpoint-down(medium) {
+      display: flex;
+    }
+  }
+
+  .active {
+    &::before {
+      position: absolute;
+      bottom: rem(-10);
+      left: 50%;
+      transform: translateX(-50%);
+      content: ' ';
+      height: rem(3);
+      width: rem(24);
+      background-color: var(--primary);
+    }
+  }
+}
+
+.dark__mode-toggler {
+  display: flex;
+  align-items: center;
+  border-left: 1px solid var(--dark-grey);
+  padding-left: rem(20);
+  margin-left: rem(12);
+  font-size: rem(12);
+
+  @include breakpoint-down(medium) {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .dark__mode-btn {
+    display: flex;
+    align-items: center;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .icon {
+    font-size: rem(20);
+    color: var(--dark-text2);
+    &-active {
+      @include transition($duration: 0.2s);
+      color: var(--primary);
+    }
+  }
+}

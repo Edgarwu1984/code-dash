@@ -1,0 +1,67 @@
+@use '../utils' as *;
+
+footer {
+  margin-top: auto;
+  background-color: var(--white);
+}
+
+.footer__content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: rem(80) rem(10);
+
+  @include breakpoint-down(small) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  & > * {
+    width: 33.33%;
+
+    @include breakpoint-down(small) {
+      width: 90%;
+      margin-bottom: rem(24);
+    }
+  }
+
+  &-info {
+    p {
+      width: 60%;
+    }
+  }
+
+  &-links,
+  &-contact {
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        color: var(--dark);
+        margin-bottom: rem(16);
+      }
+    }
+  }
+
+  &-contact {
+    ul {
+      li {
+        display: flex;
+        align-items: center;
+        svg {
+          margin-right: rem(16);
+          font-size: rem(16);
+        }
+      }
+    }
+  }
+}
+
+.footer__copyright {
+  text-align: center;
+  padding: rem(24);
+  border-top: 1px solid var(--bg);
+  font-weight: 300;
+  font-size: rem(14);
+}

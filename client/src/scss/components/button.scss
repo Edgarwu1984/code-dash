@@ -1,0 +1,41 @@
+@use '../utils/' as *;
+
+.btn {
+  display: inline;
+  background-color: var(--white);
+  border: 1px solid var(--white);
+  border-radius: rem(4);
+  letter-spacing: rem(-0.5);
+  font-size: rem(16);
+  font-weight: 500;
+  padding: rem(5) rem(12);
+  color: var(--dark);
+  cursor: pointer;
+
+  &:hover {
+    @include transition;
+    filter: brightness(0.9);
+  }
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+  &:hover {
+    color: var(--primary) !important;
+    background-color: var(--white);
+    filter: none;
+  }
+}
+
+.btn-outline-primary {
+  background-color: var(--white);
+  color: var(--primary) !important;
+  border-color: var(--primary);
+  &:hover {
+    color: var(--white) !important;
+    background-color: var(--primary);
+    filter: none;
+  }
+}

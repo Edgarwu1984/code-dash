@@ -1,0 +1,72 @@
+@use '../utils' as *;
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-title);
+
+  margin: 0;
+  color: var(--dark);
+}
+
+h1 {
+  font-size: rem(64);
+  @include breakpoint-down(medium) {
+    font-size: rem(42);
+  }
+}
+
+h2 {
+  font-size: rem(38);
+  @include breakpoint-down(medium) {
+    font-size: rem(32);
+  }
+}
+
+h3 {
+  font-size: rem(28);
+  @include breakpoint-down(medium) {
+    font-size: rem(24);
+  }
+}
+
+h4 {
+  font-size: rem(20);
+  @include breakpoint-down(medium) {
+    font-size: rem(18);
+  }
+}
+
+* {
+  font-family: var(--font-p);
+}
+
+p {
+  font-size: rem(16);
+  margin-bottom: rem(20);
+  line-height: 1.5;
+  color: var(--text);
+  @include breakpoint-down(medium) {
+    font-size: rem(14);
+  }
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+  letter-spacing: rem(-0.5);
+  &:hover {
+    @include transition;
+    color: var(--primary);
+  }
+}
+
+.text-success {
+  color: var(--success);
+}
+
+.text-danger {
+  color: var(--danger);
+}
