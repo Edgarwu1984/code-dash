@@ -1,11 +1,12 @@
 @use '../utils/' as *;
 
+// BASE LAYOUT
 #root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: var(--bg);
 }
+
 .content-wrapper {
   position: relative;
   flex: 1;
@@ -22,17 +23,31 @@
   }
 }
 
+// GRID
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: rem(30);
   width: 100%;
   justify-items: center;
+}
+
+.col-3 {
+  grid-template-columns: repeat(3, 1fr);
+
+  @include breakpoint-down(small) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.col-4 {
+  grid-template-columns: repeat(4, 1fr);
 
   @include breakpoint-down(medium) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 rem(40);
   }
   @include breakpoint-down(small) {
     grid-template-columns: 1fr;
+    padding: 0;
   }
 }

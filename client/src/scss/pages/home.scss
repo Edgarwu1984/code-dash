@@ -1,0 +1,34 @@
+@use '../utils/' as *;
+
+.feature-card__wrap {
+  background-color: var(--white);
+  @include offsetY($top: rem(-60));
+  // margin-bottom: rem(60);
+  padding-bottom: rem(100);
+}
+
+.top-course__wrap {
+  padding: rem(100) 0;
+  background-color: var(--light);
+}
+
+.industry-brand__wrap {
+  padding: rem(100) 0;
+  background-color: var(--white);
+
+  .industry-icon__wrap {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    .icon {
+      filter: invert(49%) sepia(6%) saturate(427%) hue-rotate(201deg)
+        brightness(93%) contrast(97%);
+    }
+  }
+}
+
+.testimonial__wrap {
+  padding: rem(100) 0;
+  background-color: var(--light);
+}

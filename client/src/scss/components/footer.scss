@@ -2,6 +2,7 @@
 
 footer {
   margin-top: auto;
+  padding-top: rem(60);
   background-color: var(--white);
 }
 
@@ -61,7 +62,42 @@ footer {
 .footer__copyright {
   text-align: center;
   padding: rem(24);
-  border-top: 1px solid var(--bg);
+  border-top: 1px solid var(--light);
   font-weight: 300;
   font-size: rem(14);
+}
+
+.join-link {
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: rem(60) rem(20);
+  border-radius: rem(6);
+  overflow: hidden;
+  z-index: 0;
+  @include shadow($y: 10px, $blur: 20px);
+  @include offsetY($bottom: rem(-60));
+
+  &::before {
+    position: absolute;
+    content: '';
+    background-color: rgba(#121240, $alpha: 0.7);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  h3 {
+    color: var(--white);
+    margin-bottom: rem(30);
+    text-align: center;
+  }
 }

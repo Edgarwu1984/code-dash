@@ -9,7 +9,7 @@
   justify-content: space-between;
   padding: rem(0) rem(200);
   z-index: 1000;
-  //   @include shadow($y: 4px);
+  @include shadow($y: 4px);
 
   @include breakpoint-down(large) {
     padding: rem(0) rem(64);

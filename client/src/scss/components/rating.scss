@@ -1,0 +1,21 @@
+@use '../utils/' as *;
+
+.rating {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: rem(8);
+  margin-bottom: 0;
+
+  &-star {
+    .rating__value {
+      margin-right: rem(8);
+    }
+    .rating__icon {
+      font-size: rem(14);
+      color: var(--warning);
+      margin-right: rem(2);
+    }
+  }
+}
