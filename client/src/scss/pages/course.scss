@@ -1,0 +1,13 @@
+@use '../utils/' as *;
+
+.courses__section {
+  margin-top: rem(60);
+  margin-bottom: rem(100);
+}
+
+.list-link__btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: rem(50);
+}

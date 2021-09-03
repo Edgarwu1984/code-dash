@@ -4,7 +4,7 @@ import { IoMdPin } from 'react-icons/io';
 import { ImPhone } from 'react-icons/im';
 import { MdEmail } from 'react-icons/md';
 
-export const Footer = () => {
+const Footer = () => {
   const getCurrentYear = new Date().getFullYear();
   return (
     <>
@@ -63,3 +63,5 @@ export const Footer = () => {
     </>
   );
 };
+
+export default Footer;

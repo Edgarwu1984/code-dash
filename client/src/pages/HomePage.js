@@ -1,11 +1,29 @@
-import React from 'react';
-import { CourseCard } from '../components/CourseCard';
-import { FeatureCard } from '../components/FeatureCard';
-import { Layout } from '../components/layout';
-import { Hero } from '../components/layout/Hero';
-import { TestimonialCard } from '../components/TestimonialCard';
+import React, { useEffect } from 'react';
+// COMPONENTS
+import Layout from '../components/layout';
+import Hero from '../components/layout/Hero';
+import CourseCard from '../components/CourseCard';
+import FeatureCard from '../components/FeatureCard';
+import TestimonialCard from '../components/TestimonialCard';
+// REDUX
+import { useDispatch, useSelector } from 'react-redux';
+import { getCourseList } from '../redux/actions/courseActions';
+import Loader from '../components/Loader';
+import AlertMessage from '../components/AlertMessage';
+import { Link } from 'react-router-dom';
 
 function HomePage() {
+  const dispatch = useDispatch();
+
+  const courseList = useSelector(state => state.courseList);
+  const { loading, error, courses } = courseList;
+
+  useEffect(() => {
+    dispatch(getCourseList());
+  }, [dispatch]);
+
+  const topCourses = courses && courses.filter(c => c.rating >= 4.9);
+
   return (
     <Layout>
       <Hero heroHeight='720px'>
@@ -17,7 +35,9 @@ function HomePage() {
           </p>
           <br />
           <div>
-            <button className='btn'>Get Started</button>
+            <Link to='/courses' className='btn'>
+              Get Started
+            </Link>
           </div>
         </div>
       </Hero>
@@ -50,12 +70,34 @@ function HomePage() {
               nonumy eirmod tempor invidunt ut labore et dolore magna.
             </p>
           </header>
-          <div className='grid col-4'>
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
-          </div>
+
+          {loading ? (
+            <Loader />
+          ) : error ? (
+            <AlertMessage message={error} type='danger' />
+          ) : (
+            <div className='grid col-4'>
+              {topCourses &&
+                topCourses.map(course => (
+                  <CourseCard
+                    key={course._id}
+                    courseId={course._id}
+                    courseCategory={course.courseCategory}
+                    courseImg={course.image}
+                    courseName={course.name}
+                    courseTutorFirstName={
+                      course.instructor.firstName && course.instructor.firstName
+                    }
+                    courseTutorLastName={
+                      course.instructor.lastName && course.instructor.lastName
+                    }
+                    courseDescription={course.description}
+                    courseRating={course.rating}
+                    numReviews={course.numReviews}
+                  />
+                ))}
+            </div>
+          )}
         </div>
       </section>
       <section className='industry-brand__wrap'>

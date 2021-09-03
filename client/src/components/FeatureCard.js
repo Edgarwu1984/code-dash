@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const FeatureCard = ({ featureIcon, featureTitle, featureText }) => {
+const FeatureCard = ({ featureIcon, featureTitle, featureText }) => {
   return (
     <figure className='feature-card'>
       <img
@@ -26,3 +26,5 @@ FeatureCard.defaultProps = {
   featureTitle: 'Title',
   featureText: 'Text content here...',
 };
+
+export default FeatureCard;

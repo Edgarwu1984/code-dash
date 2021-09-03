@@ -19,6 +19,25 @@ img {
   height: auto;
 }
 
+.section__title {
+  display: inline-block;
+  margin-bottom: rem(40);
+  h3 {
+    position: relative;
+    text-transform: capitalize;
+    padding-right: rem(20);
+    &::after {
+      position: absolute;
+      content: '';
+      right: 0;
+      bottom: rem(6);
+      background-color: var(--primary);
+      width: rem(10);
+      height: rem(10);
+    }
+  }
+}
+
 .section__header {
   display: flex;
   flex-direction: column;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Hero = ({ heroBg, heroHeight, children }) => {
+const Hero = ({ heroBg, heroHeight, children }) => {
   return (
     <header
       className='hero'
@@ -22,3 +22,5 @@ Hero.defaultProps = {
   heroBg: '/images/bg1.jpg',
   heroHeight: '400px',
 };
+
+export default Hero;

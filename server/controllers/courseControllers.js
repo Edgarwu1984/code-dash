@@ -36,6 +36,27 @@ const getCourseById = async (req, res) => {
   }
 };
 
+// @description Get Course by Category
+// @route GET /api/courses/:category
+// @access Public
+const getCoursesByCategory = async (req, res) => {
+  try {
+    const category = req.params.category;
+    const course = await Course.find({ category: `${category}` }).populate(
+      'instructor',
+      'firstName lastName'
+    );
+
+    if (course) {
+      res.status(200).json(course);
+    } else {
+      res.status(404).send({ message: 'Can not found course.' });
+    }
+  } catch (error) {
+    res.status(404).send({ message: `${error}` });
+  }
+};
+
 // @description Create review
 // @route GET /api/courses/:id/reviews
 // @access Private
@@ -79,4 +100,9 @@ const createCourseReview = async (req, res) => {
   }
 };
 
-module.exports = { getCourses, getCourseById, createCourseReview };
+module.exports = {
+  getCourses,
+  getCourseById,
+  getCoursesByCategory,
+  createCourseReview,
+};

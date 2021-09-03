@@ -5,7 +5,7 @@ import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
 import { IoMdSunny, IoMdMoon } from 'react-icons/io';
 import { FiSearch } from 'react-icons/fi';
 
-export const Navbar = () => {
+const Navbar = () => {
   const [collapse, setCollapse] = useState(true);
   const collapseHandler = () => setCollapse(!collapse);
 
@@ -54,3 +54,5 @@ export const Navbar = () => {
     </nav>
   );
 };
+
+export default Navbar;

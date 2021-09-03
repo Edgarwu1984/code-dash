@@ -2,12 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaQuoteLeft } from 'react-icons/fa';
 
-export const TestimonialCard = ({
-  comment,
-  userImage,
-  userName,
-  commentDate,
-}) => {
+const TestimonialCard = ({ comment, userImage, userName, commentDate }) => {
   return (
     <figure className='testimonial-card'>
       <p className='testimonial-card__comment'>
@@ -39,3 +34,5 @@ TestimonialCard.defaultProps = {
   userName: 'Username',
   commentDate: '12 Aug 2021',
 };
+
+export default TestimonialCard;

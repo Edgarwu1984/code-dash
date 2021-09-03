@@ -1,0 +1,43 @@
+@use '../utils/' as *;
+
+.alert {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: rem(20);
+  background-color: var(--grey-light);
+  border-radius: rem(4);
+  margin: rem(20);
+  h4 {
+    font-weight: 400;
+  }
+}
+
+.danger {
+  background-color: hsl(2, 45%, 80%);
+  h4 {
+    color: hsl(2, 45%, 40%);
+  }
+}
+
+.success {
+  background-color: hsl(150, 60%, 80%);
+  h4 {
+    color: hsl(150, 60%, 40%);
+  }
+}
+
+.warning {
+  background-color: hsl(37, 97%, 90%);
+  h4 {
+    color: hsl(37, 97%, 40%);
+  }
+}
+
+.info {
+  background-color: hsl(240, 72%, 90%);
+  h4 {
+    color: hsl(240, 72%, 40%);
+  }
+}

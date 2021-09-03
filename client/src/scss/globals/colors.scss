@@ -1,8 +1,8 @@
 :root {
   --primary: hsl(240, 72%, 55%);
-  --warning: hsl(37, 97%, 70%);
-  --danger: hsl(1, 77%, 46%);
-  --success: hsl(150, 77%, 46%);
+  --warning: hsl(37, 70%, 70%);
+  --danger: hsl(1, 60%, 46%);
+  --success: hsl(150, 60%, 38%);
 
   --bg: hsl(0, 0%, 98%);
   --text: hsl(240, 25%, 40%);
@@ -16,4 +16,11 @@
   --white: hsl(0, 0%, 100%);
 
   --php: hsl(210, 72%, 54%);
+  --html: hsl(19, 72%, 54%);
+  --javascript: hsl(44, 72%, 54%);
+  --react: hsl(226, 72%, 54%);
+  --unity: hsl(0, 0%, 0%);
+  --ue4: hsl(0, 0%, 0%);
+  --zbrush: hsl(0, 0%, 85%);
+  --blender: hsl(22, 100%, 45%);
 }

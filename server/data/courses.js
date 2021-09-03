@@ -1,6 +1,6 @@
 const courses = [
   {
-    category: 'web development',
+    category: 'web-dev',
     courseCategory: 'php',
     name: 'PHP: The Complete PHP Course',
     image: '/images/courses/php.jpg',
@@ -44,7 +44,7 @@ const courses = [
     numReviews: 2,
   },
   {
-    category: 'web development',
+    category: 'web-dev',
     courseCategory: 'html',
     name: 'Learn HTML - For Beginners',
     image: '/images/courses/html.jpg',
@@ -79,7 +79,7 @@ const courses = [
     numReviews: 3,
   },
   {
-    category: 'web development',
+    category: 'web-dev',
     courseCategory: 'javascript',
     name: 'Modern JavaScript From The Beginning',
     image: '/images/courses/javascript.jpg',
@@ -131,7 +131,7 @@ const courses = [
     numReviews: 5,
   },
   {
-    category: 'web development',
+    category: 'web-dev',
     courseCategory: 'react',
     name: 'React - The Complete Guide',
     image: '/images/courses/react.jpg',
@@ -181,7 +181,7 @@ const courses = [
     numReviews: 10,
   },
   {
-    category: 'game development',
+    category: 'game-dev',
     courseCategory: 'unity',
     name: 'Complete C# Unity Game Developer 2D',
     image: '/images/courses/game_dev_01.jpg',
@@ -231,7 +231,7 @@ const courses = [
     numReviews: 50,
   },
   {
-    category: 'game development',
+    category: 'game-dev',
     courseCategory: 'ue4',
     name: 'Unreal Engine Blueprint Game Developer',
     image: '/images/courses/game_dev_02.jpg',
@@ -281,7 +281,7 @@ const courses = [
     numReviews: 23,
   },
   {
-    category: 'game development',
+    category: 'game-dev',
     courseCategory: 'zbrush',
     name: '3D Game Character Creature - Full Complete Pipeline',
     image: '/images/courses/game_dev_03.jpg',
@@ -328,7 +328,7 @@ const courses = [
     numReviews: 7,
   },
   {
-    category: 'game development',
+    category: 'game-dev',
     courseCategory: 'blender',
     name: 'Blender Character Modeling For Beginners HD',
     image: '/images/courses/game_dev_04.jpg',

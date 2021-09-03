@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Navbar } from './Navbar';
-import { Footer } from './Footer';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
-export const Layout = ({ pageTitle, children }) => {
+const Layout = ({ pageTitle, children }) => {
   document.title = `CodeDash ${pageTitle}`;
   return (
     <>
@@ -21,3 +21,5 @@ Layout.propTypes = {
 Layout.defaultProps = {
   pageTitle: '',
 };
+
+export default Layout;

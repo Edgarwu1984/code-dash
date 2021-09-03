@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
-export const Rating = ({ rating, reviews }) => {
+const Rating = ({ rating, reviews }) => {
   return (
     <div className='rating'>
       <div className='rating-star'>
@@ -69,3 +69,5 @@ Rating.propTypes = {
   rating: PropTypes.number.isRequired,
   reviews: PropTypes.number.isRequired,
 };
+
+export default Rating;
