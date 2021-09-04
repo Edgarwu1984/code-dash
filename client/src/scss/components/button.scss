@@ -40,3 +40,40 @@
     filter: none;
   }
 }
+
+.scroll__top-btn {
+  @include shadow;
+  position: fixed;
+  right: rem(16);
+  bottom: rem(96);
+  color: var(--primary);
+  background-color: var(--white);
+  font-size: rem(24);
+  outline: none;
+  border: 1px solid var(--primary);
+  border-radius: rem(4);
+
+  height: rem(50);
+  width: rem(50);
+  opacity: 100;
+  z-index: 10;
+  cursor: pointer;
+
+  svg {
+    transform: rotateZ(0deg);
+    margin-top: rem(10);
+  }
+
+  &:hover {
+    svg {
+      @include transition;
+      transform: rotateZ(180deg);
+    }
+  }
+}
+
+.hidden {
+  @include transition;
+  opacity: 0;
+  pointer-events: none;
+}

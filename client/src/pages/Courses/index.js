@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 // COMPONENTS
 import Layout from '../../components/layout';
 import Hero from '../../components/layout/Hero';
@@ -7,11 +7,13 @@ import SectionTitle from '../../components/SectionTitle';
 import AlertMessage from '../../components/AlertMessage';
 import Loader from '../../components/Loader';
 import CourseCard from '../../components/CourseCard';
+import ScrollToTop from '../../components/ScrollToTop';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import { getCourseList } from '../../redux/actions/courseActions';
 
 function CoursesPage() {
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
 
   const courseList = useSelector(state => state.courseList);
@@ -19,13 +21,16 @@ function CoursesPage() {
 
   useEffect(() => {
     dispatch(getCourseList());
-  }, [dispatch]);
+    // RESET PAGE POSITION
+    window.scrollTo(0, 0);
+  }, [dispatch, pathname]);
 
   const webCourses = courses && courses.filter(c => c.category === 'web-dev');
   const gameCourses = courses && courses.filter(c => c.category === 'game-dev');
 
   return (
     <Layout pageTitle='- Course'>
+      <ScrollToTop />
       <Hero heroBg='/images/bg2.jpg'>
         <div className='hero__content'>
           <h1>Learning That Gets You</h1>

@@ -1,0 +1,64 @@
+@use '../utils/' as *;
+
+.accordion__container {
+  margin-bottom: rem(80);
+}
+.accordion {
+  width: 100%;
+
+  &__label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: rem(24);
+    font-weight: 500;
+    text-transform: capitalize;
+    background-color: var(--white);
+    border: 1px solid var(--bg);
+    border-radius: rem(6);
+    cursor: pointer;
+
+    &-icon {
+      font-size: rem(18);
+      transform: rotateZ(0deg);
+    }
+
+    &:hover {
+      @include transition;
+      border-left: 4px solid var(--primary);
+    }
+  }
+
+  &__content {
+    list-style: none;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    &-list {
+      padding: rem(16) rem(24);
+      background-color: var(--bg);
+      border: 1px solid var(--light);
+      margin-left: rem(10);
+      &:hover {
+        @include transition;
+        color: var(--primary);
+      }
+    }
+  }
+}
+
+.accordion__expanded {
+  @include transition($duration: 0.5s);
+  height: max-content;
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.accordion__active {
+  border-left: 4px solid var(--primary);
+  .accordion__label-icon {
+    @include transition;
+    transform: rotateZ(180deg);
+  }
+}

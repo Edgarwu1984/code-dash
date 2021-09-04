@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 // COMPONENTS
 import Layout from '../../components/layout';
 import Hero from '../../components/layout/Hero';
 import Loader from '../../components/Loader';
 import AlertMessage from '../../components/AlertMessage';
 import Rating from '../../components/Rating';
+import SectionTitle from '../../components/SectionTitle';
+import Accordion from '../../components/Accordion';
+import ScrollToTop from '../../components/ScrollToTop';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import { getCourseDetails } from '../../redux/actions/courseActions';
-import SectionTitle from '../../components/SectionTitle';
 
 function CoursePage({ match }) {
+  const { pathname } = useLocation();
   const id = match.params.id;
   const category = match.params.category;
   const courseName = match.params.name;
@@ -22,7 +25,9 @@ function CoursePage({ match }) {
 
   useEffect(() => {
     dispatch(getCourseDetails(category, id));
-  }, [dispatch, category, id]);
+    // RESET PAGE POSITION
+    window.scrollTo(0, 0);
+  }, [dispatch, category, id, pathname]);
 
   if (loading) {
     return (
@@ -50,12 +55,14 @@ function CoursePage({ match }) {
     instructor,
     features,
     language,
+    content,
     reviews,
     updatedAt,
   } = course;
 
   return (
     <Layout pageTitle={`- ${courseName}`}>
+      <ScrollToTop />
       {course && (
         <>
           <Hero heroBg={image}>
@@ -107,9 +114,16 @@ function CoursePage({ match }) {
           <div className='container'>
             <section className='content__section'>
               <SectionTitle title='course contents' />
+              <Accordion data={content} />
             </section>
             <section className='review__section'>
               <SectionTitle title='latest reviews' />
+              {reviews && reviews.length === 0 ? (
+                <div className='empty__reviews'>No reviews</div>
+              ) : (
+                reviews &&
+                reviews.map(review => <div key={review._id}>{review}</div>)
+              )}
             </section>
           </div>
         </>

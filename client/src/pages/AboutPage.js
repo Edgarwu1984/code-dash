@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Layout from '../components/layout';
 import Hero from '../components/layout/Hero';
 
 function AboutPage() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    // RESET PAGE POSITION
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <Layout pageTitle='- About'>
       <Hero heroBg='/images/bg3.jpg'>

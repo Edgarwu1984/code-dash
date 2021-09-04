@@ -10,9 +10,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCourseList } from '../redux/actions/courseActions';
 import Loader from '../components/Loader';
 import AlertMessage from '../components/AlertMessage';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import ScrollToTop from '../components/ScrollToTop';
 
 function HomePage() {
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
 
   const courseList = useSelector(state => state.courseList);
@@ -20,20 +22,23 @@ function HomePage() {
 
   useEffect(() => {
     dispatch(getCourseList());
-  }, [dispatch]);
+    // RESET PAGE POSITION
+    window.scrollTo(0, 0);
+  }, [dispatch, pathname]);
 
   const topCourses = courses && courses.filter(c => c.rating >= 4.9);
 
   return (
     <Layout>
+      <ScrollToTop />
       <Hero heroHeight='720px'>
         <div className='hero__content hero__main'>
           <h1>Learn From Industry Experts</h1>
-          <p>
+          <p style={{ marginBottom: '3rem' }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
             maximus tortor at diam gravida posuere. Curabitur et malesuada mi.
           </p>
-          <br />
+
           <div>
             <Link to='/courses' className='btn'>
               Get Started

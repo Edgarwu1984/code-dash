@@ -122,3 +122,13 @@
     }
   }
 }
+
+.empty__reviews {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: rem(60) rem(12);
+  border-radius: rem(6);
+  margin-bottom: rem(100);
+  background-color: var(--white);
+}
