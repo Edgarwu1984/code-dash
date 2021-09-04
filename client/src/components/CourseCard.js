@@ -5,6 +5,7 @@ import Rating from './Rating';
 
 const CourseCard = ({
   courseId,
+  category,
   courseImg,
   courseName,
   courseTutorFirstName,
@@ -22,7 +23,7 @@ const CourseCard = ({
       </div>
 
       <div className='course-card__body'>
-        <Link to={`/courses/${courseId}`}>
+        <Link to={`/courses/${category}/${courseId}/${courseName}`}>
           <h4 className='title'>{courseName}</h4>
         </Link>
         <small className='tutor'>
@@ -36,6 +37,7 @@ const CourseCard = ({
 };
 
 CourseCard.propTypes = {
+  category: PropTypes.string,
   courseId: PropTypes.string,
   courseImg: PropTypes.string.isRequired,
   courseName: PropTypes.string.isRequired,

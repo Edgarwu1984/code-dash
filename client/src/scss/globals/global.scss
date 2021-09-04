@@ -59,6 +59,14 @@ img {
   }
 }
 
+.full__screen-message {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 ::selection {
   background: var(--primary);
   color: #fff;

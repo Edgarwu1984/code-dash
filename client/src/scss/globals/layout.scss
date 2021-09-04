@@ -31,6 +31,14 @@
   justify-items: center;
 }
 
+.col-2 {
+  grid-template-columns: repeat(2, 1fr);
+
+  @include breakpoint-down(small) {
+    grid-template-columns: 1fr;
+  }
+}
+
 .col-3 {
   grid-template-columns: repeat(3, 1fr);
 

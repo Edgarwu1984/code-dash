@@ -16,20 +16,21 @@ const getCourses = async (req, res) => {
 };
 
 // @description Get Course by ID
-// @route GET /api/courses/:id
+// @route GET /api/courses/:category/:id
 // @access Public
 const getCourseById = async (req, res) => {
   try {
+    const category = req.params.category;
     const id = req.params.id;
-    const course = await Course.findById(id).populate(
-      'instructor',
-      'firstName lastName'
-    );
+    const course = await Course.findOne({
+      _id: `${id}`,
+      category: `${category}`,
+    }).populate('instructor', 'firstName lastName');
 
     if (course) {
       res.status(200).json(course);
     } else {
-      res.status(404).send({ message: 'Can not found course.' });
+      res.status(404).send({ message: `Can not found course.` });
     }
   } catch (error) {
     res.status(404).send({ message: `${error}` });
@@ -42,15 +43,15 @@ const getCourseById = async (req, res) => {
 const getCoursesByCategory = async (req, res) => {
   try {
     const category = req.params.category;
-    const course = await Course.find({ category: `${category}` }).populate(
+    const courses = await Course.find({ category: `${category}` }).populate(
       'instructor',
       'firstName lastName'
     );
 
-    if (course) {
-      res.status(200).json(course);
+    if (courses) {
+      res.status(200).json(courses);
     } else {
-      res.status(404).send({ message: 'Can not found course.' });
+      res.status(404).send({ message: 'Can not found courses.' });
     }
   } catch (error) {
     res.status(404).send({ message: `${error}` });

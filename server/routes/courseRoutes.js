@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.route('/').get(getCourses);
 router.route('/:category').get(getCoursesByCategory);
-router.route('/:id').get(getCourseById);
+router.route('/:category/:id').get(getCourseById);
 router.route('/:id/reviews').post(protect, createCourseReview);
 
 module.exports = router;

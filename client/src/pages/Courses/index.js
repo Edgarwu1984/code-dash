@@ -46,6 +46,7 @@ function CoursesPage() {
                   <CourseCard
                     key={course._id}
                     courseId={course._id}
+                    category={course.category}
                     courseCategory={course.courseCategory}
                     courseImg={course.image}
                     courseName={course.name}
@@ -82,6 +83,7 @@ function CoursesPage() {
                   <CourseCard
                     key={course._id}
                     courseId={course._id}
+                    category={course.category}
                     courseCategory={course.courseCategory}
                     courseImg={course.image}
                     courseName={course.name}

@@ -77,25 +77,25 @@ function HomePage() {
             <AlertMessage message={error} type='danger' />
           ) : (
             <div className='grid col-4'>
-              {topCourses &&
-                topCourses.map(course => (
-                  <CourseCard
-                    key={course._id}
-                    courseId={course._id}
-                    courseCategory={course.courseCategory}
-                    courseImg={course.image}
-                    courseName={course.name}
-                    courseTutorFirstName={
-                      course.instructor.firstName && course.instructor.firstName
-                    }
-                    courseTutorLastName={
-                      course.instructor.lastName && course.instructor.lastName
-                    }
-                    courseDescription={course.description}
-                    courseRating={course.rating}
-                    numReviews={course.numReviews}
-                  />
-                ))}
+              {topCourses.map(course => (
+                <CourseCard
+                  key={course._id}
+                  category={course.category}
+                  courseId={course._id}
+                  courseCategory={course.courseCategory}
+                  courseImg={course.image}
+                  courseName={course.name}
+                  courseTutorFirstName={
+                    course.instructor.firstName && course.instructor.firstName
+                  }
+                  courseTutorLastName={
+                    course.instructor.lastName && course.instructor.lastName
+                  }
+                  courseDescription={course.description}
+                  courseRating={course.rating}
+                  numReviews={course.numReviews}
+                />
+              ))}
             </div>
           )}
         </div>

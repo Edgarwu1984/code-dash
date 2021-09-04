@@ -39,7 +39,7 @@ export const courseCategoryListReducer = (state = { courses: [] }, action) => {
 export const courseDetailsReducer = (state = { course: {} }, action) => {
   switch (action.type) {
     case GET_COURSE_DETAILS_REQUEST:
-      return { loading: true, course: {} };
+      return { loading: true, ...state };
     case GET_COURSE_DETAILS_SUCCESS:
       return { loading: false, course: action.payload };
     case GET_COURSE_DETAILS_FAIL:

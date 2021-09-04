@@ -37,10 +37,10 @@ export const getCourseCategoryList = category => async dispatch => {
   }
 };
 
-export const getCourseDetails = id => async dispatch => {
+export const getCourseDetails = (category, id) => async dispatch => {
   try {
     dispatch({ type: GET_COURSE_DETAILS_REQUEST });
-    const { data } = await axios.get(`/api/courses/${id}`);
+    const { data } = await axios.get(`/api/courses/${category}/${id}`);
     dispatch({ type: GET_COURSE_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({

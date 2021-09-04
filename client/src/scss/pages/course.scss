@@ -1,5 +1,6 @@
 @use '../utils/' as *;
 
+// COURSE LIST PAGE
 .courses__section {
   margin-top: rem(60);
   margin-bottom: rem(100);
@@ -10,4 +11,114 @@
   display: flex;
   justify-content: center;
   margin-top: rem(50);
+}
+
+// COURSE DETAILS PAGE
+
+.course__page-header {
+  justify-content: space-around;
+  color: var(--white);
+
+  @include breakpoint-down(medium) {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+.breadcrumb {
+  @include breakpoint-down(small) {
+    font-size: rem(12) !important;
+  }
+
+  a {
+    color: var(--white);
+  }
+}
+
+.course {
+  @include breakpoint-down(small) {
+    & > * {
+      font-size: rem(12) !important;
+    }
+  }
+  &__name {
+    margin-bottom: rem(8);
+    @include breakpoint-down(small) {
+      font-size: rem(20) !important;
+    }
+  }
+  &__description {
+    max-width: 100% !important;
+  }
+  .rating {
+    width: max-content;
+    margin-bottom: rem(8);
+    &-review {
+      margin-left: rem(20);
+    }
+  }
+  &__instructor {
+    span {
+      margin-left: rem(8);
+      color: var(--grey-light);
+    }
+  }
+  &__info {
+    width: max-content;
+    display: flex;
+    justify-content: space-between;
+    & > * + * {
+      margin-left: rem(40);
+    }
+
+    @include breakpoint-down(small) {
+      flex-direction: column;
+      & > * + * {
+        margin-left: 0;
+      }
+    }
+    .update__date,
+    .language,
+    .duration {
+      text-transform: capitalize;
+      span {
+        margin-left: rem(8);
+        color: var(--grey-light);
+      }
+    }
+  }
+}
+
+.course__features {
+  background-color: var(--white);
+  padding: rem(60) 0;
+  margin-bottom: rem(80);
+
+  h3 {
+    text-align: center;
+    margin-bottom: rem(40);
+  }
+  .feature__list {
+    width: 80%;
+    margin: auto;
+    list-style: none;
+    gap: rem(10) rem(40);
+
+    li {
+      position: relative;
+      padding-left: rem(24);
+      font-size: rem(18);
+      color: var(--text);
+      width: 100%;
+      &::before {
+        position: absolute;
+        content: '';
+        left: 0;
+        top: rem(8);
+        width: rem(8);
+        height: rem(8);
+        background-color: var(--primary);
+      }
+    }
+  }
 }
