@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
 // REACT-ICONS
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { RiArrowDownSFill, RiLogoutBoxRLine } from 'react-icons/ri';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../redux/actions/userActions';
-import { toast } from 'react-toastify';
 
 const Navbar = () => {
   const [collapse, setCollapse] = useState(true);

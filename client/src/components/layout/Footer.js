@@ -1,11 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// REACT ICONS
 import { IoMdPin } from 'react-icons/io';
 import { ImPhone } from 'react-icons/im';
 import { MdEmail } from 'react-icons/md';
+// REDUX
+import { useSelector } from 'react-redux';
 
 const Footer = () => {
   const getCurrentYear = new Date().getFullYear();
+
+  // REDUX
+  const userLogin = useSelector(state => state.userLogin);
+  const { userInfo } = userLogin;
+
   return (
     <>
       <div
@@ -14,7 +22,7 @@ const Footer = () => {
       >
         <h3>Join Our 8302 Happy Students Today!</h3>
         <div>
-          <Link to='/login' className='btn'>
+          <Link to={userInfo ? '/courses' : '/login'} className='btn'>
             Join Now
           </Link>
         </div>
