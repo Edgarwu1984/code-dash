@@ -15,7 +15,7 @@ import ResetPagePosition from '../../utils/ResetPagePosition';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCourseDetails } from '../../redux/actions/courseActions';
 
-function CoursePage({ match }) {
+function CoursePage({ match, history }) {
   // RESET PAGE POSITION
   const pathname = useLocation().pathname;
   ResetPagePosition(pathname);
@@ -29,10 +29,20 @@ function CoursePage({ match }) {
   const dispatch = useDispatch();
   const courseDetails = useSelector(state => state.courseDetails);
   const { loading, error, course } = courseDetails;
+  const userLogin = useSelector(state => state.userLogin);
+  const { userInfo } = userLogin;
 
   useEffect(() => {
     dispatch(getCourseDetails(category, id));
   }, [dispatch, category, id]);
+
+  const addReviewHandler = () => {
+    if (!userInfo) {
+      history.push('/login');
+    } else {
+      console.log('Add Review.');
+    }
+  };
 
   if (loading) {
     return (
@@ -103,7 +113,9 @@ function CoursePage({ match }) {
                 </div>
               </div>
               <div className='review__btn'>
-                <button className='btn btn-primary'>Review</button>
+                <button className='btn btn-primary' onClick={addReviewHandler}>
+                  Review
+                </button>
               </div>
             </div>
           </Hero>

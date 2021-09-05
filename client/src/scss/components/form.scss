@@ -1,0 +1,90 @@
+@use '../utils/' as *;
+
+.form__wrapper {
+  @include shadow;
+  background-color: var(--bg);
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: rem(6);
+  padding: rem(30);
+  color: var(--text);
+
+  @include breakpoint-down(small) {
+    width: 90%;
+  }
+}
+
+.offsetTop {
+  @include offsetY($top: -100px);
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: rem(36);
+}
+
+.form-group {
+  margin-bottom: rem(36);
+}
+
+.form-control {
+  display: block;
+}
+
+.form-button {
+  display: block;
+  margin-bottom: rem(24);
+}
+
+.form-link,
+.form-link:visited {
+  margin: 0 rem(8);
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.form-label {
+  color: var(--dark);
+  display: block;
+  margin-bottom: rem(4);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: rem(8);
+  font-size: rem(16);
+  background-color: var(--light);
+  color: var(--text);
+  border: 1px solid var(--grey-light);
+  border-radius: rem(4);
+  @include transition;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.option-form {
+  padding: rem(12) rem(8);
+  font-size: rem(16);
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  margin-bottom: rem(24);
+  width: 100%;
+
+  &-input {
+    width: max-content;
+    margin: 0 rem(12) 0 0;
+  }
+}
+
+.form-control[type='checkbox'] {
+  width: rem(20);
+  height: rem(20);
+}

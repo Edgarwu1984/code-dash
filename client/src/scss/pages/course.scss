@@ -10,7 +10,15 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: rem(50);
+  @include breakpoint-down(medium) {
+    width: 90%;
+  }
+  @include breakpoint-down(small) {
+    width: 100%;
+  }
 }
 
 // COURSE DETAILS PAGE
@@ -87,6 +95,9 @@
       }
     }
   }
+}
+.review__btn {
+  width: min-content;
 }
 
 .course__features {
