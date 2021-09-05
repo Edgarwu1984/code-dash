@@ -1,0 +1,78 @@
+@use '../utils/' as *;
+
+.about-intro__wrap {
+  background-color: var(--white);
+  padding: rem(100) rem(20);
+
+  .about__intro {
+    display: block;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+
+    @include breakpoint-down(small) {
+      width: 100%;
+    }
+
+    h3 {
+      margin-bottom: rem(30);
+    }
+    p {
+      line-height: 1.8;
+    }
+
+    hr {
+      margin-top: rem(70);
+      margin-bottom: rem(70);
+      border: 1px solid var(--light);
+    }
+  }
+
+  .about__comment {
+    display: block;
+    width: 80%;
+    margin: auto;
+    @include breakpoint-down(small) {
+      width: 100%;
+    }
+
+    &-blockquote {
+      .quote__icon {
+        font-size: rem(30);
+        color: var(--primary);
+        margin-right: rem(10);
+      }
+      font-size: rem(20);
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    &-avatar__info {
+      margin: rem(8) rem(40);
+      display: flex;
+      align-items: center;
+
+      .avatar__img {
+        border-radius: 50%;
+        width: rem(84);
+        height: rem(84);
+        margin-right: rem(20);
+      }
+      .avatar__name {
+        h4 {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+.about-instructor__wrap {
+  margin-bottom: rem(100);
+  padding: rem(100) rem(20);
+
+  h3 {
+    margin-bottom: rem(40);
+    text-align: center;
+  }
+}

@@ -9,25 +9,30 @@ import Rating from '../../components/Rating';
 import SectionTitle from '../../components/SectionTitle';
 import Accordion from '../../components/Accordion';
 import ScrollToTop from '../../components/ScrollToTop';
+// UTILITIES
+import ResetPagePosition from '../../utils/ResetPagePosition';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import { getCourseDetails } from '../../redux/actions/courseActions';
 
 function CoursePage({ match }) {
-  const { pathname } = useLocation();
+  // RESET PAGE POSITION
+  const pathname = useLocation().pathname;
+  ResetPagePosition(pathname);
+
+  // ROUTE VARIABLES
   const id = match.params.id;
   const category = match.params.category;
   const courseName = match.params.name;
 
+  // REDUX
   const dispatch = useDispatch();
   const courseDetails = useSelector(state => state.courseDetails);
   const { loading, error, course } = courseDetails;
 
   useEffect(() => {
     dispatch(getCourseDetails(category, id));
-    // RESET PAGE POSITION
-    window.scrollTo(0, 0);
-  }, [dispatch, category, id, pathname]);
+  }, [dispatch, category, id]);
 
   if (loading) {
     return (

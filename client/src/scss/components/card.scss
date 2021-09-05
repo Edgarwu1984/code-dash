@@ -154,3 +154,53 @@
     }
   }
 }
+
+// INSTRUCTOR CARD
+.instructor-card {
+  width: 100%;
+  background-color: var(--white);
+  border-radius: rem(6);
+  display: flex;
+  align-items: center;
+  margin: 0;
+  overflow: hidden;
+  @include shadow;
+
+  @include breakpoint-down(medium) {
+    flex-direction: column;
+  }
+
+  .portrait {
+    width: rem(250);
+    height: rem(250);
+
+    @include breakpoint-down(medium) {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .instructor__info {
+    padding: rem(30);
+
+    &-name {
+      margin-bottom: rem(10);
+      font-weight: 500;
+    }
+
+    &-intro {
+      margin-bottom: rem(30);
+    }
+
+    &-social {
+      & > * {
+        margin-right: rem(24);
+        padding: rem(6);
+        border-radius: 50%;
+        font-size: rem(30);
+        color: var(--white);
+        background-color: var(--grey-light);
+      }
+    }
+  }
+}

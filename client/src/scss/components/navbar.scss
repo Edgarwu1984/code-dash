@@ -1,5 +1,11 @@
 @use '../utils' as *;
 
+.navbar-scrolled {
+  @include transition;
+  @include shadow($y: 4px);
+  height: rem(72) !important;
+}
+
 .navbar {
   position: sticky;
   top: 0;
@@ -7,9 +13,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding: rem(0) rem(200);
+  height: rem(84);
   z-index: 1000;
-  @include shadow($y: 4px);
 
   @include breakpoint-down(large) {
     padding: rem(0) rem(64);
@@ -17,9 +24,12 @@
   @include breakpoint-down(medium) {
     flex-direction: column;
     padding: rem(0) rem(24);
+    height: rem(72);
   }
 
   &__menu {
+    position: relative;
+    height: 100%;
     &-brand {
       height: 100%;
       display: flex;
@@ -29,7 +39,7 @@
         height: auto;
         width: rem(130);
         margin-right: rem(8);
-        padding: rem(28) 0;
+        // padding: rem(28) 0;
       }
     }
 
@@ -112,10 +122,16 @@
     }
   }
   .collapse {
-    display: flex;
-    @include transition;
     @include breakpoint-down(medium) {
+      @include transition;
+      position: absolute;
+      top: rem(72);
       display: flex;
+      background-color: var(--white);
+      ul {
+        margin-right: 0;
+        padding-left: 0;
+      }
     }
   }
 
@@ -129,38 +145,6 @@
       height: rem(3);
       width: rem(24);
       background-color: var(--primary);
-    }
-  }
-}
-
-.dark__mode-toggler {
-  display: flex;
-  align-items: center;
-  border-left: 1px solid var(--dark-grey);
-  padding-left: rem(20);
-  margin-left: rem(12);
-  font-size: rem(12);
-
-  @include breakpoint-down(medium) {
-    padding-left: 0;
-    border-left: none;
-  }
-
-  .dark__mode-btn {
-    display: flex;
-    align-items: center;
-    border: none;
-    background: none;
-    outline: none;
-    cursor: pointer;
-  }
-
-  .icon {
-    font-size: rem(20);
-    color: var(--dark-text2);
-    &-active {
-      @include transition($duration: 0.2s);
-      color: var(--primary);
     }
   }
 }

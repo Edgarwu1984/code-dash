@@ -5,6 +5,8 @@ import Hero from '../components/layout/Hero';
 import CourseCard from '../components/CourseCard';
 import FeatureCard from '../components/FeatureCard';
 import TestimonialCard from '../components/TestimonialCard';
+// UTILITIES
+import ResetPagePosition from '../utils/ResetPagePosition';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import { getCourseList } from '../redux/actions/courseActions';
@@ -14,19 +16,20 @@ import { Link, useLocation } from 'react-router-dom';
 import ScrollToTop from '../components/ScrollToTop';
 
 function HomePage() {
-  const { pathname } = useLocation();
-  const dispatch = useDispatch();
+  // RESET PAGE POSITION
+  const pathname = useLocation().pathname;
+  ResetPagePosition(pathname);
 
+  // REDUX
+  const dispatch = useDispatch();
   const courseList = useSelector(state => state.courseList);
   const { loading, error, courses } = courseList;
 
   useEffect(() => {
     dispatch(getCourseList());
-    // RESET PAGE POSITION
-    window.scrollTo(0, 0);
-  }, [dispatch, pathname]);
+  }, [dispatch]);
 
-  const topCourses = courses && courses.filter(c => c.rating >= 4.9);
+  const topCourses = courses.filter(c => c.rating >= 4.9);
 
   return (
     <Layout>
@@ -82,25 +85,26 @@ function HomePage() {
             <AlertMessage message={error} type='danger' />
           ) : (
             <div className='grid col-4'>
-              {topCourses.map(course => (
-                <CourseCard
-                  key={course._id}
-                  category={course.category}
-                  courseId={course._id}
-                  courseCategory={course.courseCategory}
-                  courseImg={course.image}
-                  courseName={course.name}
-                  courseTutorFirstName={
-                    course.instructor.firstName && course.instructor.firstName
-                  }
-                  courseTutorLastName={
-                    course.instructor.lastName && course.instructor.lastName
-                  }
-                  courseDescription={course.description}
-                  courseRating={course.rating}
-                  numReviews={course.numReviews}
-                />
-              ))}
+              {topCourses &&
+                topCourses.map(course => (
+                  <CourseCard
+                    key={course._id}
+                    category={course.category}
+                    courseId={course._id}
+                    courseCategory={course.courseCategory}
+                    courseImg={course.image}
+                    courseName={course.name}
+                    courseTutorFirstName={
+                      course.instructor.firstName && course.instructor.firstName
+                    }
+                    courseTutorLastName={
+                      course.instructor.lastName && course.instructor.lastName
+                    }
+                    courseDescription={course.description}
+                    courseRating={course.rating}
+                    numReviews={course.numReviews}
+                  />
+                ))}
             </div>
           )}
         </div>

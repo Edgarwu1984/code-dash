@@ -2,7 +2,7 @@ const instructors = [
   {
     firstName: 'Alex',
     lastName: 'Hunter',
-    photo: 'https://randomuser.me/api/portraits/men/64.jpg',
+    photo: '/images/instructors/instructor_01.jpg',
     introduction:
       'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor. ',
     instructorRating: 5,
@@ -10,7 +10,7 @@ const instructors = [
   {
     firstName: 'Jack',
     lastName: 'Lee',
-    photo: 'https://randomuser.me/api/portraits/men/29.jpg',
+    photo: '/images/instructors/instructor_02.jpg',
     introduction:
       'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor. ',
     instructorRating: 5,
@@ -18,7 +18,7 @@ const instructors = [
   {
     firstName: 'Zoya',
     lastName: 'Hank',
-    photo: 'https://randomuser.me/api/portraits/women/23.jpg',
+    photo: '/images/instructors/instructor_03.jpg',
     introduction:
       'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor. ',
     instructorRating: 5,
@@ -26,7 +26,7 @@ const instructors = [
   {
     firstName: 'Chris',
     lastName: 'Chen',
-    photo: 'https://randomuser.me/api/portraits/men/26.jpg',
+    photo: '/images/instructors/instructor_04.jpg',
     introduction:
       'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor. ',
     instructorRating: 5,

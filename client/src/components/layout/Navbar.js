@@ -1,16 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 // REACT-ICONS
 import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
-import { IoMdSunny, IoMdMoon } from 'react-icons/io';
-import { FiSearch } from 'react-icons/fi';
 
 const Navbar = () => {
   const [collapse, setCollapse] = useState(true);
+  const [navStyleChanged, setNavStyleChanged] = useState(false);
+
+  // HANDLE HAMBURGER MENU
   const collapseHandler = () => setCollapse(!collapse);
 
+  // HANDLE NAVBAR STYLE WHILE SCROLLING
+  const navStyleHandler = () => {
+    if (window.scrollY > 600) {
+      console.log('scrolled');
+      setNavStyleChanged(true);
+    } else {
+      setNavStyleChanged(false);
+    }
+  };
+
+  useEffect(() => {
+    // NAVAR SCROLL EVENT
+    window.addEventListener('scroll', navStyleHandler);
+    return () => window.removeEventListener('scroll', navStyleHandler);
+  });
+
   return (
-    <nav className='navbar'>
+    <nav className={navStyleChanged ? 'navbar navbar-scrolled' : 'navbar'}>
       <div className='navbar__menu'>
         <Link to='/' className='navbar__menu-brand'>
           <img className='logo' src='/images/logo.png' alt='logo' />

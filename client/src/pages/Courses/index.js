@@ -8,22 +8,25 @@ import AlertMessage from '../../components/AlertMessage';
 import Loader from '../../components/Loader';
 import CourseCard from '../../components/CourseCard';
 import ScrollToTop from '../../components/ScrollToTop';
+// UTILITIES
+import ResetPagePosition from '../../utils/ResetPagePosition';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import { getCourseList } from '../../redux/actions/courseActions';
 
 function CoursesPage() {
-  const { pathname } = useLocation();
-  const dispatch = useDispatch();
+  // RESET PAGE POSITION
+  const pathname = useLocation().pathname;
+  ResetPagePosition(pathname);
 
+  // REDUX
+  const dispatch = useDispatch();
   const courseList = useSelector(state => state.courseList);
   const { loading, error, courses } = courseList;
 
   useEffect(() => {
     dispatch(getCourseList());
-    // RESET PAGE POSITION
-    window.scrollTo(0, 0);
-  }, [dispatch, pathname]);
+  }, [dispatch]);
 
   const webCourses = courses && courses.filter(c => c.category === 'web-dev');
   const gameCourses = courses && courses.filter(c => c.category === 'game-dev');
