@@ -12,8 +12,7 @@ const Navbar = () => {
 
   // HANDLE NAVBAR STYLE WHILE SCROLLING
   const navStyleHandler = () => {
-    if (window.scrollY > 600) {
-      console.log('scrolled');
+    if (window.scrollY > 400) {
       setNavStyleChanged(true);
     } else {
       setNavStyleChanged(false);

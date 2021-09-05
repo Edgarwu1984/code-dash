@@ -6,11 +6,13 @@ import {
   courseDetailsReducer,
   courseListReducer,
 } from './reducers/courseReducers';
+import { instructorListReducer } from './reducers/instructorReducers';
 
 const reducer = combineReducers({
   courseList: courseListReducer,
   courseCategoryList: courseCategoryListReducer,
   courseDetails: courseDetailsReducer,
+  instructorList: instructorListReducer,
 });
 
 const initialState = {};

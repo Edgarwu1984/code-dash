@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 // COMPONENTS
 import Layout from '../components/layout';
 import Hero from '../components/layout/Hero';
 import CourseCard from '../components/CourseCard';
 import FeatureCard from '../components/FeatureCard';
 import TestimonialCard from '../components/TestimonialCard';
+import Loader from '../components/Loader';
+import AlertMessage from '../components/AlertMessage';
+import ScrollToTop from '../components/ScrollToTop';
 // UTILITIES
 import ResetPagePosition from '../utils/ResetPagePosition';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import { getCourseList } from '../redux/actions/courseActions';
-import Loader from '../components/Loader';
-import AlertMessage from '../components/AlertMessage';
-import { Link, useLocation } from 'react-router-dom';
-import ScrollToTop from '../components/ScrollToTop';
 
 function HomePage() {
   // RESET PAGE POSITION

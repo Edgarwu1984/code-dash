@@ -9,13 +9,25 @@ import ScrollToTop from '../components/ScrollToTop';
 import ResetPagePosition from '../utils/ResetPagePosition';
 // REACT ICONS
 import { FaQuoteRight } from 'react-icons/fa';
+// REDUX
+import { useDispatch, useSelector } from 'react-redux';
+import { getInstructorList } from '../redux/actions/instructorActions';
+import Loader from '../components/Loader';
+import AlertMessage from '../components/AlertMessage';
 
 function AboutPage() {
   // RESET PAGE POSITION
   const pathname = useLocation();
   ResetPagePosition(pathname);
 
-  useEffect(() => {}, []);
+  // REDUX
+  const dispatch = useDispatch();
+  const instructorList = useSelector(state => state.instructorList);
+  const { loading, error, instructors } = instructorList;
+
+  useEffect(() => {
+    dispatch(getInstructorList());
+  }, [dispatch]);
   return (
     <Layout pageTitle='- About'>
       <ScrollToTop />
@@ -64,10 +76,21 @@ function AboutPage() {
         <div className='container'>
           <h3>Learn with our popular Instructors</h3>
           <div className='grid col-2'>
-            <InstructorCard />
-            <InstructorCard />
-            <InstructorCard />
-            <InstructorCard />
+            {loading ? (
+              <Loader />
+            ) : error ? (
+              <AlertMessage message={error} type='danger' />
+            ) : (
+              instructors &&
+              instructors.map(instructor => (
+                <InstructorCard
+                  key={instructor._id}
+                  photo={instructor.photo}
+                  name={`${instructor.firstName} ${instructor.lastName}`}
+                  intro={instructor.introduction}
+                />
+              ))
+            )}
           </div>
         </div>
       </section>
