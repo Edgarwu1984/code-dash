@@ -9,6 +9,7 @@ import {
 import { instructorListReducer } from './reducers/instructorReducers';
 import {
   userDetailsReducer,
+  userDetailsUpdateReducer,
   userLoginReducer,
   userRegisterReducer,
 } from './reducers/userReducers';
@@ -21,6 +22,7 @@ const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
+  userDetailsUpdate: userDetailsUpdateReducer,
 });
 
 // GET USER INFO FROM LOCAL STORAGE

@@ -13,7 +13,7 @@ export const getInstructorList = () => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_INSTRUCTOR_LIST_FAIL,
-      payload: error.response.message,
+      payload: error.response.data.message,
     });
   }
 };

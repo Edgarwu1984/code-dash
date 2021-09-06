@@ -74,6 +74,7 @@ const getUserProfile = async (req, res) => {
         _id: user._id,
         username: user.username,
         email: user.email,
+        password: user.password,
         photo: user.photo,
         isAdmin: user.isAdmin,
         updatedAt: user.updatedAt,

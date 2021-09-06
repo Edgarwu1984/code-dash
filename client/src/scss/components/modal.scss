@@ -1,1 +1,70 @@
 @use '../utils/' as *;
+
+.modal__component {
+  @include transition;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+
+  .modal__overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+  }
+
+  .modal {
+    @include shadow;
+    z-index: 9999;
+    background-color: var(--bg);
+    border-radius: rem(6);
+    width: calc(100vw / 3);
+    height: auto;
+
+    @include breakpoint-down(medium) {
+      width: calc(100vw / 1.5);
+    }
+    @include breakpoint-down(small) {
+      width: 95%;
+    }
+
+    &__header {
+      padding: rem(20);
+      width: 100%;
+      .close-btn {
+        display: flex;
+        margin-left: auto;
+        font-size: rem(26);
+        background: none;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        &:hover {
+          @include transition;
+          color: var(--primary);
+        }
+      }
+    }
+    &__body {
+      padding: rem(0) rem(40) rem(40) rem(40);
+    }
+  }
+}
+.hide-modal {
+  top: 999vh;
+  opacity: 0;
+  pointer-events: none;
+
+  .modal__overlay {
+    display: none;
+    background: none;
+  }
+}

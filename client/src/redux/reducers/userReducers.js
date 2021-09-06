@@ -3,6 +3,10 @@ import {
   GET_USER_DETAILS_REQUEST,
   GET_USER_DETAILS_RESET,
   GET_USER_DETAILS_SUCCESS,
+  UPDATE_USER_DETAILS_FAIL,
+  UPDATE_USER_DETAILS_REQUEST,
+  UPDATE_USER_DETAILS_RESET,
+  UPDATE_USER_DETAILS_SUCCESS,
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -50,6 +54,21 @@ export const userDetailsReducer = (state = { user: {} }, action) => {
       return { loading: false, error: action.payload };
     case GET_USER_DETAILS_RESET:
       return { user: {} };
+    default:
+      return state;
+  }
+};
+
+export const userDetailsUpdateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case UPDATE_USER_DETAILS_REQUEST:
+      return { loading: true };
+    case UPDATE_USER_DETAILS_SUCCESS:
+      return { loading: false, success: true, user: action.payload };
+    case UPDATE_USER_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
+    case UPDATE_USER_DETAILS_RESET:
+      return {};
     default:
       return state;
   }

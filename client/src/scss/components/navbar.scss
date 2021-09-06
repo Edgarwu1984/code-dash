@@ -16,7 +16,7 @@
   align-items: center;
   padding: rem(0) rem(200);
   height: rem(84);
-  z-index: 1000;
+  z-index: 99;
 
   @include breakpoint-down(large) {
     padding: rem(0) rem(64);
