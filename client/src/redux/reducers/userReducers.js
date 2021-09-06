@@ -1,4 +1,8 @@
 import {
+  GET_USER_DETAILS_FAIL,
+  GET_USER_DETAILS_REQUEST,
+  GET_USER_DETAILS_RESET,
+  GET_USER_DETAILS_SUCCESS,
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -31,6 +35,21 @@ export const userRegisterReducer = (state = {}, action) => {
       return { loading: false, userInfo: action.payload };
     case USER_REGISTER_FAIL:
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const userDetailsReducer = (state = { user: {} }, action) => {
+  switch (action.type) {
+    case GET_USER_DETAILS_REQUEST:
+      return { loading: true, ...state };
+    case GET_USER_DETAILS_SUCCESS:
+      return { loading: false, user: action.payload };
+    case GET_USER_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
+    case GET_USER_DETAILS_RESET:
+      return { user: {} };
     default:
       return state;
   }

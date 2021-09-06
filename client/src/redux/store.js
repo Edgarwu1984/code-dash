@@ -7,7 +7,11 @@ import {
   courseListReducer,
 } from './reducers/courseReducers';
 import { instructorListReducer } from './reducers/instructorReducers';
-import { userLoginReducer, userRegisterReducer } from './reducers/userReducers';
+import {
+  userDetailsReducer,
+  userLoginReducer,
+  userRegisterReducer,
+} from './reducers/userReducers';
 
 const reducer = combineReducers({
   courseList: courseListReducer,
@@ -16,6 +20,7 @@ const reducer = combineReducers({
   instructorList: instructorListReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  userDetails: userDetailsReducer,
 });
 
 // GET USER INFO FROM LOCAL STORAGE

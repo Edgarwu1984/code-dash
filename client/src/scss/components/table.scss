@@ -1,0 +1,98 @@
+@use '../utils/' as *;
+
+table {
+  display: table;
+  border-collapse: collapse;
+  text-align: center;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid var(--grey-light);
+  padding: rem(8);
+}
+
+th {
+  padding: rem(8) 0;
+  background-color: var(--primary);
+  color: var(--white);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+tr {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+tr:nth-child(even) {
+  background-color: var(--bg);
+}
+
+// Mobile Screen Table Title
+.table-name {
+  display: none;
+}
+
+@include breakpoint-down(small) {
+  thead {
+    display: none;
+  }
+
+  // Mobile Screen Table Title
+  .table-name {
+    background-color: var(--primary);
+    color: var(--white);
+    display: block;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: rem(6);
+    &::before,
+    &::after {
+      border: none;
+    }
+  }
+
+  tbody,
+  tr,
+  td {
+    display: block;
+  }
+
+  tr {
+    margin-bottom: rem(20);
+  }
+
+  tr:nth-child(even) {
+    background-color: var(--bg);
+  }
+
+  td {
+    position: relative;
+    padding: rem(8) 0 rem(8) 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+      content: attr(data-label);
+      color: var(--text);
+      font-weight: bold;
+      text-transform: capitalize;
+      position: absolute;
+      left: 0;
+      width: 50%;
+      border-right: 1px solid var(--grey-light);
+      padding: rem(8) 0;
+    }
+
+    &:last-child {
+      width: 100%;
+      padding: rem(10) rem(8);
+      &::before {
+        display: none;
+      }
+    }
+  }
+}

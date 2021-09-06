@@ -13,6 +13,7 @@ import AboutPage from './pages/AboutPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import NotFoundPage from './pages/NotFoundPage';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path='/about' component={AboutPage} />
         <Route path='/login' component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
+        <Route path='/profile' component={ProfilePage} />
         <Route path='/404' component={NotFoundPage} />
         <Redirect to='/404' />
       </Switch>

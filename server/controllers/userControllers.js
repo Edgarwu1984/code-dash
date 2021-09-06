@@ -76,6 +76,7 @@ const getUserProfile = async (req, res) => {
         email: user.email,
         photo: user.photo,
         isAdmin: user.isAdmin,
+        updatedAt: user.updatedAt,
       });
     } else {
       res.status(404).send({ message: 'User not found' });

@@ -20,12 +20,25 @@ const Footer = () => {
         className='container join-link'
         style={{ backgroundImage: 'url(/images/bg4.jpg)' }}
       >
-        <h3>Join Our 8302 Happy Students Today!</h3>
-        <div>
-          <Link to={userInfo ? '/courses' : '/login'} className='btn'>
-            Join Now
-          </Link>
-        </div>
+        {userInfo ? (
+          <>
+            <h3>Find Our Top Rated Courses</h3>
+            <div>
+              <Link to='/Course' className='btn'>
+                Find Course
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <h3>Join Our 8302 Happy Students Today!</h3>
+            <div>
+              <Link to='/login' className='btn'>
+                Join Now
+              </Link>
+            </div>
+          </>
+        )}
       </div>
       <footer>
         <div className='container'>

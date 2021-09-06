@@ -87,7 +87,7 @@ const Navbar = () => {
               {/* ONLY SHOW DASHBOARD WHEN SIGNED IN AS ADMIN */}
               {userInfo.isAdmin && (
                 <li className='nav__dropdown-item'>
-                  <Link to='/profile'>Dashboard</Link>
+                  <Link to='/dashboard'>Dashboard</Link>
                 </li>
               )}
               <li className='nav__dropdown-item'>

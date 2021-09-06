@@ -14,6 +14,10 @@ function NotFoundPage({ history }) {
     } else {
       history.push('/');
     }
+
+    return () => {
+      clearTimeout(time);
+    };
   }, [history, time]);
 
   return (
