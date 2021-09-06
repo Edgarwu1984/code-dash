@@ -110,7 +110,8 @@
 }
 
 // TESTIMONIAL CARD
-.testimonial-card {
+.testimonial-card,
+.review-card {
   position: relative;
   width: 90%;
   height: max-content;
@@ -152,6 +153,27 @@
         font-size: rem(18);
       }
     }
+  }
+}
+
+// REVIEW CARD
+.review-card {
+  position: relative;
+  width: 100%;
+  box-shadow: none;
+  margin-bottom: rem(20);
+
+  &__user {
+    align-items: flex-start;
+
+    .user__image {
+      width: rem(60);
+      height: rem(60);
+    }
+  }
+
+  &__comment {
+    margin-top: rem(20);
   }
 }
 

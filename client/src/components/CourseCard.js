@@ -29,7 +29,7 @@ const CourseCard = ({
         <small className='tutor'>
           <span>{courseTutorFirstName}</span> <span>{courseTutorLastName}</span>
         </small>
-        <Rating rating={courseRating} reviews={numReviews} />
+        <Rating rating={courseRating} showReview={true} reviews={numReviews} />
         <p>{courseDescription}</p>
       </div>
     </figure>

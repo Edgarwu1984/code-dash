@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 // COMPONENTS
 import Layout from '../../components/layout';
 import Hero from '../../components/layout/Hero';
@@ -9,16 +10,25 @@ import Rating from '../../components/Rating';
 import SectionTitle from '../../components/SectionTitle';
 import Accordion from '../../components/Accordion';
 import ScrollToTop from '../../components/ScrollToTop';
+import Modal from '../../components/Modal';
+import ReviewCard from '../../components/ReviewCard';
 // UTILITIES
 import ResetPagePosition from '../../utils/ResetPagePosition';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import { getCourseDetails } from '../../redux/actions/courseActions';
+import { addCourseReview } from '../../redux/actions/courseActions';
+import { getUserDetails } from '../../redux/actions/userActions';
 
 function CoursePage({ match, history }) {
   // RESET PAGE POSITION
   const pathname = useLocation().pathname;
   ResetPagePosition(pathname);
+
+  // HANDLE MODAL
+  const [show, setShow] = useState(false);
+  const showModalHandler = () => setShow(!show);
+  const closeModalHandle = () => setShow(false);
 
   // ROUTE VARIABLES
   const id = match.params.id;
@@ -31,16 +41,47 @@ function CoursePage({ match, history }) {
   const { loading, error, course } = courseDetails;
   const userLogin = useSelector(state => state.userLogin);
   const { userInfo } = userLogin;
+  const userDetails = useSelector(state => state.userDetails);
+  const { user } = userDetails;
+  const courseReview = useSelector(state => state.courseReview);
+  const {
+    loading: reviewLoading,
+    success: reviewSuccess,
+    error: reviewError,
+  } = courseReview;
 
   useEffect(() => {
     dispatch(getCourseDetails(category, id));
-  }, [dispatch, category, id]);
+    if (reviewSuccess) {
+      toast.success('Thanks for your review.');
+      setShow(false);
+    } else if (reviewError) {
+      toast.error(reviewError);
+    }
 
-  const addReviewHandler = () => {
+    if (!userInfo) {
+      history.push('/');
+    } else {
+      dispatch(getUserDetails());
+    }
+  }, [dispatch, category, id, reviewSuccess, reviewError, userInfo, history]);
+
+  // ADD REVIEW FORM
+  const [ratingState, setRatingState] = useState(1);
+  const [comment, setComment] = useState('');
+
+  const addReviewHandler = e => {
+    e.preventDefault();
     if (!userInfo) {
       history.push('/login');
     } else {
-      console.log('Add Review.');
+      if (!ratingState || !comment) {
+        toast.error('Rating or Comment can not be empty.');
+      } else {
+        dispatch(
+          addCourseReview(id, { rating: Number(ratingState), comment: comment })
+        );
+      }
     }
   };
 
@@ -75,9 +116,54 @@ function CoursePage({ match, history }) {
     updatedAt,
   } = course;
 
+  // CHECK HAS REVIEWED
+  const reviewed =
+    reviews && reviews.find(review => review.user === user._id) ? true : false;
+
   return (
     <Layout pageTitle={`- ${courseName}`}>
       <ScrollToTop />
+      {/* REVIEW MODAL */}
+      <Modal show={show} onClose={closeModalHandle}>
+        <form onSubmit={addReviewHandler}>
+          {reviewLoading && <Loader />}
+          <div className='form-group'>
+            <label htmlFor='rating' className='form-label'>
+              Rating
+            </label>
+            <input
+              type='number'
+              step='.1'
+              max='5'
+              min='1'
+              className='form-control'
+              onChange={e => setRatingState(e.target.value)}
+            />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='comment' className='form-label'>
+              Comment
+            </label>
+            <textarea
+              type='text'
+              className='form-control'
+              name='comment'
+              cols='30'
+              rows='10'
+              placeholder='Write comment here...'
+              onChange={e => setComment(e.target.value)}
+            />
+          </div>
+
+          <div className='form-group'>
+            <input
+              type='submit'
+              className='btn btn-primary form-button'
+              value='Submit'
+            />
+          </div>
+        </form>
+      </Modal>
       {course && (
         <>
           <Hero heroBg={image}>
@@ -90,7 +176,11 @@ function CoursePage({ match, history }) {
               <div className='course'>
                 <h2 className='course__name'>{name}</h2>
                 <p className='course__description'>{description}</p>
-                <Rating rating={rating} reviews={numReviews} />
+                <Rating
+                  rating={rating}
+                  showReview={true}
+                  reviews={numReviews}
+                />
                 <div className='course__instructor'>
                   Created By:{' '}
                   <span>
@@ -113,9 +203,22 @@ function CoursePage({ match, history }) {
                 </div>
               </div>
               <div className='review__btn'>
-                <button className='btn btn-primary' onClick={addReviewHandler}>
-                  Review
-                </button>
+                {reviewed ? (
+                  <button
+                    className='btn btn-primary'
+                    onClick={showModalHandler}
+                    disabled
+                  >
+                    Reviewed
+                  </button>
+                ) : (
+                  <button
+                    className='btn btn-primary'
+                    onClick={showModalHandler}
+                  >
+                    Review
+                  </button>
+                )}
               </div>
             </div>
           </Hero>
@@ -139,7 +242,16 @@ function CoursePage({ match, history }) {
                 <div className='empty__reviews'>No reviews</div>
               ) : (
                 reviews &&
-                reviews.map(review => <div key={review._id}>{review}</div>)
+                reviews.map(review => (
+                  <ReviewCard
+                    key={review._id}
+                    rating={review.rating}
+                    comment={review.comment}
+                    userImage={review.photo}
+                    userName={review.username}
+                    commentDate={review.createdAt}
+                  />
+                ))
               )}
             </section>
           </div>

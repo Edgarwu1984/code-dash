@@ -78,3 +78,9 @@
   opacity: 0;
   pointer-events: none;
 }
+
+.btn:disabled {
+  background-color: var(--grey);
+  border-color: var(--grey);
+  pointer-events: none;
+}

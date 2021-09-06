@@ -9,6 +9,10 @@ import {
   GET_COURSE_CATEGORY_LIST_REQUEST,
   GET_COURSE_CATEGORY_LIST_SUCCESS,
   GET_COURSE_CATEGORY_LIST_FAIL,
+  ADD_COURSE_REVIEW_REQUEST,
+  ADD_COURSE_REVIEW_SUCCESS,
+  ADD_COURSE_REVIEW_FAIL,
+  ADD_COURSE_REVIEW_RESET,
 } from '../constants/courseConstants';
 
 export const getCourseList = () => async dispatch => {
@@ -45,6 +49,32 @@ export const getCourseDetails = (category, id) => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_COURSE_DETAILS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export const addCourseReview = (id, review) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: ADD_COURSE_REVIEW_REQUEST });
+    // ACCESS USERINFO IN ORDER TO GET USER TOKEN
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    await axios.post(`/api/courses/${id}/reviews`, review, config);
+    dispatch({ type: ADD_COURSE_REVIEW_SUCCESS });
+    dispatch({ type: ADD_COURSE_REVIEW_RESET });
+  } catch (error) {
+    dispatch({
+      type: ADD_COURSE_REVIEW_FAIL,
       payload: error.response.data.message,
     });
   }

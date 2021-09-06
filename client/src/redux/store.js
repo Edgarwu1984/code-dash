@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import {
+  addCourseReviewReducer,
   courseCategoryListReducer,
   courseDetailsReducer,
   courseListReducer,
@@ -18,6 +19,7 @@ const reducer = combineReducers({
   courseList: courseListReducer,
   courseCategoryList: courseCategoryListReducer,
   courseDetails: courseDetailsReducer,
+  courseReview: addCourseReviewReducer,
   instructorList: instructorListReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
