@@ -59,12 +59,19 @@ function CoursePage({ match, history }) {
       toast.error(reviewError);
     }
 
-    if (!userInfo) {
-      history.push('/');
-    } else {
+    if (!user) {
       dispatch(getUserDetails());
     }
-  }, [dispatch, category, id, reviewSuccess, reviewError, userInfo, history]);
+  }, [
+    dispatch,
+    category,
+    id,
+    reviewSuccess,
+    reviewError,
+    userInfo,
+    history,
+    user,
+  ]);
 
   // ADD REVIEW FORM
   const [ratingState, setRatingState] = useState(1);
@@ -203,7 +210,11 @@ function CoursePage({ match, history }) {
                 </div>
               </div>
               <div className='review__btn'>
-                {reviewed ? (
+                {!userInfo ? (
+                  <Link to='/login' className='btn btn-primary'>
+                    Review
+                  </Link>
+                ) : reviewed ? (
                   <button
                     className='btn btn-primary'
                     onClick={showModalHandler}

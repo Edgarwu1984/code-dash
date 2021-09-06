@@ -33,7 +33,7 @@ const Footer = () => {
           <>
             <h3>Join Our 8302 Happy Students Today!</h3>
             <div>
-              <Link to='/login' className='btn'>
+              <Link to='/register' className='btn'>
                 Join Now
               </Link>
             </div>

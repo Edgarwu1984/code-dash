@@ -14,6 +14,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ProfilePage from './pages/ProfilePage';
+import CourseCategoryPage from './pages/Courses/CourseCategoryPage';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
       <Switch>
         <Route exact path='/' component={HomePage} />
         <Route exact path='/courses' component={CoursesPage} />
+        <Route exact path='/courses/:category' component={CourseCategoryPage} />
         <Route path='/courses/:category/:id/:name' component={CoursePage} />
         <Route path='/about' component={AboutPage} />
         <Route path='/login' component={LoginPage} />

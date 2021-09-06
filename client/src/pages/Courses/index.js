@@ -73,7 +73,7 @@ function CoursesPage() {
           )}
 
           <div className='list-link__btn'>
-            <Link className='btn' to='/course/web-development'>
+            <Link className='btn' to='/courses/web-dev'>
               See More
             </Link>
           </div>
@@ -109,7 +109,7 @@ function CoursesPage() {
             </div>
           )}
           <div className='list-link__btn'>
-            <Link className='btn' to='/course/game-development'>
+            <Link className='btn' to='/courses/game-dev'>
               See More
             </Link>
           </div>
