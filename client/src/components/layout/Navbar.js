@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 // REACT-ICONS
 import { FaBars, FaTimes } from 'react-icons/fa';
@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../redux/actions/userActions';
 
 const Navbar = () => {
+  const history = useHistory();
   const [collapse, setCollapse] = useState(true);
   const [navStyleChanged, setNavStyleChanged] = useState(false);
 
@@ -37,6 +38,7 @@ const Navbar = () => {
 
   const logoutHandler = () => {
     dispatch(logoutUser());
+    history.push('/');
     toast.success('Logged out.');
   };
 

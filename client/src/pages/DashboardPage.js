@@ -44,8 +44,6 @@ function DashboardPage({ history }) {
   const [admin, setAdmin] = useState(false);
   const [activeBtn, setActiveBtn] = useState(false);
 
-  console.log(username);
-
   useEffect(() => {
     // Redirect to Home page if Current User not an Admin or User haven't logged in;
     if (userInfo && userInfo.isAdmin) {
@@ -111,7 +109,7 @@ function DashboardPage({ history }) {
 
   return (
     <Layout pageTitle='- Profile'>
-      <Modal show={show} onClose={closeModalHandle} key={user._id}>
+      <Modal show={show} onClose={closeModalHandle}>
         <form onSubmit={submitHandler}>
           {userLoading && <Loader />}
           {userUpdateLoading && <Loader />}
