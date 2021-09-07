@@ -93,3 +93,12 @@
   width: rem(64);
   height: auto;
 }
+
+.radio {
+  display: flex;
+  align-items: center;
+  & > * {
+    margin-bottom: 0;
+    margin-right: rem(8);
+  }
+}

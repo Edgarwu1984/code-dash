@@ -1,11 +1,6 @@
 @use '../utils/' as *;
 
 // COURSE LIST PAGE
-.courses__section {
-  margin-top: rem(60);
-  margin-bottom: rem(100);
-}
-
 .list-link__btn {
   width: 100%;
   display: flex;
@@ -22,7 +17,6 @@
 }
 
 // COURSE DETAILS PAGE
-
 .course__page-header {
   justify-content: space-around;
   color: var(--white);
@@ -135,8 +129,6 @@
 }
 
 .review__section {
-  margin-bottom: rem(100);
-
   .empty__reviews {
     display: flex;
     justify-content: center;

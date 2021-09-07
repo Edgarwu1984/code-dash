@@ -15,6 +15,7 @@ import RegisterPage from './pages/RegisterPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ProfilePage from './pages/ProfilePage';
 import CourseCategoryPage from './pages/Courses/CourseCategoryPage';
+import DashboardPage from './pages/DashboardPage';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path='/login' component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
         <Route path='/profile' component={ProfilePage} />
+        <Route path='/dashboard' component={DashboardPage} />
         <Route path='/404' component={NotFoundPage} />
         <Redirect to='/404' />
       </Switch>

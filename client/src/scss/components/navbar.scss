@@ -266,3 +266,13 @@
     }
   }
 }
+
+.admin__badge {
+  text-transform: uppercase;
+  background-color: var(--primary);
+  padding: rem(2) rem(4);
+  color: var(--white);
+  border-radius: rem(4);
+  margin-top: rem(6);
+  font-size: rem(10);
+}

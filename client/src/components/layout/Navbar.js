@@ -81,8 +81,13 @@ const Navbar = () => {
             </div>
             <ul className='nav__dropdown'>
               <li className='nav__dropdown-item'>
-                <div>Signed in as</div>
-                <div>{userInfo.username}</div>
+                <div>Signed in as </div>
+                <div>
+                  {userInfo.username}{' '}
+                  {userInfo.isAdmin && (
+                    <small className='admin__badge'>Admin</small>
+                  )}
+                </div>
               </li>
               {/* ONLY SHOW DASHBOARD WHEN SIGNED IN AS ADMIN */}
               {userInfo.isAdmin && (

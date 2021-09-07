@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
+// REDUCERS
 import {
   addCourseReviewReducer,
   courseCategoryListReducer,
@@ -14,17 +15,29 @@ import {
   userLoginReducer,
   userRegisterReducer,
 } from './reducers/userReducers';
+import {
+  singleUserReducer,
+  userListReducer,
+  userUpdateReducer,
+} from './reducers/adminReducers';
 
 const reducer = combineReducers({
+  // COURSE REDUCERS
   courseList: courseListReducer,
   courseCategoryList: courseCategoryListReducer,
   courseDetails: courseDetailsReducer,
   courseReview: addCourseReviewReducer,
+  // INSTRUCTOR REDUCERS
   instructorList: instructorListReducer,
+  // USER REDUCERS
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userDetailsUpdate: userDetailsUpdateReducer,
+  // ADMIN REDUCERS
+  userList: userListReducer,
+  singleUser: singleUserReducer,
+  userUpdate: userUpdateReducer,
 });
 
 // GET USER INFO FROM LOCAL STORAGE

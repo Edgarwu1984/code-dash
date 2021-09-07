@@ -170,35 +170,39 @@ function ProfilePage({ history }) {
         </div>
       </Hero>
       <div className='container'>
-        <div className='profile__page-wrap'>
-          <table>
-            <thead>
-              <tr>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Updated At</th>
-                <th>Edit</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td data-label='Username'>{user.username && user.username}</td>
-                <td data-label='Email'>{user.email && user.email}</td>
-                <td data-label='Updated At'>
-                  {user.updatedAt && DateFormatter(user.updatedAt)}
-                </td>
-                <td>
-                  <button
-                    className='btn btn-outline-primary'
-                    onClick={showModalHandler}
-                  >
-                    Edit
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <section>
+          <div className='profile__page-wrap'>
+            <table>
+              <thead>
+                <tr>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Updated At</th>
+                  <th>Edit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label='Username'>
+                    {user.username && user.username}
+                  </td>
+                  <td data-label='Email'>{user.email && user.email}</td>
+                  <td data-label='Updated At'>
+                    {user.updatedAt && DateFormatter(user.updatedAt)}
+                  </td>
+                  <td>
+                    <button
+                      className='btn btn-outline-primary'
+                      onClick={showModalHandler}
+                    >
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
       </div>
     </Layout>
   );

@@ -1,6 +1,7 @@
 @use '../utils/' as *;
 
 .about-intro__wrap {
+  margin-top: rem(-40);
   background-color: var(--white);
   padding: rem(100) rem(20);
 

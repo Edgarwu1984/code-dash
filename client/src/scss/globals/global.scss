@@ -21,6 +21,11 @@ img {
   height: auto;
 }
 
+section {
+  margin-top: rem(60);
+  margin-bottom: rem(60);
+}
+
 .section__title {
   display: inline-block;
   margin-bottom: rem(40);
