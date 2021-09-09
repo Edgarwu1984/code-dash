@@ -5,11 +5,15 @@ const {
   getCourseById,
   createCourseReview,
   getCoursesByCategory,
+  getTopCoursesByRating,
+  getCoursesByInstructor,
 } = require('../controllers/courseControllers');
 
 const router = express.Router();
 
 router.route('/').get(getCourses);
+router.route('/instructor').get(getCoursesByInstructor);
+router.route('/top').get(getTopCoursesByRating);
 router.route('/:category').get(getCoursesByCategory);
 router.route('/:category/:id').get(getCourseById);
 router.route('/:id/reviews').post(protect, createCourseReview);

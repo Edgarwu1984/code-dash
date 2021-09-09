@@ -58,6 +58,46 @@ const getCoursesByCategory = async (req, res) => {
   }
 };
 
+// @description Get Top 4 Course by Rating
+// @route GET /api/courses/top
+// @access Public
+const getTopCoursesByRating = async (req, res) => {
+  try {
+    const courses = await Course.find({})
+      .sort({ rating: -1 })
+      .limit(4)
+      .populate('instructor', 'firstName lastName');
+
+    if (courses) {
+      res.status(200).json(courses);
+    } else {
+      res.status(404).send({ message: 'Can not found courses.' });
+    }
+  } catch (error) {
+    res.status(404).send({ message: `${error}` });
+  }
+};
+
+// @description Query Courses by Instructor's id
+// @route GET /api/courses/instructor?_id=id
+// @access Public
+const getCoursesByInstructor = async (req, res) => {
+  try {
+    const id = req.query._id;
+    const courses = await Course.find({
+      instructor: { _id: id },
+    }).populate('instructor', 'firstName lastName');
+
+    if (courses) {
+      res.status(200).json(courses);
+    } else {
+      res.status(404).send({ message: 'Can not found courses.' });
+    }
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+};
+
 // @description Create review
 // @route GET /api/courses/:id/reviews
 // @access Private
@@ -105,5 +145,7 @@ module.exports = {
   getCourses,
   getCourseById,
   getCoursesByCategory,
+  getTopCoursesByRating,
+  getCoursesByInstructor,
   createCourseReview,
 };
