@@ -125,7 +125,9 @@ function CoursePage({ match, history }) {
 
   // CHECK HAS REVIEWED
   const reviewed =
-    reviews && reviews.find(review => review.user === user._id) ? true : false;
+    reviews && reviews.find(review => review.user._id === userInfo._id)
+      ? true
+      : false;
 
   return (
     <Layout pageTitle={`- ${courseName}`}>
