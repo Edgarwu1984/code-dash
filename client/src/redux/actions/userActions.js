@@ -38,7 +38,7 @@ export const loginUser = (email, password) => async dispatch => {
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
-      payload: error.response.data.message,
+      payload: error.message,
     });
   }
 };
@@ -68,7 +68,7 @@ export const registerUser = (username, email, password) => async dispatch => {
   } catch (error) {
     dispatch({
       type: USER_REGISTER_FAIL,
-      payload: error.response.data.message,
+      payload: error.message,
     });
   }
 };
@@ -93,7 +93,7 @@ export const getUserDetails = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: GET_USER_DETAILS_FAIL,
-      payload: error.response.data.message,
+      payload: error.message,
     });
   }
 };
@@ -121,7 +121,7 @@ export const updateUserDetails = user => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: UPDATE_USER_DETAILS_FAIL,
-      payload: error.response.data.message,
+      payload: error.message,
     });
   }
 };
@@ -136,7 +136,7 @@ export const getUserCourseReviews = id => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_USER_COURSE_REVIEWS_FAIL,
-      payload: error.response.data.message,
+      payload: error.message,
     });
   }
 };

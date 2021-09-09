@@ -59,19 +59,14 @@ function CoursePage({ match, history }) {
       toast.error(reviewError);
     }
 
-    if (!user) {
-      dispatch(getUserDetails());
-    }
-  }, [
-    dispatch,
-    category,
-    id,
-    reviewSuccess,
-    reviewError,
-    userInfo,
-    history,
-    user,
-  ]);
+    dispatch(getUserDetails());
+  }, [dispatch, category, id, reviewSuccess, reviewError, userInfo, history]);
+
+  // useEffect(() => {
+  //   if (user) {
+  //     dispatch(getUserDetails());
+  //   }
+  // }, [dispatch, user]);
 
   // ADD REVIEW FORM
   const [ratingState, setRatingState] = useState(1);
@@ -125,7 +120,7 @@ function CoursePage({ match, history }) {
 
   // CHECK HAS REVIEWED
   const reviewed =
-    reviews && reviews.find(review => review.user._id === userInfo._id)
+    user && reviews && reviews.find(review => review.user._id === user._id)
       ? true
       : false;
 

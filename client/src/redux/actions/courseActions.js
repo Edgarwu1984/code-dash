@@ -26,7 +26,7 @@ export const getCourseList = () => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_COURSE_LIST_FAIL,
-      payload: error.response.data.message,
+      payload: error.message,
     });
   }
 };
@@ -39,7 +39,7 @@ export const getTopCourses = () => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_TOP_COURSES_FAIL,
-      payload: error.response.data.message,
+      payload: error.message,
     });
   }
 };
@@ -52,7 +52,7 @@ export const getCourseCategoryList = category => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_COURSE_CATEGORY_LIST_FAIL,
-      payload: error.response.data.message,
+      payload: error.message,
     });
   }
 };
@@ -65,7 +65,7 @@ export const getCourseDetails = (category, id) => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_COURSE_DETAILS_FAIL,
-      payload: error.response.data.message,
+      payload: error.message,
     });
   }
 };
@@ -91,7 +91,7 @@ export const addCourseReview = (id, review) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ADD_COURSE_REVIEW_FAIL,
-      payload: error.response.data.message,
+      payload: error.message,
     });
   }
 };
