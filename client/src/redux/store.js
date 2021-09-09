@@ -7,9 +7,11 @@ import {
   courseCategoryListReducer,
   courseDetailsReducer,
   courseListReducer,
+  topCourseListReducer,
 } from './reducers/courseReducers';
 import { instructorListReducer } from './reducers/instructorReducers';
 import {
+  userCourseReviewsReducer,
   userDetailsReducer,
   userDetailsUpdateReducer,
   userLoginReducer,
@@ -24,6 +26,7 @@ import {
 const reducer = combineReducers({
   // COURSE REDUCERS
   courseList: courseListReducer,
+  topCourseList: topCourseListReducer,
   courseCategoryList: courseCategoryListReducer,
   courseDetails: courseDetailsReducer,
   courseReview: addCourseReviewReducer,
@@ -34,6 +37,7 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userDetailsUpdate: userDetailsUpdateReducer,
+  userCourseReviews: userCourseReviewsReducer,
   // ADMIN REDUCERS
   userList: userListReducer,
   singleUser: singleUserReducer,

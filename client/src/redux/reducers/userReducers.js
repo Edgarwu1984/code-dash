@@ -1,4 +1,7 @@
 import {
+  GET_USER_COURSE_REVIEWS_FAIL,
+  GET_USER_COURSE_REVIEWS_REQUEST,
+  GET_USER_COURSE_REVIEWS_SUCCESS,
   GET_USER_DETAILS_FAIL,
   GET_USER_DETAILS_REQUEST,
   GET_USER_DETAILS_RESET,
@@ -69,6 +72,19 @@ export const userDetailsUpdateReducer = (state = {}, action) => {
       return { loading: false, error: action.payload };
     case UPDATE_USER_DETAILS_RESET:
       return {};
+    default:
+      return state;
+  }
+};
+
+export const userCourseReviewsReducer = (state = { myReviews: [] }, action) => {
+  switch (action.type) {
+    case GET_USER_COURSE_REVIEWS_REQUEST:
+      return { loading: true, myReviews: [] };
+    case GET_USER_COURSE_REVIEWS_SUCCESS:
+      return { loading: false, myReviews: action.payload };
+    case GET_USER_COURSE_REVIEWS_FAIL:
+      return { loading: false, error: action.payload };
     default:
       return state;
   }

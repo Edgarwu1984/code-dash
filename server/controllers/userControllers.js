@@ -1,4 +1,3 @@
-const { remove } = require('../models/userModel');
 const User = require('../models/userModel');
 const generateToken = require('../utils/generateToken');
 
@@ -93,12 +92,13 @@ const getUserProfile = async (req, res) => {
 const updateUserProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
-    const { username, email, photo, password } = req.body;
+    const { username, email, photo, password, isAdmin } = req.body;
     if (user) {
       user.username = username || user.username;
       user.email = email || user.email;
       user.photo = photo || user.photo;
       user.password = password || user.password;
+      user.isAdmin = isAdmin || user.isAdmin;
 
       const updatedUser = await user.save();
 
@@ -107,6 +107,7 @@ const updateUserProfile = async (req, res) => {
         username: updatedUser.username,
         email: updatedUser.email,
         photo: updatedUser.photo,
+        isAdmin: updatedUser.isAdmin,
         token: generateToken(updatedUser._id),
       });
     } else {

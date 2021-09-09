@@ -3,17 +3,20 @@ import { toast } from 'react-toastify';
 //COMPONENTS
 import Layout from '../components/layout';
 import Hero from '../components/layout/Hero';
+import SectionTitle from '../components/SectionTitle';
 import Loader from '../components/Loader';
 import AlertMessage from '../components/AlertMessage';
+import Modal from '../components/Modal';
+import ReviewCard from '../components/ReviewCard';
 // UTILITIES
 import DateFormatter from '../utils/DateFormatter';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  getUserCourseReviews,
   getUserDetails,
   updateUserDetails,
 } from '../redux/actions/userActions';
-import Modal from '../components/Modal';
 
 function ProfilePage({ history }) {
   // HANDLE MODAL
@@ -27,6 +30,7 @@ function ProfilePage({ history }) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [photo, setPhoto] = useState('');
+
   const submitHandler = e => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -35,6 +39,7 @@ function ProfilePage({ history }) {
       dispatch(
         updateUserDetails({
           id: user._id,
+          isAdmin: user.isAdmin,
           username: username,
           email: email,
           password: password,
@@ -50,6 +55,12 @@ function ProfilePage({ history }) {
   const { userInfo } = userLogin;
   const userDetails = useSelector(state => state.userDetails);
   const { loading, error, user } = userDetails;
+  const userCourseReviews = useSelector(state => state.userCourseReviews);
+  const {
+    loading: reviewsLoading,
+    error: reviewsError,
+    myReviews,
+  } = userCourseReviews;
   const userDetailsUpdate = useSelector(state => state.userDetailsUpdate);
   const {
     loading: updateLoading,
@@ -62,6 +73,7 @@ function ProfilePage({ history }) {
       history.push('/');
     } else {
       dispatch(getUserDetails());
+      dispatch(getUserCourseReviews(userInfo._id));
     }
 
     if (updateSuccess) {
@@ -171,6 +183,7 @@ function ProfilePage({ history }) {
       </Hero>
       <div className='container'>
         <section>
+          <SectionTitle title='Personal Details' />
           <div className='profile__page-wrap'>
             <table>
               <thead>
@@ -202,6 +215,27 @@ function ProfilePage({ history }) {
               </tbody>
             </table>
           </div>
+        </section>
+        <section className='review__section'>
+          <SectionTitle title='My Reviews' />
+          {reviewsLoading ? (
+            <Loader />
+          ) : reviewsError ? (
+            <AlertMessage message={reviewsError} type='danger' />
+          ) : myReviews.length > 0 ? (
+            myReviews.map(review => (
+              <ReviewCard
+                key={review._id}
+                courseName={review.name}
+                courseImage={review.image}
+                rating={review.reviews[0].rating}
+                comment={review.reviews[0].comment}
+                commentDate={review.reviews[0].createdAt}
+              />
+            ))
+          ) : (
+            <div className='empty__reviews'>No reviews</div>
+          )}
         </section>
       </div>
     </Layout>

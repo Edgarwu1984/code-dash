@@ -258,8 +258,8 @@ function CoursePage({ match, history }) {
                     key={review._id}
                     rating={review.rating}
                     comment={review.comment}
-                    userImage={review.photo}
-                    userName={review.username}
+                    userImage={review.user.photo}
+                    userName={review.user.username}
                     commentDate={review.createdAt}
                   />
                 ))

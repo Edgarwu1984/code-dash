@@ -12,6 +12,9 @@ import {
   ADD_COURSE_REVIEW_FAIL,
   ADD_COURSE_REVIEW_REQUEST,
   ADD_COURSE_REVIEW_RESET,
+  GET_TOP_COURSES_REQUEST,
+  GET_TOP_COURSES_SUCCESS,
+  GET_TOP_COURSES_FAIL,
 } from '../constants/courseConstants';
 
 export const courseListReducer = (state = { courses: [] }, action) => {
@@ -21,6 +24,19 @@ export const courseListReducer = (state = { courses: [] }, action) => {
     case GET_COURSE_LIST_SUCCESS:
       return { loading: false, courses: action.payload };
     case GET_COURSE_LIST_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const topCourseListReducer = (state = { courses: [] }, action) => {
+  switch (action.type) {
+    case GET_TOP_COURSES_REQUEST:
+      return { loading: true, courses: [] };
+    case GET_TOP_COURSES_SUCCESS:
+      return { loading: false, courses: action.payload };
+    case GET_TOP_COURSES_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

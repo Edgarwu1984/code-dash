@@ -13,7 +13,7 @@ import ScrollToTop from '../components/ScrollToTop';
 import ResetPagePosition from '../utils/ResetPagePosition';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { getCourseList } from '../redux/actions/courseActions';
+import { getTopCourses } from '../redux/actions/courseActions';
 
 function HomePage() {
   // RESET PAGE POSITION
@@ -22,14 +22,12 @@ function HomePage() {
 
   // REDUX
   const dispatch = useDispatch();
-  const courseList = useSelector(state => state.courseList);
-  const { loading, error, courses } = courseList;
+  const topCourseList = useSelector(state => state.topCourseList);
+  const { loading, error, courses } = topCourseList;
 
   useEffect(() => {
-    dispatch(getCourseList());
+    dispatch(getTopCourses());
   }, [dispatch]);
-
-  const topCourses = courses.filter(c => c.rating >= 4.9);
 
   return (
     <Layout>
@@ -85,8 +83,8 @@ function HomePage() {
             <AlertMessage message={error} type='danger' />
           ) : (
             <div className='grid col-4'>
-              {topCourses &&
-                topCourses.map(course => (
+              {courses &&
+                courses.map(course => (
                   <CourseCard
                     key={course._id}
                     category={course.category}

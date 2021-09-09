@@ -5,10 +5,31 @@ const Course = require('../models/courseModel');
 // @access Public
 const getCourses = async (req, res) => {
   try {
-    const courses = await Course.find().populate(
-      'instructor',
-      'firstName lastName'
-    );
+    const courses = await Course.find()
+      .populate({
+        path: 'instructor',
+        select: 'firstName lastName',
+      })
+      .populate({ path: 'reviews reviews.user', select: 'username photo' });
+
+    res.status(200).json(courses);
+  } catch (error) {
+    res.status(404).send({ message: `${error}` });
+  }
+};
+
+// @description Get All Courses
+// @route GET /api/courses/reviews/user/:id
+// @access Public
+const getCourseReviewsByUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const courses = await Course.find({
+      'reviews.user': `${userId}`,
+    })
+      .select('name')
+      .select('image')
+      .select('reviews'); // select() => only return certain filed
     res.status(200).json(courses);
   } catch (error) {
     res.status(404).send({ message: `${error}` });
@@ -25,7 +46,12 @@ const getCourseById = async (req, res) => {
     const course = await Course.findOne({
       _id: `${id}`,
       category: `${category}`,
-    }).populate('instructor', 'firstName lastName');
+    })
+      .populate({
+        path: 'instructor',
+        select: 'firstName lastName',
+      })
+      .populate({ path: 'reviews reviews.user', select: 'username photo' });
 
     if (course) {
       res.status(200).json(course);
@@ -115,8 +141,6 @@ const createCourseReview = async (req, res) => {
         res.status(400).send({ message: 'Course already been reviewed.' });
       } else {
         const review = {
-          username: req.user.username,
-          photo: req.user.photo,
           rating: Number(rating),
           comment,
           user: req.user.id,
@@ -143,6 +167,7 @@ const createCourseReview = async (req, res) => {
 
 module.exports = {
   getCourses,
+  getCourseReviewsByUser,
   getCourseById,
   getCoursesByCategory,
   getTopCoursesByRating,

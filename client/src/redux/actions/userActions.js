@@ -1,5 +1,8 @@
 import axios from 'axios';
 import {
+  GET_USER_COURSE_REVIEWS_FAIL,
+  GET_USER_COURSE_REVIEWS_REQUEST,
+  GET_USER_COURSE_REVIEWS_SUCCESS,
   GET_USER_DETAILS_FAIL,
   GET_USER_DETAILS_REQUEST,
   GET_USER_DETAILS_RESET,
@@ -118,6 +121,21 @@ export const updateUserDetails = user => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: UPDATE_USER_DETAILS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export const getUserCourseReviews = id => async dispatch => {
+  try {
+    dispatch({ type: GET_USER_COURSE_REVIEWS_REQUEST });
+
+    const { data } = await axios.get(`/api/courses/reviews/user/${id}`);
+
+    dispatch({ type: GET_USER_COURSE_REVIEWS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: GET_USER_COURSE_REVIEWS_FAIL,
       payload: error.response.data.message,
     });
   }

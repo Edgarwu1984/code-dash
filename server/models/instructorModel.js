@@ -19,11 +19,6 @@ const instructorSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    instructorRating: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
   },
   {
     timestamps: true,
