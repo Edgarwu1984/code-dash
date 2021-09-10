@@ -210,6 +210,9 @@
 
   .instructor__info {
     padding: rem(30);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 
     &-name {
       margin-bottom: rem(10);
@@ -221,6 +224,7 @@
     }
 
     &-link {
+      margin-left: auto;
       text-decoration: underline;
       display: flex;
       align-items: center;
@@ -239,7 +243,7 @@
     }
 
     &-social {
-      margin-top: rem(16);
+      margin-top: rem(8);
       & > * {
         margin-right: rem(24);
         padding: rem(6);

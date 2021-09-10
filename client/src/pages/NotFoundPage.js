@@ -4,7 +4,7 @@ import { BiError } from 'react-icons/bi';
 
 function NotFoundPage({ history }) {
   // SET BACK TO HOME PAGE
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState(5);
 
   useEffect(() => {
     if (time > 0) {

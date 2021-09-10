@@ -12,6 +12,11 @@ const InstructorCard = ({ photo, name, intro, id }) => {
       <div className='instructor__info'>
         <h4 className='instructor__info-name'>{name}</h4>
         <p className='instructor__info-intro'>{intro}</p>
+        <div className='instructor__info-social'>
+          <FaLinkedinIn className='social__icon' />
+          <FaFacebookF className='social__icon' />
+          <FaTwitter className='social__icon' />
+        </div>
         <Link
           className='instructor__info-link'
           to={`/courses/instructors/${id}`}
@@ -21,11 +26,6 @@ const InstructorCard = ({ photo, name, intro, id }) => {
             <CgArrowRight />
           </span>
         </Link>
-        <div className='instructor__info-social'>
-          <FaLinkedinIn className='social__icon' />
-          <FaFacebookF className='social__icon' />
-          <FaTwitter className='social__icon' />
-        </div>
       </div>
     </figure>
   );
