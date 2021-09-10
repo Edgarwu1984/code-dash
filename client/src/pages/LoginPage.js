@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Loader from '../components/Loader';
-// COMPONENTS
 import { toast } from 'react-toastify';
+// COMPONENTS
+import Loader from '../components/common/Loader';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../redux/actions/userActions';

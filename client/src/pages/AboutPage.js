@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import InstructorCard from '../components/InstructorCard';
 // COMPONENTS
 import Layout from '../components/layout';
 import Hero from '../components/layout/Hero';
-import ScrollToTop from '../components/ScrollToTop';
+import ScrollToTop from '../components/common/ScrollToTop';
+import Loader from '../components/common/Loader';
+import AlertMessage from '../components/common/AlertMessage';
+import InstructorCard from '../components/InstructorCard';
 // UTILITIES
 import ResetPagePosition from '../utils/ResetPagePosition';
 // REACT ICONS
@@ -12,8 +14,6 @@ import { FaQuoteRight } from 'react-icons/fa';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import { getInstructorList } from '../redux/actions/instructorActions';
-import Loader from '../components/Loader';
-import AlertMessage from '../components/AlertMessage';
 
 function AboutPage() {
   // RESET PAGE POSITION
@@ -85,6 +85,7 @@ function AboutPage() {
               instructors.map(instructor => (
                 <InstructorCard
                   key={instructor._id}
+                  id={instructor._id}
                   photo={instructor.photo}
                   name={`${instructor.firstName} ${instructor.lastName}`}
                   intro={instructor.introduction}

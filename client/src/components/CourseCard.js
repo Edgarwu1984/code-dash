@@ -8,6 +8,7 @@ const CourseCard = ({
   category,
   courseImg,
   courseName,
+  courseTutorId,
   courseTutorFirstName,
   courseTutorLastName,
   courseCategory,
@@ -23,11 +24,14 @@ const CourseCard = ({
       </div>
 
       <div className='course-card__body'>
-        <Link to={`/courses/${category}/${courseId}/${courseName}`}>
+        <Link to={`/courses/${category}/${courseId}&&${courseName}`}>
           <h4 className='title'>{courseName}</h4>
         </Link>
         <small className='tutor'>
-          <span>{courseTutorFirstName}</span> <span>{courseTutorLastName}</span>
+          <Link to={`/courses/instructors/${courseTutorId}`}>
+            <span>{courseTutorFirstName}</span>{' '}
+            <span>{courseTutorLastName}</span>
+          </Link>{' '}
         </small>
         <Rating rating={courseRating} showReview={true} reviews={numReviews} />
         <p>{courseDescription}</p>

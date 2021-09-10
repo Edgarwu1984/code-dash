@@ -1,0 +1,28 @@
+@use '../utils' as *;
+
+.breadcrumb {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  padding: rem(16) 0;
+
+  &__item {
+    a {
+      color: var(--white);
+    }
+    margin-right: rem(12);
+    text-transform: capitalize;
+    &:not(:first-child)::before {
+      content: '/';
+      font-size: rem(12);
+      font-weight: 600;
+      margin-right: rem(6);
+      color: var(--white);
+    }
+
+    &:last-child {
+      pointer-events: none;
+    }
+  }
+}

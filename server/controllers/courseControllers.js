@@ -104,12 +104,12 @@ const getTopCoursesByRating = async (req, res) => {
   }
 };
 
-// @description Query Courses by Instructor's id
-// @route GET /api/courses/instructor?_id=id
+// @description Get Courses by Instructor's id
+// @route GET /api/courses/instructors/:id
 // @access Public
 const getCoursesByInstructor = async (req, res) => {
   try {
-    const id = req.query._id;
+    const id = req.params.id;
     const courses = await Course.find({
       instructor: { _id: id },
     }).populate('instructor', 'firstName lastName');

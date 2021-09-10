@@ -6,9 +6,9 @@ import Hero from '../components/layout/Hero';
 import CourseCard from '../components/CourseCard';
 import FeatureCard from '../components/FeatureCard';
 import TestimonialCard from '../components/TestimonialCard';
-import Loader from '../components/Loader';
-import AlertMessage from '../components/AlertMessage';
-import ScrollToTop from '../components/ScrollToTop';
+import Loader from '../components/common/Loader';
+import AlertMessage from '../components/common/AlertMessage';
+import ScrollToTop from '../components/common/ScrollToTop';
 // UTILITIES
 import ResetPagePosition from '../utils/ResetPagePosition';
 // REDUX

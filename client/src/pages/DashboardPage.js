@@ -3,9 +3,10 @@ import { toast } from 'react-toastify';
 //COMPONENTS
 import Layout from '../components/layout';
 import Hero from '../components/layout/Hero';
-import Loader from '../components/Loader';
-import AlertMessage from '../components/AlertMessage';
-import Modal from '../components/Modal';
+import Loader from '../components/common/Loader';
+import AlertMessage from '../components/common/AlertMessage';
+import Modal from '../components/common/Modal';
+import SectionTitle from '../components/SectionTitle';
 // REACT ICONS
 import { RiAdminFill } from 'react-icons/ri';
 // UTILITIES
@@ -17,7 +18,6 @@ import {
   getUserList,
   updateUser,
 } from '../redux/actions/adminActions';
-import SectionTitle from '../components/SectionTitle';
 
 function DashboardPage({ history }) {
   // REDUX

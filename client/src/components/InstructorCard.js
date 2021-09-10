@@ -1,15 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // REACT ICONS
 import { FaLinkedinIn, FaFacebookF, FaTwitter } from 'react-icons/fa';
+import { CgArrowRight } from 'react-icons/cg';
 
-const InstructorCard = ({ photo, name, intro }) => {
+const InstructorCard = ({ photo, name, intro, id }) => {
   return (
     <figure className='instructor-card'>
       <img className='portrait' src={photo} alt={name} />
       <div className='instructor__info'>
         <h4 className='instructor__info-name'>{name}</h4>
         <p className='instructor__info-intro'>{intro}</p>
+        <Link
+          className='instructor__info-link'
+          to={`/courses/instructors/${id}`}
+        >
+          See Courses{' '}
+          <span>
+            <CgArrowRight />
+          </span>
+        </Link>
         <div className='instructor__info-social'>
           <FaLinkedinIn className='social__icon' />
           <FaFacebookF className='social__icon' />

@@ -15,6 +15,9 @@ import {
   GET_TOP_COURSES_REQUEST,
   GET_TOP_COURSES_SUCCESS,
   GET_TOP_COURSES_FAIL,
+  GET_INSTRUCTOR_COURSE_LIST_REQUEST,
+  GET_INSTRUCTOR_COURSE_LIST_SUCCESS,
+  GET_INSTRUCTOR_COURSE_LIST_FAIL,
 } from '../constants/courseConstants';
 
 export const courseListReducer = (state = { courses: [] }, action) => {
@@ -50,6 +53,22 @@ export const courseCategoryListReducer = (state = { courses: [] }, action) => {
     case GET_COURSE_CATEGORY_LIST_SUCCESS:
       return { loading: false, courses: action.payload };
     case GET_COURSE_CATEGORY_LIST_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const instructorCourseListReducer = (
+  state = { courses: [] },
+  action
+) => {
+  switch (action.type) {
+    case GET_INSTRUCTOR_COURSE_LIST_REQUEST:
+      return { loading: true, courses: [] };
+    case GET_INSTRUCTOR_COURSE_LIST_SUCCESS:
+      return { loading: false, courses: action.payload };
+    case GET_INSTRUCTOR_COURSE_LIST_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

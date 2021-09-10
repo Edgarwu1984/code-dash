@@ -200,7 +200,7 @@
 
   .portrait {
     width: rem(250);
-    height: rem(250);
+    height: 100%;
 
     @include breakpoint-down(medium) {
       width: 100%;
@@ -217,10 +217,29 @@
     }
 
     &-intro {
-      margin-bottom: rem(30);
+      margin-bottom: rem(6);
+    }
+
+    &-link {
+      text-decoration: underline;
+      display: flex;
+      align-items: center;
+
+      span {
+        font-size: rem(16);
+        margin-top: rem(5);
+        margin-left: rem(4);
+      }
+      &:hover {
+        span {
+          @include transition;
+          transform: translateX(4px);
+        }
+      }
     }
 
     &-social {
+      margin-top: rem(16);
       & > * {
         margin-right: rem(24);
         padding: rem(6);

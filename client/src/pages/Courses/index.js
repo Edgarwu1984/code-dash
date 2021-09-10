@@ -4,10 +4,10 @@ import { Link, useLocation } from 'react-router-dom';
 import Layout from '../../components/layout';
 import Hero from '../../components/layout/Hero';
 import SectionTitle from '../../components/SectionTitle';
-import AlertMessage from '../../components/AlertMessage';
-import Loader from '../../components/Loader';
+import AlertMessage from '../../components/common/AlertMessage';
+import Loader from '../../components/common/Loader';
 import CourseCard from '../../components/CourseCard';
-import ScrollToTop from '../../components/ScrollToTop';
+import ScrollToTop from '../../components/common/ScrollToTop';
 // UTILITIES
 import ResetPagePosition from '../../utils/ResetPagePosition';
 // REDUX
@@ -58,6 +58,9 @@ function CoursesPage() {
                     courseCategory={course.courseCategory}
                     courseImg={course.image}
                     courseName={course.name}
+                    courseTutorId={
+                      course.instructor._id && course.instructor._id
+                    }
                     courseTutorFirstName={
                       course.instructor.firstName && course.instructor.firstName
                     }
@@ -95,6 +98,9 @@ function CoursesPage() {
                     courseCategory={course.courseCategory}
                     courseImg={course.image}
                     courseName={course.name}
+                    courseTutorId={
+                      course.instructor._id && course.instructor._id
+                    }
                     courseTutorFirstName={
                       course.instructor.firstName && course.instructor.firstName
                     }

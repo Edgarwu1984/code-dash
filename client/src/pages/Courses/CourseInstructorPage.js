@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 // COMPONENTS
 import Layout from '../../components/layout';
 import Hero from '../../components/layout/Hero';
@@ -12,53 +12,56 @@ import ScrollToTop from '../../components/common/ScrollToTop';
 import ResetPagePosition from '../../utils/ResetPagePosition';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { getCourseCategoryList } from '../../redux/actions/courseActions';
-import Breadcrumb from '../../components/common/Breadcrumb';
+import { getInstructorCourseList } from '../../redux/actions/courseActions';
+import { getInstructorDetails } from '../../redux/actions/instructorActions';
 
-function CourseCategoryPage({ match }) {
+function CourseInstructorPage({ match }) {
   // RESET PAGE POSITION
   const pathname = useLocation().pathname;
   ResetPagePosition(pathname);
 
-  const category = match.params.category;
-
-  console.log(match);
+  const instructorId = match.params.id;
 
   // REDUX
   const dispatch = useDispatch();
-  const courseCategoryList = useSelector(state => state.courseCategoryList);
-  const { loading, error, courses } = courseCategoryList;
+  const instructorCourseList = useSelector(state => state.instructorCourseList);
+  const { loading, error, courses } = instructorCourseList;
+  const instructorDetails = useSelector(state => state.instructorDetails);
+  const {
+    loading: instructorLoading,
+    error: instructorError,
+    instructor,
+  } = instructorDetails;
 
   useEffect(() => {
-    dispatch(getCourseCategoryList(category));
-  }, [dispatch, category]);
+    dispatch(getInstructorDetails(instructorId));
+    dispatch(getInstructorCourseList(instructorId));
+  }, [dispatch, instructorId]);
 
   return (
     <Layout pageTitle='- Course'>
       <ScrollToTop />
-      <Hero
-        heroBg={
-          category === 'web-dev' ? ' /images/bg7.jpg' : ' /images/bg8.jpg'
-        }
-      >
-        <div className='hero__content'>
-          <Breadcrumb match={match} />
-          <div className='hero__content-text'>
-            <h1>Learning That Gets You</h1>
-            <p>
-              Skills for your present (and your future). Get started with us.
-            </p>
-          </div>
-        </div>
+      <Hero heroBg='/images/bg7.jpg'>
+        {instructorLoading ? (
+          <Loader />
+        ) : instructorError ? (
+          <AlertMessage error={instructorError} />
+        ) : (
+          instructor && (
+            <div className='user-info__wrap'>
+              <img className='photo' src={instructor.photo} alt='user_photo' />
+              <h3 className='username'>
+                {instructor.firstName} {instructor.lastName}
+              </h3>
+              <small>Total Courses: {courses.length}</small>
+            </div>
+          )
+        )}
       </Hero>
       <div className='container'>
         <section className='courses__section'>
           <SectionTitle
-            title={
-              category === 'web-dev'
-                ? 'web development courses'
-                : 'game development courses'
-            }
+            title={`${instructor.firstName && instructor.firstName}'s courses`}
           />
           {loading ? (
             <Loader />
@@ -75,9 +78,7 @@ function CourseCategoryPage({ match }) {
                     courseCategory={course.courseCategory}
                     courseImg={course.image}
                     courseName={course.name}
-                    courseTutorId={
-                      course.instructor._id && course.instructor._id
-                    }
+                    courseTutorId={course.instructor._id}
                     courseTutorFirstName={
                       course.instructor.firstName && course.instructor.firstName
                     }
@@ -91,10 +92,15 @@ function CourseCategoryPage({ match }) {
                 ))}
             </div>
           )}
+          <div className='list-link__btn'>
+            <Link className='btn' to='/courses'>
+              See More Courses
+            </Link>
+          </div>
         </section>
       </div>
     </Layout>
   );
 }
 
-export default CourseCategoryPage;
+export default CourseInstructorPage;

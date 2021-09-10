@@ -4,10 +4,10 @@ import { toast } from 'react-toastify';
 import Layout from '../components/layout';
 import Hero from '../components/layout/Hero';
 import SectionTitle from '../components/SectionTitle';
-import Loader from '../components/Loader';
-import AlertMessage from '../components/AlertMessage';
-import Modal from '../components/Modal';
 import ReviewCard from '../components/ReviewCard';
+import AlertMessage from '../components/common/AlertMessage';
+import Loader from '../components/common/Loader';
+import Modal from '../components/common/Modal';
 // UTILITIES
 import DateFormatter from '../utils/DateFormatter';
 // REDUX
@@ -17,6 +17,7 @@ import {
   getUserDetails,
   updateUserDetails,
 } from '../redux/actions/userActions';
+import Breadcrumb from '../components/common/Breadcrumb';
 
 function ProfilePage({ history }) {
   // HANDLE MODAL

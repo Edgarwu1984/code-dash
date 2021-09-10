@@ -27,16 +27,6 @@
   }
 }
 
-.breadcrumb {
-  @include breakpoint-down(small) {
-    font-size: rem(12) !important;
-  }
-
-  a {
-    color: var(--white);
-  }
-}
-
 .course {
   @include breakpoint-down(small) {
     & > * {

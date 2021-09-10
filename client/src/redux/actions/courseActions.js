@@ -16,6 +16,9 @@ import {
   GET_TOP_COURSES_REQUEST,
   GET_TOP_COURSES_SUCCESS,
   GET_TOP_COURSES_FAIL,
+  GET_INSTRUCTOR_COURSE_LIST_REQUEST,
+  GET_INSTRUCTOR_COURSE_LIST_SUCCESS,
+  GET_INSTRUCTOR_COURSE_LIST_FAIL,
 } from '../constants/courseConstants';
 
 export const getCourseList = () => async dispatch => {
@@ -52,6 +55,19 @@ export const getCourseCategoryList = category => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_COURSE_CATEGORY_LIST_FAIL,
+      payload: error.message,
+    });
+  }
+};
+
+export const getInstructorCourseList = id => async dispatch => {
+  try {
+    dispatch({ type: GET_INSTRUCTOR_COURSE_LIST_REQUEST });
+    const { data } = await axios.get(`/api/courses/instructors/${id}`);
+    dispatch({ type: GET_INSTRUCTOR_COURSE_LIST_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: GET_INSTRUCTOR_COURSE_LIST_FAIL,
       payload: error.message,
     });
   }

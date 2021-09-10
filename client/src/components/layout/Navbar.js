@@ -18,7 +18,7 @@ const Navbar = () => {
 
   // HANDLE NAVBAR STYLE WHILE SCROLLING
   const navStyleHandler = () => {
-    if (window.scrollY > 400) {
+    if (window.scrollY >= 320) {
       setNavStyleChanged(true);
     } else {
       setNavStyleChanged(false);
@@ -98,7 +98,7 @@ const Navbar = () => {
                 </li>
               )}
               <li className='nav__dropdown-item'>
-                <Link to='/profile'>Profile</Link>
+                <Link to='/profile'>My Profile</Link>
               </li>
               <li className='nav__dropdown-item'>
                 <Link to='#' onClick={logoutHandler}>

@@ -14,7 +14,7 @@ const router = express.Router();
 
 router.route('/').get(getCourses);
 router.route('/reviews/user/:id').get(getCourseReviewsByUser);
-router.route('/instructor').get(getCoursesByInstructor);
+router.route('/instructors/:id').get(getCoursesByInstructor);
 router.route('/top').get(getTopCoursesByRating);
 router.route('/:category').get(getCoursesByCategory);
 router.route('/:category/:id').get(getCourseById);

@@ -4,13 +4,13 @@ import { toast } from 'react-toastify';
 // COMPONENTS
 import Layout from '../../components/layout';
 import Hero from '../../components/layout/Hero';
-import Loader from '../../components/Loader';
-import AlertMessage from '../../components/AlertMessage';
+import Loader from '../../components/common/Loader';
+import AlertMessage from '../../components/common/AlertMessage';
 import Rating from '../../components/Rating';
 import SectionTitle from '../../components/SectionTitle';
-import Accordion from '../../components/Accordion';
-import ScrollToTop from '../../components/ScrollToTop';
-import Modal from '../../components/Modal';
+import Accordion from '../../components/common/Accordion';
+import ScrollToTop from '../../components/common/ScrollToTop';
+import Modal from '../../components/common/Modal';
 import ReviewCard from '../../components/ReviewCard';
 // UTILITIES
 import ResetPagePosition from '../../utils/ResetPagePosition';
@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCourseDetails } from '../../redux/actions/courseActions';
 import { addCourseReview } from '../../redux/actions/courseActions';
 import { getUserDetails } from '../../redux/actions/userActions';
+import Breadcrumb from '../../components/common/Breadcrumb';
 
 function CoursePage({ match, history }) {
   // RESET PAGE POSITION
@@ -172,11 +173,7 @@ function CoursePage({ match, history }) {
         <>
           <Hero heroBg={image}>
             <div className='hero__content course__page-header'>
-              <div className='breadcrumb'>
-                <Link to='/courses'>courses</Link> /{' '}
-                <Link to={`/courses/${category}`}>{category}</Link> /{' '}
-                <span>{courseName}</span>
-              </div>
+              <Breadcrumb match={match} />
               <div className='course'>
                 <h2 className='course__name'>{name}</h2>
                 <p className='course__description'>{description}</p>
