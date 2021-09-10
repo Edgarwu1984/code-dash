@@ -9,6 +9,7 @@ import {
   courseListReducer,
   instructorCourseListReducer,
   topCourseListReducer,
+  topCourseReviewsReducer,
 } from './reducers/courseReducers';
 import {
   instructorDetailsReducer,
@@ -35,6 +36,7 @@ const reducer = combineReducers({
   instructorCourseList: instructorCourseListReducer,
   courseDetails: courseDetailsReducer,
   courseReview: addCourseReviewReducer,
+  topCourseReviews: topCourseReviewsReducer,
   // INSTRUCTOR REDUCERS
   instructorList: instructorListReducer,
   instructorDetails: instructorDetailsReducer,

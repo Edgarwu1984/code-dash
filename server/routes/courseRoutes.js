@@ -8,11 +8,13 @@ const {
   getTopCoursesByRating,
   getCoursesByInstructor,
   getCourseReviewsByUser,
+  getTopCourseReviews,
 } = require('../controllers/courseControllers');
 
 const router = express.Router();
 
 router.route('/').get(getCourses);
+router.route('/reviews/top').get(getTopCourseReviews);
 router.route('/reviews/user/:id').get(getCourseReviewsByUser);
 router.route('/instructors/:id').get(getCoursesByInstructor);
 router.route('/top').get(getTopCoursesByRating);

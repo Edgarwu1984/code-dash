@@ -1,8 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FaQuoteLeft } from 'react-icons/fa';
+import Rating from './Rating';
 
-const TestimonialCard = ({ comment, userImage, userName, commentDate }) => {
+const TestimonialCard = ({
+  comment,
+  userImage,
+  userName,
+  commentDate,
+  rating,
+}) => {
   return (
     <figure className='testimonial-card'>
       <p className='testimonial-card__comment'>
@@ -13,6 +20,7 @@ const TestimonialCard = ({ comment, userImage, userName, commentDate }) => {
         <img className='user__image' src={userImage} alt='userImage' />
         <div className='user__info'>
           <h4 className='username'>{userName}</h4>
+          <Rating rating={rating} />
           <small className='date'>{commentDate}</small>
         </div>
       </div>
@@ -25,6 +33,7 @@ TestimonialCard.propTypes = {
   userImage: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,
   commentDate: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
 };
 
 TestimonialCard.defaultProps = {
@@ -33,6 +42,7 @@ TestimonialCard.defaultProps = {
   userImage: '/images/user_photo_default.jpg',
   userName: 'Username',
   commentDate: '12 Aug 2021',
+  rating: 5,
 };
 
 export default TestimonialCard;

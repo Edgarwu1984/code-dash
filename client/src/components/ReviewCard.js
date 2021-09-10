@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DateFormatter from '../utils/DateFormatter';
 import Rating from './Rating';
+import { Link } from 'react-router-dom';
 
 const ReviewCard = ({
+  courseId,
+  courseCategory,
   comment,
   userImage,
   userName,
@@ -23,7 +26,12 @@ const ReviewCard = ({
 
         <div className='user__info'>
           {courseName ? (
-            <h4 className='username'>{courseName}</h4>
+            <Link
+              className='course-link'
+              to={`/courses/${courseCategory}/${courseId}&&${courseName}`}
+            >
+              <h4 className='username'>{courseName}</h4>
+            </Link>
           ) : (
             <h4 className='username'>{userName}</h4>
           )}
@@ -46,6 +54,8 @@ ReviewCard.propTypes = {
   commentDate: PropTypes.string.isRequired,
   userName: PropTypes.string,
   courseName: PropTypes.string,
+  courseId: PropTypes.string,
+  courseCategory: PropTypes.string,
 };
 
 ReviewCard.defaultProps = {

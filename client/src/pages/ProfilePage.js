@@ -227,6 +227,8 @@ function ProfilePage({ history }) {
             myReviews.map(review => (
               <ReviewCard
                 key={review._id}
+                courseCategory={review.category}
+                courseId={review._id}
                 courseName={review.name}
                 courseImage={review.image}
                 rating={review.reviews[0].rating}

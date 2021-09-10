@@ -28,8 +28,27 @@ const getCourseReviewsByUser = async (req, res) => {
       'reviews.user': `${userId}`,
     })
       .select('name')
+      .select('category')
       .select('image')
       .select('reviews'); // select() => only return certain filed
+    res.status(200).json(courses);
+  } catch (error) {
+    res.status(404).send({ message: `${error}` });
+  }
+};
+
+// @description Get 3 Top Reviews
+// @route GET /api/courses/reviews/top
+// @access Public
+const getTopCourseReviews = async (req, res) => {
+  try {
+    const courses = await Course.find()
+      .select('reviews.user')
+      .select('reviews.rating')
+      .select('reviews.comment')
+      .sort({ rating: -1 })
+      .limit(3)
+      .populate({ path: 'reviews.user', select: 'username photo' });
     res.status(200).json(courses);
   } catch (error) {
     res.status(404).send({ message: `${error}` });
@@ -168,6 +187,7 @@ const createCourseReview = async (req, res) => {
 module.exports = {
   getCourses,
   getCourseReviewsByUser,
+  getTopCourseReviews,
   getCourseById,
   getCoursesByCategory,
   getTopCoursesByRating,

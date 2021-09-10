@@ -114,11 +114,13 @@
 .review-card {
   position: relative;
   width: 90%;
-  height: max-content;
+  height: 100%;
   border-radius: rem(6);
   background-color: var(--white);
   padding: rem(24) rem(40);
   margin: 0;
+  display: flex;
+  flex-direction: column;
 
   @include shadow;
 
@@ -139,11 +141,12 @@
   &__user {
     display: flex;
     align-items: center;
+    margin-top: auto;
 
     .user__image {
       border-radius: 50%;
-      width: rem(50);
-      height: rem(50);
+      width: rem(60);
+      height: rem(60);
       margin-right: rem(20);
     }
 
@@ -175,6 +178,16 @@
       height: auto;
       border-radius: rem(4);
       margin-right: rem(20);
+    }
+    .user__info {
+      .course-link {
+        h4 {
+          &:hover {
+            @include transition;
+            color: var(--primary) !important;
+          }
+        }
+      }
     }
   }
 

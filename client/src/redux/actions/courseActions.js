@@ -13,12 +13,15 @@ import {
   ADD_COURSE_REVIEW_SUCCESS,
   ADD_COURSE_REVIEW_FAIL,
   ADD_COURSE_REVIEW_RESET,
-  GET_TOP_COURSES_REQUEST,
-  GET_TOP_COURSES_SUCCESS,
-  GET_TOP_COURSES_FAIL,
   GET_INSTRUCTOR_COURSE_LIST_REQUEST,
   GET_INSTRUCTOR_COURSE_LIST_SUCCESS,
   GET_INSTRUCTOR_COURSE_LIST_FAIL,
+  GET_TOP_COURSES_REQUEST,
+  GET_TOP_COURSES_SUCCESS,
+  GET_TOP_COURSES_FAIL,
+  GET_TOP_COURSE_REVIEWS_REQUEST,
+  GET_TOP_COURSE_REVIEWS_SUCCESS,
+  GET_TOP_COURSE_REVIEWS_FAIL,
 } from '../constants/courseConstants';
 
 export const getCourseList = () => async dispatch => {
@@ -42,6 +45,19 @@ export const getTopCourses = () => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_TOP_COURSES_FAIL,
+      payload: error.message,
+    });
+  }
+};
+
+export const getTopCourseReviews = () => async dispatch => {
+  try {
+    dispatch({ type: GET_TOP_COURSE_REVIEWS_REQUEST });
+    const { data } = await axios.get('/api/courses/reviews/top');
+    dispatch({ type: GET_TOP_COURSE_REVIEWS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: GET_TOP_COURSE_REVIEWS_FAIL,
       payload: error.message,
     });
   }

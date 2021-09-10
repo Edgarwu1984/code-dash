@@ -13,7 +13,10 @@ import ScrollToTop from '../components/common/ScrollToTop';
 import ResetPagePosition from '../utils/ResetPagePosition';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { getTopCourses } from '../redux/actions/courseActions';
+import {
+  getTopCourseReviews,
+  getTopCourses,
+} from '../redux/actions/courseActions';
 
 function HomePage() {
   // RESET PAGE POSITION
@@ -24,9 +27,16 @@ function HomePage() {
   const dispatch = useDispatch();
   const topCourseList = useSelector(state => state.topCourseList);
   const { loading, error, courses } = topCourseList;
+  const topCourseReviews = useSelector(state => state.topCourseReviews);
+  const {
+    loading: reviewsLoading,
+    error: reviewsError,
+    topReviews,
+  } = topCourseReviews;
 
   useEffect(() => {
     dispatch(getTopCourses());
+    dispatch(getTopCourseReviews());
   }, [dispatch]);
 
   return (
@@ -127,9 +137,23 @@ function HomePage() {
             <h3>What Our Students Said</h3>
           </header>
           <div className='grid col-3'>
-            <TestimonialCard />
-            <TestimonialCard />
-            <TestimonialCard />
+            {reviewsLoading ? (
+              <Loader />
+            ) : reviewsError ? (
+              <AlertMessage error={reviewsError} type='danger' />
+            ) : (
+              topReviews &&
+              topReviews.map(review => (
+                <TestimonialCard
+                  key={review._id}
+                  comment={review.reviews[0].comment}
+                  userImage={review.reviews[0].user.photo}
+                  userName={review.reviews[0].user.username}
+                  rating={review.reviews[0].rating}
+                  commentDate={review.reviews[0].createdAt}
+                />
+              ))
+            )}
           </div>
         </div>
       </section>
