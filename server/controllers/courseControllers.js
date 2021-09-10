@@ -153,7 +153,7 @@ const createCourseReview = async (req, res) => {
 
     if (course) {
       const alreadyReviewed = course.reviews.find(
-        review => review.user.toString() === req.user.id.toString()
+        review => review.user.toString() === req.user.id.toString() // Because userId is an OBJECT, so need to convert to String.
       );
 
       if (alreadyReviewed) {
@@ -174,7 +174,7 @@ const createCourseReview = async (req, res) => {
 
         await course.save();
 
-        res.status(201).send({ message: 'New review addeed.' });
+        res.status(201).send({ message: 'New review added.' });
       }
     } else {
       res.status(404).send({ message: 'Course not found.' });

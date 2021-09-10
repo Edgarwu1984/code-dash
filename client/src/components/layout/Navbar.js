@@ -39,7 +39,6 @@ const Navbar = () => {
   const logoutHandler = () => {
     dispatch(logoutUser());
     history.push('/');
-    toast.success('Logged out.');
   };
 
   return (

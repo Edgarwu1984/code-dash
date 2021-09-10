@@ -15,9 +15,6 @@ function LoginPage({ history, location }) {
   // EMAIL FORMAT VALIDATOR
   const emailFormat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email);
 
-  // REDIRECT DIRECTORY
-  const redirect = location.search ? location.search.split('=')[1] : '/';
-
   // REDUX
   const dispatch = useDispatch();
   const userLogin = useSelector(state => state.userLogin);
@@ -25,12 +22,12 @@ function LoginPage({ history, location }) {
 
   useEffect(() => {
     if (userInfo) {
-      history.push(redirect);
+      history.push('/');
       toast.success('Welcome to CodeDash');
     } else if (error) {
       toast.error(error);
     }
-  }, [dispatch, userInfo, redirect, error, history]);
+  }, [dispatch, userInfo, error, history]);
 
   // LOGIN FORM HANDLER
   const submitHandler = e => {

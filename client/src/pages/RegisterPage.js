@@ -7,7 +7,7 @@ import Loader from '../components/common/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../redux/actions/userActions';
 
-function RegisterPage({ history, location }) {
+function RegisterPage({ history }) {
   const getCurrentYear = new Date().getFullYear();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -17,9 +17,6 @@ function RegisterPage({ history, location }) {
   // EMAIL FORMAT VALIDATOR
   const emailFormat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email);
 
-  // REDIRECT DIRECTORY
-  const redirect = location.search ? location.search.split('=')[1] : '/';
-
   // REDUX
   const dispatch = useDispatch();
   const userRegister = useSelector(state => state.userRegister);
@@ -27,12 +24,12 @@ function RegisterPage({ history, location }) {
 
   useEffect(() => {
     if (userInfo) {
-      history.push(redirect);
+      history.push('/');
       toast.success('Welcome to CodeDash');
     } else if (error) {
       toast.error(error);
     }
-  }, [dispatch, userInfo, redirect, error, history]);
+  }, [dispatch, userInfo, error, history]);
 
   const submitHandler = e => {
     e.preventDefault();
