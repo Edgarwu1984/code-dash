@@ -24,6 +24,7 @@ import {
 } from './reducers/userReducers';
 import {
   singleUserReducer,
+  userDeleteReducer,
   userListReducer,
   userUpdateReducer,
 } from './reducers/adminReducers';
@@ -50,6 +51,7 @@ const reducer = combineReducers({
   userList: userListReducer,
   singleUser: singleUserReducer,
   userUpdate: userUpdateReducer,
+  userDelete: userDeleteReducer,
 });
 
 // GET USER INFO FROM LOCAL STORAGE

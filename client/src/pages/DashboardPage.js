@@ -22,12 +22,16 @@ import {
 function DashboardPage({ history }) {
   // REDUX
   const dispatch = useDispatch();
+  // Get Auth Info
   const userLogin = useSelector(state => state.userLogin);
   const { userInfo } = userLogin;
+  // Get User List
   const userList = useSelector(state => state.userList);
   const { loading, error, users } = userList;
+  // Get User Details
   const singleUser = useSelector(state => state.singleUser);
   const { loading: userLoading, error: userError, user } = singleUser;
+  // Update User
   const userUpdate = useSelector(state => state.userUpdate);
   const {
     loading: userUpdateLoading,
