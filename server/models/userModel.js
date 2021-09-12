@@ -1,20 +1,24 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
 const userSchema = mongoose.Schema(
   {
     username: {
       type: String,
-      required: true,
+      required: [true, 'Username is required.'],
     },
     email: {
       type: String,
-      required: true,
+      required: [true, 'Email is required.'],
       unique: true,
+      lowercase: true,
+      validate: [validator.isEmail, 'Please provide a valid email'],
     },
     password: {
       type: String,
       required: false,
+      minlength: [6, 'Password at least 6 characters.'],
     },
     photo: {
       type: String,
@@ -26,6 +30,12 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    lastTimeLogin: {
+      type: Date,
+    },
+    reviews: [
+      { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Review' },
+    ],
   },
   {
     timestamps: true,

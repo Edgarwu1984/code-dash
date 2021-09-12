@@ -3,6 +3,10 @@ const connectDB = require('./config/db');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const colors = require('colors');
+const {
+  errorHandler,
+  notFound,
+} = require('./middleware/errorHandlingMiddleware');
 const userRoutes = require('./routes/userRoutes');
 const courseRoutes = require('./routes/courseRoutes');
 const instructorRoutes = require('./routes/instructorRoutes');
@@ -14,13 +18,21 @@ connectDB();
 
 const app = express();
 
-app.use(morgan('dev'));
+// MIDDLEWARE
 app.use(express.json());
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 // ROUTES
 app.use('/api/users', userRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/instructors', instructorRoutes);
+
+// ERROR HANDLING MIDDLEWARE
+app.use(notFound);
+app.use(errorHandler);
 
 // START SERVER
 const PORT = process.env.PORT || 5000;
