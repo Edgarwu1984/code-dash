@@ -1,25 +1,24 @@
 const express = require('express');
-const { protect } = require('../middleware/authMiddleware');
+const reviewRouter = require('./reviewRoutes');
+const { protect, isAdmin } = require('../middleware/authMiddleware');
 const {
+  createCourse,
   getCourses,
   getCourseById,
-  createCourseReview,
   getCoursesByCategory,
   getTopCoursesByRating,
   getCoursesByInstructor,
-  getCourseReviewsByUser,
-  getTopCourseReviews,
 } = require('../controllers/courseControllers');
 
 const router = express.Router();
 
-router.route('/').get(getCourses);
-router.route('/reviews/top').get(getTopCourseReviews);
-router.route('/reviews/user/:id').get(getCourseReviewsByUser);
+// Merge courses route to review route
+router.use('/:id/reviews', reviewRouter);
+
+router.route('/').get(getCourses).post(protect, isAdmin, createCourse);
+router.route('/top-4').get(getTopCoursesByRating);
 router.route('/instructors/:id').get(getCoursesByInstructor);
-router.route('/top').get(getTopCoursesByRating);
 router.route('/:category').get(getCoursesByCategory);
 router.route('/:category/:id').get(getCourseById);
-router.route('/:id/reviews').post(protect, createCourseReview);
 
 module.exports = router;

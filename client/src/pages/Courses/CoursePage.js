@@ -17,7 +17,7 @@ import ResetPagePosition from '../../utils/ResetPagePosition';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import { getCourseDetails } from '../../redux/actions/courseActions';
-import { addCourseReview } from '../../redux/actions/courseActions';
+import { createCourseReview } from '../../redux/actions/reviewActions';
 import { getUserDetails } from '../../redux/actions/userActions';
 import Breadcrumb from '../../components/common/Breadcrumb';
 
@@ -44,12 +44,12 @@ function CoursePage({ match, history }) {
   const { userInfo } = userLogin;
   const userDetails = useSelector(state => state.userDetails);
   const { user } = userDetails;
-  const courseReview = useSelector(state => state.courseReview);
+  const createReview = useSelector(state => state.createReview);
   const {
     loading: reviewLoading,
     success: reviewSuccess,
     error: reviewError,
-  } = courseReview;
+  } = createReview;
 
   useEffect(() => {
     dispatch(getCourseDetails(category, id));
@@ -62,12 +62,6 @@ function CoursePage({ match, history }) {
 
     dispatch(getUserDetails());
   }, [dispatch, category, id, reviewSuccess, reviewError, userInfo, history]);
-
-  // useEffect(() => {
-  //   if (user) {
-  //     dispatch(getUserDetails());
-  //   }
-  // }, [dispatch, user]);
 
   // ADD REVIEW FORM
   const [ratingState, setRatingState] = useState(1);
@@ -82,7 +76,10 @@ function CoursePage({ match, history }) {
         toast.error('Rating or Comment can not be empty.');
       } else {
         dispatch(
-          addCourseReview(id, { rating: Number(ratingState), comment: comment })
+          createCourseReview(id, {
+            rating: Number(ratingState),
+            comment: comment,
+          })
         );
       }
     }

@@ -8,19 +8,12 @@ import {
   GET_COURSE_CATEGORY_LIST_SUCCESS,
   GET_COURSE_CATEGORY_LIST_REQUEST,
   GET_COURSE_CATEGORY_LIST_FAIL,
-  ADD_COURSE_REVIEW_SUCCESS,
-  ADD_COURSE_REVIEW_FAIL,
-  ADD_COURSE_REVIEW_REQUEST,
-  ADD_COURSE_REVIEW_RESET,
   GET_TOP_COURSES_REQUEST,
   GET_TOP_COURSES_SUCCESS,
   GET_TOP_COURSES_FAIL,
   GET_INSTRUCTOR_COURSE_LIST_REQUEST,
   GET_INSTRUCTOR_COURSE_LIST_SUCCESS,
   GET_INSTRUCTOR_COURSE_LIST_FAIL,
-  GET_TOP_COURSE_REVIEWS_REQUEST,
-  GET_TOP_COURSE_REVIEWS_SUCCESS,
-  GET_TOP_COURSE_REVIEWS_FAIL,
 } from '../constants/courseConstants';
 
 export const courseListReducer = (state = { courses: [] }, action) => {
@@ -85,34 +78,6 @@ export const courseDetailsReducer = (state = { course: {} }, action) => {
     case GET_COURSE_DETAILS_SUCCESS:
       return { loading: false, course: action.payload };
     case GET_COURSE_DETAILS_FAIL:
-      return { loading: false, error: action.payload };
-    default:
-      return state;
-  }
-};
-
-export const addCourseReviewReducer = (state = {}, action) => {
-  switch (action.type) {
-    case ADD_COURSE_REVIEW_REQUEST:
-      return { loading: true };
-    case ADD_COURSE_REVIEW_SUCCESS:
-      return { loading: false, success: true };
-    case ADD_COURSE_REVIEW_FAIL:
-      return { loading: false, error: action.payload };
-    case ADD_COURSE_REVIEW_RESET:
-      return {};
-    default:
-      return state;
-  }
-};
-
-export const topCourseReviewsReducer = (state = { topReviews: [] }, action) => {
-  switch (action.type) {
-    case GET_TOP_COURSE_REVIEWS_REQUEST:
-      return { loading: true, topReviews: [] };
-    case GET_TOP_COURSE_REVIEWS_SUCCESS:
-      return { loading: false, topReviews: action.payload };
-    case GET_TOP_COURSE_REVIEWS_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

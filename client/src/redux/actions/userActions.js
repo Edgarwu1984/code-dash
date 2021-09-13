@@ -1,8 +1,5 @@
 import axios from 'axios';
 import {
-  GET_USER_COURSE_REVIEWS_FAIL,
-  GET_USER_COURSE_REVIEWS_REQUEST,
-  GET_USER_COURSE_REVIEWS_SUCCESS,
   GET_USER_DETAILS_FAIL,
   GET_USER_DETAILS_REQUEST,
   GET_USER_DETAILS_RESET,
@@ -33,12 +30,15 @@ export const loginUser = (email, password) => async dispatch => {
       { email, password },
       config
     );
-    dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
-    localStorage.setItem('userInfo', JSON.stringify(data));
+    dispatch({ type: USER_LOGIN_SUCCESS, payload: data.data });
+    localStorage.setItem('userInfo', JSON.stringify(data.data));
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
-      payload: error.message,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -47,6 +47,7 @@ export const logoutUser = () => async dispatch => {
   localStorage.removeItem('userInfo');
   dispatch({ type: USER_LOGOUT });
   dispatch({ type: GET_USER_DETAILS_RESET });
+  document.location.href = '/';
 };
 
 export const registerUser = (username, email, password) => async dispatch => {
@@ -62,13 +63,16 @@ export const registerUser = (username, email, password) => async dispatch => {
       { username, email, password },
       config
     );
-    dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
-    dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
-    localStorage.setItem('userInfo', JSON.stringify(data));
+    dispatch({ type: USER_REGISTER_SUCCESS, payload: data.data });
+    dispatch({ type: USER_LOGIN_SUCCESS, payload: data.data });
+    localStorage.setItem('userInfo', JSON.stringify(data.data));
   } catch (error) {
     dispatch({
       type: USER_REGISTER_FAIL,
-      payload: error.message,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -89,11 +93,14 @@ export const getUserDetails = () => async (dispatch, getState) => {
 
     const { data } = await axios.get(`/api/users/profile`, config);
 
-    dispatch({ type: GET_USER_DETAILS_SUCCESS, payload: data });
+    dispatch({ type: GET_USER_DETAILS_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({
       type: GET_USER_DETAILS_FAIL,
-      payload: error.message,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -114,29 +121,17 @@ export const updateUserDetails = user => async (dispatch, getState) => {
 
     const { data } = await axios.put(`/api/users/profile`, user, config);
 
-    dispatch({ type: UPDATE_USER_DETAILS_SUCCESS, payload: data });
+    dispatch({ type: UPDATE_USER_DETAILS_SUCCESS, payload: data.data });
     dispatch({ type: UPDATE_USER_DETAILS_RESET });
-    dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
-    localStorage.setItem('userInfo', JSON.stringify(data));
+    dispatch({ type: USER_LOGIN_SUCCESS, payload: data.data });
+    localStorage.setItem('userInfo', JSON.stringify(data.data));
   } catch (error) {
     dispatch({
       type: UPDATE_USER_DETAILS_FAIL,
-      payload: error.message,
-    });
-  }
-};
-
-export const getUserCourseReviews = id => async dispatch => {
-  try {
-    dispatch({ type: GET_USER_COURSE_REVIEWS_REQUEST });
-
-    const { data } = await axios.get(`/api/courses/reviews/user/${id}`);
-
-    dispatch({ type: GET_USER_COURSE_REVIEWS_SUCCESS, payload: data });
-  } catch (error) {
-    dispatch({
-      type: GET_USER_COURSE_REVIEWS_FAIL,
-      payload: error.message,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaQuoteLeft } from 'react-icons/fa';
 import Rating from './Rating';
+import DateFormatter from '../utils/DateFormatter';
 
 const TestimonialCard = ({
   comment,
@@ -21,7 +22,7 @@ const TestimonialCard = ({
         <div className='user__info'>
           <h4 className='username'>{userName}</h4>
           <Rating rating={rating} />
-          <small className='date'>{commentDate}</small>
+          <small className='date'>{DateFormatter(commentDate)}</small>
         </div>
       </div>
     </figure>

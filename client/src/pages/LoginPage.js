@@ -12,9 +12,6 @@ function LoginPage({ history, location }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // EMAIL FORMAT VALIDATOR
-  const emailFormat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email);
-
   // REDUX
   const dispatch = useDispatch();
   const userLogin = useSelector(state => state.userLogin);
@@ -34,8 +31,6 @@ function LoginPage({ history, location }) {
     e.preventDefault();
     if (!email || !password) {
       toast.error('Input filed can not be empty.');
-    } else if (!emailFormat) {
-      toast.error('Invalid email format.');
     } else {
       dispatch(loginUser(email, password));
     }

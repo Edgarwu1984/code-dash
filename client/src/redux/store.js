@@ -3,20 +3,17 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 // REDUCERS
 import {
-  addCourseReviewReducer,
   courseCategoryListReducer,
   courseDetailsReducer,
   courseListReducer,
   instructorCourseListReducer,
   topCourseListReducer,
-  topCourseReviewsReducer,
 } from './reducers/courseReducers';
 import {
   instructorDetailsReducer,
   instructorListReducer,
 } from './reducers/instructorReducers';
 import {
-  userCourseReviewsReducer,
   userDetailsReducer,
   userDetailsUpdateReducer,
   userLoginReducer,
@@ -28,16 +25,18 @@ import {
   userListReducer,
   userUpdateReducer,
 } from './reducers/adminReducers';
+import {
+  createReviewReducer,
+  topReviewsReducer,
+} from './reducers/reviewReducers';
 
 const reducer = combineReducers({
   // COURSE REDUCERS
   courseList: courseListReducer,
   topCourseList: topCourseListReducer,
   courseCategoryList: courseCategoryListReducer,
-  instructorCourseList: instructorCourseListReducer,
   courseDetails: courseDetailsReducer,
-  courseReview: addCourseReviewReducer,
-  topCourseReviews: topCourseReviewsReducer,
+  instructorCourseList: instructorCourseListReducer,
   // INSTRUCTOR REDUCERS
   instructorList: instructorListReducer,
   instructorDetails: instructorDetailsReducer,
@@ -46,12 +45,14 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userDetailsUpdate: userDetailsUpdateReducer,
-  userCourseReviews: userCourseReviewsReducer,
   // ADMIN REDUCERS
   userList: userListReducer,
   singleUser: singleUserReducer,
   userUpdate: userUpdateReducer,
   userDelete: userDeleteReducer,
+  // REVIEW REDUCERS
+  topReviews: topReviewsReducer,
+  createReview: createReviewReducer,
 });
 
 // GET USER INFO FROM LOCAL STORAGE

@@ -1,20 +1,24 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
 const userSchema = mongoose.Schema(
   {
     username: {
       type: String,
-      required: true,
+      required: [true, 'Username is required.'],
     },
     email: {
       type: String,
-      required: true,
+      required: [true, 'Email is required.'],
       unique: true,
+      lowercase: true,
+      validate: [validator.isEmail, 'Please provide a valid email'],
     },
     password: {
       type: String,
-      required: false,
+      required: true,
+      minlength: [6, 'Password at least 6 characters.'],
     },
     photo: {
       type: String,
@@ -26,11 +30,23 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    lastTimeLogin: {
+      type: Date,
+    },
   },
   {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
     timestamps: true,
   }
 );
+
+// Virtual populate
+userSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'user',
+  localField: '_id',
+});
 
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password); // Compare the password user entered;

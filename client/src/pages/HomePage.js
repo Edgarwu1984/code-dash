@@ -13,10 +13,8 @@ import ScrollToTop from '../components/common/ScrollToTop';
 import ResetPagePosition from '../utils/ResetPagePosition';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  getTopCourseReviews,
-  getTopCourses,
-} from '../redux/actions/courseActions';
+import { getTopCourses } from '../redux/actions/courseActions';
+import { getTopReviews } from '../redux/actions/reviewActions';
 
 function HomePage() {
   // RESET PAGE POSITION
@@ -27,16 +25,12 @@ function HomePage() {
   const dispatch = useDispatch();
   const topCourseList = useSelector(state => state.topCourseList);
   const { loading, error, courses } = topCourseList;
-  const topCourseReviews = useSelector(state => state.topCourseReviews);
-  const {
-    loading: reviewsLoading,
-    error: reviewsError,
-    topReviews,
-  } = topCourseReviews;
+  const topReviews = useSelector(state => state.topReviews);
+  const { loading: reviewsLoading, error: reviewsError, reviews } = topReviews;
 
   useEffect(() => {
     dispatch(getTopCourses());
-    dispatch(getTopCourseReviews());
+    dispatch(getTopReviews());
   }, [dispatch]);
 
   return (
@@ -142,15 +136,15 @@ function HomePage() {
             ) : reviewsError ? (
               <AlertMessage error={reviewsError} type='danger' />
             ) : (
-              topReviews &&
-              topReviews.map(review => (
+              reviews &&
+              reviews.map(review => (
                 <TestimonialCard
                   key={review._id}
-                  comment={review.reviews[0].comment}
-                  userImage={review.reviews[0].user.photo}
-                  userName={review.reviews[0].user.username}
-                  rating={review.reviews[0].rating}
-                  commentDate={review.reviews[0].createdAt}
+                  comment={review.comment}
+                  userImage={review.user.photo}
+                  userName={review.user.username}
+                  rating={review.rating}
+                  commentDate={review.createdAt}
                 />
               ))
             )}

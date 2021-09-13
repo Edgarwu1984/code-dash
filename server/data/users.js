@@ -7,6 +7,8 @@ const users = [
     password: bcrypt.hashSync('123456', 10),
     photo: 'https://randomuser.me/api/portraits/lego/7.jpg',
     isAdmin: true,
+    lastTimeLogin: '',
+    reviews: [],
   },
   {
     username: 'Grace Moreno',
@@ -14,6 +16,8 @@ const users = [
     password: bcrypt.hashSync('123456', 10),
     photo: 'https://randomuser.me/api/portraits/women/64.jpg',
     isAdmin: false,
+    lastTimeLogin: '',
+    reviews: [],
   },
   {
     username: 'Judd Douglas',
@@ -21,6 +25,8 @@ const users = [
     password: bcrypt.hashSync('123456', 10),
     photo: 'https://randomuser.me/api/portraits/men/68.jpg',
     isAdmin: false,
+    lastTimeLogin: '',
+    reviews: [],
   },
 ];
 

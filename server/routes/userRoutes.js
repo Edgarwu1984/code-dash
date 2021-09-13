@@ -10,11 +10,12 @@ const {
   updateUser,
   deleteUser,
 } = require('../controllers/userControllers');
+const requestTime = require('../middleware/requestTimeMiddleware');
 
 const router = express.Router();
 
 // USER ROUTES
-router.route('/login').post(loginUser);
+router.route('/login').post(requestTime, loginUser);
 router.route('/register').post(registerUser);
 router
   .route('/profile')

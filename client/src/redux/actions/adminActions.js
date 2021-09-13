@@ -34,11 +34,14 @@ export const getUserList = () => async (dispatch, getState) => {
 
     const { data } = await axios.get('/api/users', config);
 
-    dispatch({ type: ADMIN_GET_USERS_SUCCESS, payload: data });
+    dispatch({ type: ADMIN_GET_USERS_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({
       type: ADMIN_GET_USERS_FAIL,
-      payload: error.message,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -61,11 +64,14 @@ export const getUser = id => async (dispatch, getState) => {
 
     const { data } = await axios.get(`/api/users/${id}`, config);
 
-    dispatch({ type: ADMIN_GET_USER_SUCCESS, payload: data });
+    dispatch({ type: ADMIN_GET_USER_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({
       type: ADMIN_GET_USER_FAIL,
-      payload: error.message,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -97,13 +103,16 @@ export const updateUser = (id, user) => async (dispatch, getState) => {
       config
     );
 
-    dispatch({ type: ADMIN_UPDATE_USER_SUCCESS, payload: data });
+    dispatch({ type: ADMIN_UPDATE_USER_SUCCESS, payload: data.data });
     dispatch({ type: ADMIN_UPDATE_USER_RESET });
-    dispatch({ type: ADMIN_GET_USER_SUCCESS, payload: data });
+    dispatch({ type: ADMIN_GET_USER_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({
       type: ADMIN_UPDATE_USER_FAIL,
-      payload: error.message,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -132,7 +141,10 @@ export const deleteUser = id => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ADMIN_DELETE_USER_FAIL,
-      payload: error.message,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };

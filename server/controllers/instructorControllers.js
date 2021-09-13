@@ -1,26 +1,27 @@
 const Instructor = require('../models/instructorModel');
+const asyncHandler = require('../utils/asyncHandler');
 
-const getInstructors = async (req, res) => {
-  try {
-    const instructors = await Instructor.find();
-    res.status(200).json(instructors);
-  } catch (error) {
-    res.status(404).send({ message: `${error}` });
-  }
-};
+const getInstructors = asyncHandler(async (req, res) => {
+  const instructors = await Instructor.find();
+  res.status(200).json({
+    status: 'Success',
+    result: instructors.length,
+    data: instructors,
+  });
+});
 
-const getInstructorById = async (req, res) => {
-  try {
-    const id = req.params.id;
-    const instructor = await Instructor.findById(id);
-    if (instructor) {
-      res.status(200).json(instructor);
-    } else {
-      res.status(404).send({ message: 'Can not found instructor.' });
-    }
-  } catch (error) {
-    res.status(404).send({ message: `${error}` });
+const getInstructorById = asyncHandler(async (req, res) => {
+  const id = req.params.id;
+  const instructor = await Instructor.findById(id);
+  if (instructor) {
+    res.status(200).json({
+      status: 'Success',
+      data: instructor,
+    });
+  } else {
+    res.status(404);
+    throw new Error('Can not found instructor.');
   }
-};
+});
 
 module.exports = { getInstructors, getInstructorById };
