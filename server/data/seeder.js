@@ -2,11 +2,13 @@
 const users = require('./users');
 const instructors = require('./instructors');
 const courses = require('./courses');
+const reviews = require('./reviews');
 
 // MODELS
 const User = require('../models/userModel');
 const Instructor = require('../models/instructorModel');
 const Course = require('../models/courseModel');
+const Review = require('../models/reviewModel');
 
 // DATABASE
 const connectDB = require('../config/db');
@@ -27,9 +29,11 @@ const importData = async () => {
     await User.deleteMany();
     await Instructor.deleteMany();
     await Course.deleteMany();
+    // await Review.deleteMany();
 
     // Import Users
     await User.insertMany(users);
+    // await Review.insertMany(reviews);
 
     // Import Instructors & Get Author
     const createInstructors = await Instructor.insertMany(instructors);
@@ -42,7 +46,7 @@ const importData = async () => {
 
     await Course.insertMany(sampleCourses);
 
-    console.log('Product Data Imported.'.green.inverse);
+    console.log('Data Imported.'.green.inverse);
     process.exit();
   } catch (error) {
     console.error(`${error}`.red.inverse);

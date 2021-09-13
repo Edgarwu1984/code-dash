@@ -11,14 +11,14 @@ const loginUser = asyncHandler(async (req, res) => {
 
   if (user && (await user.matchPassword(password))) {
     // Create Last login in Date
-    user.lastTimeLogin = req.requestTime;
-    await user.save();
+    // user.lastTimeLogin = req.requestTime;
+    // await user.save();
 
     res.status(201).json({
       status: 'Login Success',
       requestTime: req.requestTime,
       data: {
-        _id: user.id,
+        _id: user._id,
         username: user.username,
         email: user.email,
         photo: user.photo,
@@ -73,7 +73,7 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route GET /api/users/profile
 // @access Private
 const getUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id);
+  const user = await User.findById(req.user._id).populate('reviews');
 
   if (user) {
     res.status(200).json({
@@ -86,6 +86,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
         photo: user.photo,
         isAdmin: user.isAdmin,
         updatedAt: user.updatedAt,
+        reviews: user.reviews,
       },
     });
   } else {
@@ -129,7 +130,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 // @route GET /api/users
 // @access Private/Admin
 const getUsers = asyncHandler(async (req, res) => {
-  const users = await User.find();
+  const users = await User.find().populate('reviews');
   if (users) {
     res.status(200).json({
       status: 'Success',

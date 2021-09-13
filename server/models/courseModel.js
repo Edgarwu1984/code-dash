@@ -1,21 +1,6 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
 
-// const reviewSchema = mongoose.Schema(
-//   {
-//     rating: { type: Number, required: true },
-//     comment: { type: String, required: true },
-//     user: {
-//       type: mongoose.Schema.Types.ObjectId,
-//       required: true,
-//       ref: 'User',
-//     },
-//   },
-//   {
-//     timestamps: true,
-//   }
-// );
-
 const courseSchema = mongoose.Schema(
   {
     category: {
@@ -30,8 +15,7 @@ const courseSchema = mongoose.Schema(
       type: String,
       required: [true, 'Course must have a name.'],
       unique: true,
-      trim: true,
-      maxlength: [40, 'Course name must be less or equal then 40 characters'],
+      maxlength: [60, 'Course name must be less or equal then 40 characters'],
       minlength: [10, 'Course name must be more or equal then 10 characters'],
     },
     slug: String,
@@ -82,15 +66,32 @@ const courseSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
-    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
+  },
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   },
   {
     timestamps: true,
   }
 );
+// Populate the User and Course
+courseSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'instructor',
+    select: 'firstName lastName',
+  });
+  next();
+});
+
+// Virtual populate
+courseSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'course',
+  localField: '_id',
+});
 
 // DOCUMENT MIDDLEWARE: runs before .save() and .create()
-
 // Create Slug by Name
 courseSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });

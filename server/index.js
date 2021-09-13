@@ -3,13 +3,19 @@ const connectDB = require('./config/db');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const colors = require('colors');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+const hpp = require('hpp');
 const {
   errorHandler,
   notFound,
 } = require('./middleware/errorHandlingMiddleware');
+const limiter = require('./middleware/rateLimitMiddleware');
 const userRoutes = require('./routes/userRoutes');
 const courseRoutes = require('./routes/courseRoutes');
 const instructorRoutes = require('./routes/instructorRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
 
 dotenv.config();
 
@@ -18,9 +24,25 @@ connectDB();
 
 const app = express();
 
-// MIDDLEWARE
-app.use(express.json());
+// GLOBAL MIDDLEWARE
+app.use(helmet()); // Set HTTP Headers security
+app.use(express.json({ limit: '10kb' }));
 
+// Data sanitization against NoSQL query injection
+app.use(mongoSanitize()); // {"$gt": ""} remove the $ in query
+
+// Data sanitization against XSS
+app.use(xss());
+
+// Prevent parameter pollution
+// Prevent duplicates query
+app.use(
+  hpp({
+    whitelist: ['rating', 'numReviews'],
+  })
+);
+
+app.use('/api/', limiter);
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
@@ -29,6 +51,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/api/users', userRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/instructors', instructorRoutes);
+app.use('/api/reviews', reviewRoutes);
 
 // ERROR HANDLING MIDDLEWARE
 app.use(notFound);

@@ -8,6 +8,7 @@ const courses = [
       'Learn to master modern PHP MVC core development step-by-step, and build your eCommerce store in less than 30 days.',
     language: 'english',
     duration: '45hr',
+    instructor: '613df6d5bf9fb9531c426c07',
     features: [
       'Build Your Own Modern PHP MVC framework',
       'Organize your PHP code into models, views and controllers',
@@ -51,6 +52,7 @@ const courses = [
     description: 'Lean how to create web pages using HTML',
     language: 'english',
     duration: '2hr 16min',
+    instructor: '613df6d5bf9fb9531c426c07',
     features: [
       'How to Code in HTML',
       'Text Formatting in HTML',
@@ -87,6 +89,7 @@ const courses = [
       'Learn and build projects with pure JavaScript (No frameworks or libraries)',
     language: 'english',
     duration: '10hr 5min',
+    instructor: '613df6d5bf9fb9531c426c07',
     features: [
       'Modular learning sections & 10 real world projects with pure JavaScript',
       'Master the DOM (document object model) WITHOUT jQuery',
@@ -139,6 +142,7 @@ const courses = [
       'Dive in and learn React.js from scratch! Learn React, Hooks, Redux, React Routing, Animations, Next.js and way more!',
     language: 'english',
     duration: '16hr',
+    instructor: '613df6d5bf9fb9531c426c07',
     features: [
       'Build powerful, fast, user-friendly and reactive web apps',
       'Provide amazing user experiences by leveraging the power of JavaScript with ease',
@@ -189,6 +193,7 @@ const courses = [
       'Learn Unity in C# & Code Your First Seven 2D Video Games for Web, Mac & PC. The Tutorials Cover Tilemap',
     language: 'english',
     duration: '35hr',
+    instructor: '613df6d5bf9fb9531c426c07',
     features: [
       'Learn C#, a powerful modern language, from scratch. No prior programming experience is necessary.',
       'Become excellent at using the Unity game engine.',
@@ -238,6 +243,7 @@ const courses = [
     description: 'Unreal Engine Blueprint Game Developer',
     language: 'english',
     duration: '12hr',
+    instructor: '613df6d5bf9fb9531c426c07',
     features: [
       'Create simple complete games to share with friends.',
       'Develop using the Unreal Engine 4 editor.',
@@ -289,6 +295,7 @@ const courses = [
       'Learn How to Model sculpt and Texture a Character Creature using Zbrush, Maya, Substance Painter, Photoshop, Unreal',
     language: 'english',
     duration: '14hr 16min',
+    instructor: '613df6d5bf9fb9531c426c07',
     features: [
       'Create a full body character suitable for games',
       'Understand the reasons behind retopologizing',
@@ -335,6 +342,7 @@ const courses = [
     description: 'Learn to Model a 3D Character In Blender',
     language: 'english',
     duration: '12hr 35min',
+    instructor: '613df6d5bf9fb9531c426c07',
     features: [
       'You will learn how to model a 3D human character in Blender for animations and video games',
       'You will learn how to use Blender software and become proficient with its features',

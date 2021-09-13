@@ -17,7 +17,7 @@ const userSchema = mongoose.Schema(
     },
     password: {
       type: String,
-      required: false,
+      required: true,
       minlength: [6, 'Password at least 6 characters.'],
     },
     photo: {
@@ -33,14 +33,22 @@ const userSchema = mongoose.Schema(
     lastTimeLogin: {
       type: Date,
     },
-    reviews: [
-      { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Review' },
-    ],
+  },
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   },
   {
     timestamps: true,
   }
 );
+
+// Virtual populate
+userSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'user',
+  localField: '_id',
+});
 
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password); // Compare the password user entered;
