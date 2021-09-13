@@ -82,11 +82,11 @@ const getCoursesByInstructor = asyncHandler(async (req, res) => {
 // @route GET /api/courses/top
 // @access Public
 const getTopCoursesByRating = asyncHandler(async (req, res) => {
-  const courses = await Course.find({})
-    .where('reviews.rating')
+  const courses = await Course.find()
+    .where('rating')
     .gte(4.8)
+    .sort({ rating: -1 })
     .limit(4);
-
   res.status(200).json({
     status: 'Success',
     results: courses.length,

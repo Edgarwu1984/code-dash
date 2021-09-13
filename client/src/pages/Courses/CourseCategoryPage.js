@@ -22,8 +22,6 @@ function CourseCategoryPage({ match }) {
 
   const category = match.params.category;
 
-  console.log(match);
-
   // REDUX
   const dispatch = useDispatch();
   const courseCategoryList = useSelector(state => state.courseCategoryList);

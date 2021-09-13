@@ -27,8 +27,6 @@ const reviewSchema = mongoose.Schema(
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
-  },
-  {
     timestamps: true,
   }
 );
@@ -40,10 +38,10 @@ reviewSchema.index({ course: 1, user: 1 }, { unique: true });
 reviewSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'course',
-    select: 'name image',
+    select: 'name image category',
   }).populate({
     path: 'user',
-    select: 'name photo',
+    select: 'username photo',
   });
 
   next();

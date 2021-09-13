@@ -16,9 +16,9 @@ const router = express.Router();
 router.use('/:id/reviews', reviewRouter);
 
 router.route('/').get(getCourses).post(protect, isAdmin, createCourse);
+router.route('/top-4').get(getTopCoursesByRating);
+router.route('/instructors/:id').get(getCoursesByInstructor);
 router.route('/:category').get(getCoursesByCategory);
 router.route('/:category/:id').get(getCourseById);
-router.route('/instructors/:id').get(getCoursesByInstructor);
-router.route('/top').get(getTopCoursesByRating);
 
 module.exports = router;

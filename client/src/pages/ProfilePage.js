@@ -13,11 +13,9 @@ import DateFormatter from '../utils/DateFormatter';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  getUserCourseReviews,
   getUserDetails,
   updateUserDetails,
 } from '../redux/actions/userActions';
-import Breadcrumb from '../components/common/Breadcrumb';
 
 function ProfilePage({ history }) {
   // HANDLE MODAL
@@ -56,12 +54,6 @@ function ProfilePage({ history }) {
   const { userInfo } = userLogin;
   const userDetails = useSelector(state => state.userDetails);
   const { loading, error, user } = userDetails;
-  const userCourseReviews = useSelector(state => state.userCourseReviews);
-  const {
-    loading: reviewsLoading,
-    error: reviewsError,
-    myReviews,
-  } = userCourseReviews;
   const userDetailsUpdate = useSelector(state => state.userDetailsUpdate);
   const {
     loading: updateLoading,
@@ -74,7 +66,6 @@ function ProfilePage({ history }) {
       history.push('/');
     } else {
       dispatch(getUserDetails());
-      dispatch(getUserCourseReviews(userInfo._id));
     }
 
     if (updateSuccess) {
@@ -219,21 +210,21 @@ function ProfilePage({ history }) {
         </section>
         <section className='review__section'>
           <SectionTitle title='My Reviews' />
-          {reviewsLoading ? (
+          {loading ? (
             <Loader />
-          ) : reviewsError ? (
-            <AlertMessage message={reviewsError} type='danger' />
-          ) : myReviews.length > 0 ? (
-            myReviews.map(review => (
+          ) : error ? (
+            <AlertMessage message={error} type='danger' />
+          ) : user.reviews ? (
+            user.reviews.map(review => (
               <ReviewCard
                 key={review._id}
-                courseCategory={review.category}
-                courseId={review._id}
-                courseName={review.name}
-                courseImage={review.image}
-                rating={review.reviews[0].rating}
-                comment={review.reviews[0].comment}
-                commentDate={review.reviews[0].createdAt}
+                courseCategory={review.course.category}
+                courseId={review.course._id}
+                courseName={review.course.name}
+                courseImage={review.course.image}
+                rating={review.rating}
+                comment={review.comment}
+                commentDate={review.createdAt}
               />
             ))
           ) : (

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useHistory } from 'react-router-dom';
-import { toast } from 'react-toastify';
 // REACT-ICONS
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { RiArrowDownSFill, RiLogoutBoxRLine } from 'react-icons/ri';

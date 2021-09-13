@@ -1,0 +1,153 @@
+[{
+  "_id": {
+    "$oid": "613f1561cef031bfea069559"
+  },
+  "rating": 4.7,
+  "comment": "Fantastic course, learnt loads which I'll now put to use. Recommended it to beginners and those looking for a few extra tips.",
+  "user": {
+    "$oid": "613f1515cef031bfea069516"
+  },
+  "course": {
+    "$oid": "613f11ce2a4dc8e46aec1e26"
+  },
+  "createdAt": {
+    "$date": "2021-09-13T09:09:53.463Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-13T09:09:53.463Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "613f15adcef031bfea0695a0"
+  },
+  "rating": 4.6,
+  "comment": "Thank you for all the tips and info, l am glad l had the chance and get this course. I am a bit of a retard, so l must repeat the course quite often to fully understand it, but l will succeed!",
+  "user": {
+    "$oid": "613f1515cef031bfea069516"
+  },
+  "course": {
+    "$oid": "613f11ce2a4dc8e46aec1e2a"
+  },
+  "createdAt": {
+    "$date": "2021-09-13T09:11:09.520Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-13T09:11:09.520Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "613f1652cef031bfea0696b9"
+  },
+  "rating": 5,
+  "comment": "The course encourages students to find their own solutions based on the ideas they gained through out this course and that is very entertaining",
+  "user": {
+    "$oid": "613f160acef031bfea069673"
+  },
+  "course": {
+    "$oid": "613f11ce2a4dc8e46aec1e1e"
+  },
+  "createdAt": {
+    "$date": "2021-09-13T09:13:54.431Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-13T09:13:54.431Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "613f16c8cef031bfea069730"
+  },
+  "rating": 4.5,
+  "comment": "Great course, I love how everything was explained step by step and in detail. My only problem was the audio, sometimes it was too quiet, sometimes too loud",
+  "user": {
+    "$oid": "613f160acef031bfea069673"
+  },
+  "course": {
+    "$oid": "613f11ce2a4dc8e46aec1e26"
+  },
+  "createdAt": {
+    "$date": "2021-09-13T09:15:52.017Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-13T09:15:52.017Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "613f1750cef031bfea0697f3"
+  },
+  "rating": 4.2,
+  "comment": "Great walkthrough using basic concepts that can solve many different types of tasks. Some content are obsolete.",
+  "user": {
+    "$oid": "613f1711cef031bfea0697ad"
+  },
+  "course": {
+    "$oid": "613f11ce2a4dc8e46aec1e22"
+  },
+  "createdAt": {
+    "$date": "2021-09-13T09:18:08.094Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-13T09:18:08.094Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "613f17df9f6392980406e445"
+  },
+  "rating": 4.9,
+  "comment": "Got what I was looking for :) A solid intro to game programming with a great and thorough tutor. Had a fun time!",
+  "user": {
+    "$oid": "613f1711cef031bfea0697ad"
+  },
+  "course": {
+    "$oid": "613f11ce2a4dc8e46aec1e1a"
+  },
+  "createdAt": {
+    "$date": "2021-09-13T09:20:31.062Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-13T09:20:31.062Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "613f18889f6392980406e4e9"
+  },
+  "rating": 4.8,
+  "comment": "The course encourages students to find their own solutions based on the ideas they gained through out this course and that is very entertaining.",
+  "user": {
+    "$oid": "613f183c9f6392980406e4a7"
+  },
+  "course": {
+    "$oid": "613f11ce2a4dc8e46aec1e13"
+  },
+  "createdAt": {
+    "$date": "2021-09-13T09:23:20.075Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-13T09:23:20.075Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "613f1a760a8af1f8648e6859"
+  },
+  "rating": 3.5,
+  "comment": "I felt some of the instructions to be a bit rushed. But all in all a good course, even if I will have to repeat it to grasp everything.",
+  "user": {
+    "$oid": "613f11ce2a4dc8e46aec1e08"
+  },
+  "course": {
+    "$oid": "613f11ce2a4dc8e46aec1e16"
+  },
+  "createdAt": {
+    "$date": "2021-09-13T09:31:34.355Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-13T09:31:34.355Z"
+  },
+  "__v": 0
+}]
