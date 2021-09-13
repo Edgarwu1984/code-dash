@@ -18,7 +18,10 @@ export const getTopReviews = () => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_TOP_REVIEWS_FAIL,
-      payload: error.response.data.messages,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -45,7 +48,10 @@ export const createCourseReview =
     } catch (error) {
       dispatch({
         type: CREATE_REVIEW_FAIL,
-        payload: error.response.data.messages,
+        payload:
+          error.response && error.response.data.messages
+            ? error.response.data.messages
+            : error.messages,
       });
     }
   };

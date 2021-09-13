@@ -38,7 +38,10 @@ export const getUserList = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ADMIN_GET_USERS_FAIL,
-      payload: error.response.data.messages,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -65,7 +68,10 @@ export const getUser = id => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ADMIN_GET_USER_FAIL,
-      payload: error.response.data.messages,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -103,7 +109,10 @@ export const updateUser = (id, user) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ADMIN_UPDATE_USER_FAIL,
-      payload: error.response.data.messages,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -132,7 +141,10 @@ export const deleteUser = id => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ADMIN_DELETE_USER_FAIL,
-      payload: error.response.data.messages,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };

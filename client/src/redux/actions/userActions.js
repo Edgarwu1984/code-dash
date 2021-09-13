@@ -35,7 +35,10 @@ export const loginUser = (email, password) => async dispatch => {
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
-      payload: error.response.data.messages,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -44,6 +47,7 @@ export const logoutUser = () => async dispatch => {
   localStorage.removeItem('userInfo');
   dispatch({ type: USER_LOGOUT });
   dispatch({ type: GET_USER_DETAILS_RESET });
+  document.location.href = '/';
 };
 
 export const registerUser = (username, email, password) => async dispatch => {
@@ -65,7 +69,10 @@ export const registerUser = (username, email, password) => async dispatch => {
   } catch (error) {
     dispatch({
       type: USER_REGISTER_FAIL,
-      payload: error.response.data.messages,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -90,7 +97,10 @@ export const getUserDetails = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: GET_USER_DETAILS_FAIL,
-      payload: error.messages,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -118,7 +128,10 @@ export const updateUserDetails = user => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: UPDATE_USER_DETAILS_FAIL,
-      payload: error.response.data.messages,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };

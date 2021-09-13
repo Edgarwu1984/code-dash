@@ -25,7 +25,10 @@ export const getCourseList = () => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_COURSE_LIST_FAIL,
-      payload: error.response.data.messages,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -38,7 +41,10 @@ export const getTopCourses = () => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_TOP_COURSES_FAIL,
-      payload: error.response.data.messages,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -51,7 +57,10 @@ export const getCourseCategoryList = category => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_COURSE_CATEGORY_LIST_FAIL,
-      payload: error.response.data.messages,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -64,7 +73,10 @@ export const getInstructorCourseList = id => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_INSTRUCTOR_COURSE_LIST_FAIL,
-      payload: error.response.data.messages,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -77,7 +89,10 @@ export const getCourseDetails = (category, id) => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_COURSE_DETAILS_FAIL,
-      payload: error.response.data.messages,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };

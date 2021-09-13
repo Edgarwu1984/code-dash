@@ -16,7 +16,10 @@ export const getInstructorList = () => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_INSTRUCTOR_LIST_FAIL,
-      payload: error.response.data.messages,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };
@@ -29,7 +32,10 @@ export const getInstructorDetails = id => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_INSTRUCTOR_DETAILS_FAIL,
-      payload: error.response.data.messages,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
     });
   }
 };

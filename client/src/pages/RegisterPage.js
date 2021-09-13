@@ -14,9 +14,6 @@ function RegisterPage({ history }) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  // EMAIL FORMAT VALIDATOR
-  const emailFormat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email);
-
   // REDUX
   const dispatch = useDispatch();
   const userRegister = useSelector(state => state.userRegister);
@@ -35,8 +32,6 @@ function RegisterPage({ history }) {
     e.preventDefault();
     if (!username || !email || !password || !confirmPassword) {
       toast.error('Input filed can not be empty.');
-    } else if (!emailFormat) {
-      toast.error('Invalid email format.');
     } else if (password !== confirmPassword) {
       toast.error('Password does not match.');
     } else {
