@@ -4,8 +4,10 @@
  * @format
  */
 
-// .Toastify__toast-container {
-// }
+.Toastify__toast-container {
+  width: max-content;
+  height: auto;
+}
 
 /** Used to define the position of the ToastContainer **/
 // .Toastify__toast-container--top-left {

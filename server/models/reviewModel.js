@@ -48,28 +48,34 @@ reviewSchema.pre(/^find/, function (next) {
 });
 
 // Update the numReviews and Rating
-reviewSchema.statics.calcAverageRating = async function (courseId) {
+reviewSchema.statics.calcAverageRating = async function (id) {
   const stats = await this.aggregate([
     {
-      $match: { course: courseId },
+      $match: { course: id },
     },
     {
       $group: {
         _id: '$course',
-        nRating: { $sum: 1 },
-        avgRating: { $avg: '$rating' },
+        numReviews: { $sum: 1 },
+        rating: { $avg: '$rating' },
       },
     },
   ]);
 
-  await Course.findByIdAndUpdate(courseId, {
-    rating: stats[0].avgRating,
-    numReviews: stats[0].nRating,
-  });
+  if (stats.length > 0) {
+    await Course.findByIdAndUpdate(id, {
+      numReviews: stats[0].numReviews,
+      rating: stats[0].rating,
+    });
+  } else {
+    await Course.findByIdAndUpdate(id, {
+      numReviews: 0,
+      rating: 5,
+    });
+  }
 };
 
 reviewSchema.pre('save', function (next) {
-  // This points to current review
   this.constructor.calcAverageRating(this.course);
   next();
 });
