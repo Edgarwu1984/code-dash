@@ -29,7 +29,7 @@ const Accordion = ({ data }) => {
               }
               htmlFor={index}
             >
-              <span>
+              <span className='accordion__label-text'>
                 <strong>{index + 1}.</strong> {el.contentListName}
               </span>
               <IoIosArrowDown className='accordion__label-icon' />

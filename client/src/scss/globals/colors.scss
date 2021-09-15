@@ -1,20 +1,35 @@
 :root {
-  --primary: hsl(240, 72%, 55%);
-  --warning: hsl(37, 70%, 70%);
+  // --primary: hsl(240, 72%, 55%);
+  --warning: hsl(37, 80%, 60%);
   --danger: hsl(1, 60%, 46%);
   --success: hsl(150, 60%, 38%);
 
-  --bg: hsl(0, 0%, 98%);
-  --text: hsl(240, 25%, 40%);
+  // --light: hsl(0, 0%, 95%);
+  // --white: hsl(0, 0%, 100%);
 
-  --grey-dark: hsl(240, 7%, 16%);
-  --grey: hsl(240, 4%, 48%);
-  --grey-light: hsl(240, 5%, 85%);
+  // LIGHT
+  --light-primary: hsl(240, 72%, 55%);
+  --light-bg: hsl(0, 0%, 100%);
+  --light-bg-50: hsl(0, 0%, 97%);
+  --light-bg-100: hsl(0, 0%, 95%);
+  --light-text: hsl(240, 56%, 15%);
+  --light-text-50: hsl(240, 25%, 40%);
+  --light-grey: hsl(240, 5%, 95%);
+  --light-grey-50: hsl(240, 4%, 84%);
+  --light-grey-100: hsl(240, 7%, 16%);
 
-  --light: hsl(0, 0%, 95%);
-  --dark: hsl(240, 56%, 15%);
-  --white: hsl(0, 0%, 100%);
+  // DARK
+  --dark-primary: hsl(240, 80%, 60%);
+  --dark-bg: hsl(245, 12%, 18%);
+  --dark-bg-50: hsl(245, 12%, 16%);
+  --dark-bg-100: hsl(245, 12%, 12%);
+  --dark-text-1: hsl(240, 56%, 98%);
+  --dark-text-2: hsl(240, 25%, 80%);
+  --dark-grey: hsl(240, 9%, 40%);
+  --dark-grey-50: hsl(240, 4%, 72%);
+  --dark-grey-100: hsl(240, 7%, 16%);
 
+  // BADGE
   --php: hsl(210, 72%, 54%);
   --html: hsl(19, 72%, 54%);
   --javascript: hsl(44, 72%, 54%);

@@ -9,7 +9,7 @@
 
   &__item {
     a {
-      color: var(--white);
+      color: white;
     }
     margin-right: rem(12);
     text-transform: capitalize;
@@ -18,7 +18,7 @@
       font-size: rem(12);
       font-weight: 600;
       margin-right: rem(6);
-      color: var(--white);
+      color: white;
     }
 
     &:last-child {

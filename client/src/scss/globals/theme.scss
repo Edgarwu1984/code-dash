@@ -1,0 +1,23 @@
+.dark {
+  --primary: var(--dark-primary);
+  --bg: var(--dark-bg);
+  --bg-50: var(--dark-bg-50);
+  --bg-100: var(--dark-bg-100);
+  --text: var(--dark-text-1);
+  --text-50: var(--dark-text-2);
+  --grey: var(--dark-grey);
+  --grey-50: var(--dark-grey-50);
+  --grey-100: var(--dark-grey-100);
+}
+
+.light {
+  --primary: var(--light-primary);
+  --bg: var(--light-bg);
+  --bg-50: var(--light-bg-50);
+  --bg-100: var(--light-bg-100);
+  --text: var(--light-text-1);
+  --text-50: var(--light-text-2);
+  --grey: var(--light-grey);
+  --grey-50: var(--light-grey-50);
+  --grey-100: var(--light-grey-100);
+}

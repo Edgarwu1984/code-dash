@@ -6,7 +6,7 @@ h3,
 h4 {
   font-family: var(--font-title);
   margin: 0;
-  color: var(--dark);
+  color: var(--text);
 }
 
 h1 {
@@ -42,7 +42,7 @@ h4 {
 }
 
 p {
-  color: var(--text);
+  color: var(--text-50);
   font-size: rem(16);
   line-height: 1.5;
   margin: 0;
@@ -54,7 +54,7 @@ p {
 a,
 a:visited,
 a:active {
-  color: var(--dark);
+  color: var(--text);
   text-decoration: none;
   letter-spacing: rem(-0.5);
   &:hover {
@@ -69,4 +69,12 @@ a:active {
 
 .text-danger {
   color: var(--danger);
+}
+
+small,
+span {
+  color: var(--text-50);
+}
+strong {
+  color: var(--text);
 }

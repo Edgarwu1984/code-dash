@@ -32,7 +32,7 @@
 
   .notfound__info {
     @include shadow;
-    background-color: var(--white);
+    background-color: var(--bg);
     width: 40%;
     height: rem(300);
     border-radius: rem(6);

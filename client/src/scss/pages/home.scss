@@ -1,20 +1,20 @@
 @use '../utils/' as *;
 
 .feature-card__wrap {
-  background-color: var(--white);
-  @include offsetY($top: rem(-60));
+  background-color: var(--bg);
+  @include offsetY($top: rem(-120));
   // margin-bottom: rem(60);
   padding-bottom: rem(100);
 }
 
 .top-course__wrap {
   padding: rem(100) 0;
-  background-color: var(--light);
+  background-color: var(--bg-50);
 }
 
 .industry-brand__wrap {
   padding: rem(100) 0;
-  background-color: var(--white);
+  background-color: var(--bg);
 
   .industry-icon__wrap {
     display: flex;
@@ -30,5 +30,5 @@
 
 .testimonial__wrap {
   padding: rem(100) 0;
-  background-color: var(--light);
+  background-color: var(--bg-50);
 }
