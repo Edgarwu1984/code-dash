@@ -136,7 +136,6 @@ function CoursePage({ match, history }) {
             <input
               type='number'
               step='.1'
-              max='5'
               min='1'
               className='form-control'
               onChange={e => setRatingState(e.target.value)}

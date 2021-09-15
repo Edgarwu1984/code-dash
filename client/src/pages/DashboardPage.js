@@ -18,6 +18,7 @@ import {
   getUserList,
   updateUser,
 } from '../redux/actions/adminActions';
+import { getCourseList } from '../redux/actions/courseActions';
 
 function DashboardPage({ history }) {
   // REDUX
@@ -38,6 +39,9 @@ function DashboardPage({ history }) {
     success: userUpdateSuccess,
     error: userUpdateError,
   } = userUpdate;
+  // Get Course List
+  const courseList = useSelector(state => state.courseList);
+  const { loading: courseLoading, error: courseError, courses } = courseList;
 
   // MODAL STATE
   const [show, setShow] = useState(false);
@@ -49,6 +53,7 @@ function DashboardPage({ history }) {
   const [activeBtn, setActiveBtn] = useState(false);
 
   useEffect(() => {
+    dispatch(getCourseList());
     // Redirect to Home page if Current User not an Admin or User haven't logged in;
     if (userInfo && userInfo.isAdmin) {
       dispatch(getUserList());
@@ -227,6 +232,48 @@ function DashboardPage({ history }) {
                         <button
                           className='btn btn-outline-primary'
                           onClick={() => showModalHandler(user._id)}
+                        >
+                          Edit
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section>
+          <SectionTitle title='Course List' />
+          <div className='profile__page-wrap'>
+            <table>
+              <thead>
+                <tr>
+                  <th>Course name</th>
+                  <th>Instructor</th>
+                  <th>Rating</th>
+                  <th>Reviews</th>
+                  <th>Last Updated</th>
+                  <th>Edit</th>
+                </tr>
+              </thead>
+              <tbody>
+                {courses &&
+                  courses.map(course => (
+                    <tr key={course._id}>
+                      <td data-label='Course Name'>{course.name}</td>
+                      <td data-label='Instructor'>
+                        {course.instructor.firstName}{' '}
+                        {course.instructor.lastName}
+                      </td>
+                      <td data-label='Rating'>{course.rating}</td>
+                      <td data-label='Reviews'>{course.numReviews}</td>
+                      <td data-label='Last Updated'>
+                        {course.updatedAt && DateFormatter(course.updatedAt)}
+                      </td>
+                      <td>
+                        <button
+                          className='btn btn-outline-primary'
+                          // onClick={() => showModalHandler(course._id)}
                         >
                           Edit
                         </button>

@@ -1,7 +1,7 @@
 // DATA
 const users = require('./users');
 const instructors = require('./instructors');
-const courses = require('./courses');
+const courses = require('./courses.json');
 const reviews = require('./reviews');
 
 // MODELS
@@ -26,25 +26,26 @@ connectDB();
 const importData = async () => {
   try {
     // Reset Data
-    await User.deleteMany();
-    await Instructor.deleteMany();
+    // await User.deleteMany();
+    // await Instructor.deleteMany();
     await Course.deleteMany();
-    // await Review.deleteMany();
+    await Review.deleteMany();
 
     // Import Users
-    await User.insertMany(users);
+    // await User.insertMany(users);
     // await Review.insertMany(reviews);
+    // await Course.create(courses);
 
     // Import Instructors & Get Author
-    const createInstructors = await Instructor.insertMany(instructors);
-    const instructor = createInstructors[0]._id;
+    // const createInstructors = await Instructor.insertMany(instructors);
+    // const instructor = createInstructors[0]._id;
 
     // Insert instructor into Course
-    const sampleCourses = courses.map(course => {
-      return { ...course, instructor: instructor };
-    });
+    // const sampleCourses = courses.map(course => {
+    //   return { ...course, instructor: instructor };
+    // });
 
-    await Course.insertMany(sampleCourses);
+    // await Course.insertMany(sampleCourses);
 
     console.log('Data Imported.'.green.inverse);
     process.exit();

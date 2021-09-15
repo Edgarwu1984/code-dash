@@ -20,7 +20,7 @@ const errorHandler = (err, req, res, next) => {
 
     res.status(400).json({
       status: 'Failed',
-      messages: `Invalid input data. ${errors.join('. ')}`,
+      messages: `Invalid input data. ${errors.join('. ')}`, // List all the errors, separated by '.'
       stack: stackMessages,
     });
   } else {
