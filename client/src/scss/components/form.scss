@@ -45,7 +45,7 @@
 }
 
 .form-label {
-  color: var(--dark);
+  color: var(--text);
   display: block;
   margin-bottom: rem(4);
 }
@@ -55,9 +55,9 @@
   width: 100%;
   padding: rem(8);
   font-size: rem(16);
-  background-color: var(--light);
-  color: var(--text);
-  border: 1px solid var(--grey-light);
+  background-color: var(--bg-50);
+  color: var(--text-50);
+  border: 1px solid var(--grey);
   border-radius: rem(4);
   @include transition;
 }

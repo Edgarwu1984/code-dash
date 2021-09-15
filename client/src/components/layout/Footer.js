@@ -44,7 +44,10 @@ const Footer = () => {
         <div className='container'>
           <div className='footer__content'>
             <div className='footer__content-info'>
-              <img src='/images/logo.png' alt='logo' />
+              <div className='site-brand'>
+                <span className='text'>CodeDash</span>
+                <img className='logo' src='/images/logo.png' alt='logo' />
+              </div>
               <p>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla,
                 minus!.

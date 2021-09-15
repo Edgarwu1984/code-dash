@@ -9,7 +9,7 @@
 .navbar {
   position: sticky;
   top: 0;
-  background-color: var(--white);
+  background-color: var(--bg);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -35,11 +35,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      .text {
+        color: var(--text);
+        font-family: var(--font-title);
+        font-size: rem(25);
+        font-weight: 500;
+        letter-spacing: -1px;
+        margin-right: rem(4);
+        margin-top: rem(2);
+      }
       .logo {
         height: auto;
-        width: rem(130);
+        width: rem(20);
         margin-right: rem(8);
-        // padding: rem(28) 0;
       }
     }
 
@@ -50,7 +58,7 @@
       background: none;
       border: none;
       font-size: rem(24);
-      color: var(--dark-text2);
+      color: var(--text);
       cursor: pointer;
       @include breakpoint-down(medium) {
         display: flex;
@@ -73,6 +81,7 @@
     height: 100%;
     @include transition;
     .nav__list {
+      height: 100%;
       display: flex;
       list-style: none;
       @include breakpoint-down(medium) {
@@ -83,15 +92,14 @@
       &-item {
         position: relative;
         display: flex;
-        margin: 0 rem(16);
-        height: 100%;
+        margin: auto rem(16);
         z-index: 1;
         @include breakpoint-down(medium) {
           margin-bottom: rem(30);
         }
 
         &__link {
-          color: var(--dark);
+          color: var(--text);
           font-weight: 500;
           font-size: rem(17);
           position: relative;
@@ -130,7 +138,7 @@
       position: absolute;
       top: rem(72);
       display: flex;
-      background-color: var(--white);
+      background-color: var(--bg);
       ul {
         margin-right: 0;
         padding-left: 0;
@@ -153,7 +161,7 @@
 }
 
 .dropdown__item {
-  height: inherit;
+  height: 100%;
   @include breakpoint-down(medium) {
     display: flex;
     flex-direction: column;
@@ -196,12 +204,12 @@
   display: none;
   flex-direction: column;
   position: absolute;
-  top: rem(52);
-  left: rem(12);
+  top: rem(66);
+  left: rem(10);
   width: max-content;
   padding-left: 0;
   list-style: none;
-  background-color: var(--white);
+  background-color: var(--bg);
   border-top: 2px solid var(--primary);
   border-radius: rem(6);
 
@@ -237,7 +245,7 @@
 
   &-item:first-child {
     border-bottom: 1px solid var(--grey-light);
-    background-color: var(--bg);
+    background-color: var(--bg-50);
     font-size: rem(14);
     margin-bottom: rem(16);
     padding-top: rem(14);
@@ -271,8 +279,40 @@
   text-transform: uppercase;
   background-color: var(--primary);
   padding: rem(2) rem(4);
-  color: var(--white);
+  color: white;
   border-radius: rem(4);
   margin-top: rem(6);
+  margin-left: rem(8);
   font-size: rem(10);
+}
+
+.dark__mode-toggler {
+  display: flex;
+  align-items: center;
+  padding-left: rem(12);
+  font-size: rem(14);
+
+  @include breakpoint-down(medium) {
+    padding-bottom: rem(40);
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .dark__mode-btn {
+    display: flex;
+    align-items: center;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .icon {
+    font-size: rem(20);
+    color: var(--text);
+    &-active {
+      @include transition($duration: 0.2s);
+      color: var(--warning);
+    }
+  }
 }

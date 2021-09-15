@@ -41,6 +41,20 @@
 
     .site-brand {
       margin-bottom: rem(40);
+      .text {
+        color: var(--text);
+        font-family: var(--font-title);
+        font-size: rem(32);
+        font-weight: 500;
+        letter-spacing: -1px;
+        margin-right: rem(4);
+      }
+      .logo {
+        height: auto;
+        width: rem(24);
+        margin-right: rem(8);
+        // padding: rem(28) 0;
+      }
     }
     .site-copyright {
       margin-top: rem(100);

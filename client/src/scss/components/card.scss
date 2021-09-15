@@ -10,11 +10,15 @@
   width: 90%;
   height: max-content;
   border-radius: rem(6);
-  background-color: var(--white);
+  background-color: var(--bg);
   padding: rem(30) rem(40);
   margin: 0;
   z-index: 1;
   @include shadow($y: 12px, $blur: 20px);
+  &:hover {
+    @include transition;
+    filter: brightness(1.1);
+  }
 
   &__image {
     width: rem(64);
@@ -28,7 +32,7 @@
 // COURSE CARD
 .course-card {
   width: 100%;
-  background-color: var(--white);
+  background-color: var(--bg);
   border-radius: rem(6);
   overflow: hidden;
   margin: 0;
@@ -53,8 +57,8 @@
       position: absolute;
       top: rem(8);
       right: rem(8);
-      background-color: var(--dark);
-      color: var(--white);
+      background-color: var(--text);
+      color: var(--bg);
       padding: rem(2) rem(6);
       border-radius: rem(4);
       text-transform: uppercase;
@@ -76,6 +80,7 @@
       background-color: var(--react);
     }
     .unity {
+      color: white;
       background-color: var(--unity);
     }
     .ue4 {
@@ -94,6 +99,7 @@
     padding: rem(20);
 
     a {
+      color: var(--text);
       &:hover {
         .title {
           @include transition;
@@ -116,7 +122,7 @@
   width: 90%;
   height: 100%;
   border-radius: rem(6);
-  background-color: var(--white);
+  background-color: var(--bg);
   padding: rem(24) rem(40);
   margin: 0;
   display: flex;
@@ -199,7 +205,7 @@
 // INSTRUCTOR CARD
 .instructor-card {
   width: 100%;
-  background-color: var(--white);
+  background-color: var(--bg);
   border-radius: rem(6);
   display: flex;
   align-items: center;
@@ -262,7 +268,7 @@
         padding: rem(6);
         border-radius: 50%;
         font-size: rem(30);
-        color: var(--white);
+        color: var(--text);
         background-color: var(--grey-light);
       }
     }

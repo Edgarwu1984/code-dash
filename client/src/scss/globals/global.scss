@@ -11,7 +11,7 @@ body {
   position: relative;
   margin: 0;
   padding: 0;
-  background-color: var(--light);
+  background-color: var(--bg-50);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -22,8 +22,8 @@ img {
 }
 
 section {
-  margin-top: rem(60);
-  margin-bottom: rem(60);
+  padding-top: rem(60);
+  padding-bottom: rem(60);
 }
 
 .section__title {

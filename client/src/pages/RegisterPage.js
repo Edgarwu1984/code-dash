@@ -49,7 +49,8 @@ function RegisterPage({ history }) {
       </div>
       <div className='login'>
         <div className='site-brand'>
-          <img className='site-logo' src='/images/logo.png' alt='logo' />
+          <span className='text'>CodeDash</span>
+          <img className='logo' src='/images/logo.png' alt='logo' />
         </div>
         <div className='form__wrapper'>
           <h3 className='form-title'>Sign up</h3>

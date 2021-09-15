@@ -9,14 +9,14 @@ table {
 
 td,
 th {
-  border: 1px solid var(--grey-light);
+  border: 1px solid var(--grey);
   padding: rem(8);
 }
 
 th {
   padding: rem(8) 0;
   background-color: var(--primary);
-  color: var(--white);
+  color: white;
   font-weight: 500;
   text-transform: uppercase;
 }
@@ -27,7 +27,7 @@ tr {
 }
 
 tr:nth-child(even) {
-  background-color: var(--bg);
+  background-color: var(--bg-50);
 }
 
 // Mobile Screen Table Title
@@ -43,7 +43,7 @@ tr:nth-child(even) {
   // Mobile Screen Table Title
   .table-name {
     background-color: var(--primary);
-    color: var(--white);
+    color: var(--text);
     display: block;
     font-weight: bold;
     text-transform: uppercase;

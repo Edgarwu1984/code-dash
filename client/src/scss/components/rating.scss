@@ -10,6 +10,7 @@
 
   &-star {
     .rating__value {
+      color: var(--text);
       margin-right: rem(8);
     }
     .rating__icon {
@@ -17,5 +18,8 @@
       color: var(--warning);
       margin-right: rem(2);
     }
+  }
+  .rating-review {
+    color: var(--text);
   }
 }

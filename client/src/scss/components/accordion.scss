@@ -13,12 +13,17 @@
     padding: rem(24);
     font-weight: 500;
     text-transform: capitalize;
-    background-color: var(--white);
-    border: 1px solid var(--bg);
+    background-color: var(--bg);
+    border: 1px solid var(--grey);
     border-radius: rem(6);
     cursor: pointer;
 
+    &-text {
+      color: var(--text);
+    }
+
     &-icon {
+      color: var(--text-50);
       font-size: rem(18);
       transform: rotateZ(0deg);
     }
@@ -38,8 +43,9 @@
     &-list {
       padding: rem(16) rem(24);
       background-color: var(--bg);
-      border: 1px solid var(--light);
+      border: 1px solid var(--grey);
       margin-left: rem(10);
+      color: var(--text-50);
       &:hover {
         @include transition;
         color: var(--primary);

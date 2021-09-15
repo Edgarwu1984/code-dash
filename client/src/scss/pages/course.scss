@@ -19,7 +19,7 @@
 // COURSE DETAILS PAGE
 .course__page-header {
   justify-content: space-around;
-  color: var(--white);
+  color: white;
 
   @include breakpoint-down(medium) {
     width: 90%;
@@ -52,7 +52,7 @@
   &__instructor {
     span {
       margin-left: rem(8);
-      color: var(--grey-light);
+      color: whitesmoke;
     }
   }
   &__info {
@@ -75,7 +75,7 @@
       text-transform: capitalize;
       span {
         margin-left: rem(8);
-        color: var(--grey-light);
+        color: whitesmoke;
       }
     }
   }
@@ -85,7 +85,7 @@
 }
 
 .course__features {
-  background-color: var(--white);
+  background-color: var(--bg);
   padding: rem(60) 0;
   margin-bottom: rem(80);
 
@@ -126,6 +126,6 @@
     padding: rem(60) rem(12);
     border-radius: rem(6);
     margin-bottom: rem(100);
-    background-color: var(--white);
+    background-color: var(--bg);
   }
 }
