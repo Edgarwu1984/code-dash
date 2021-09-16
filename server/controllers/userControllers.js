@@ -88,6 +88,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
         photo: user.photo,
         isAdmin: user.isAdmin,
         updatedAt: user.updatedAt,
+        lastTimeLogin: user.lastTimeLogin,
         reviews: user.reviews,
       },
     });

@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 //COMPONENTS
-import Layout from '../components/layout';
-import Hero from '../components/layout/Hero';
-import Loader from '../components/common/Loader';
-import AlertMessage from '../components/common/AlertMessage';
-import Modal from '../components/common/Modal';
-import SectionTitle from '../components/SectionTitle';
+import Layout from '../../components/layout';
+import Hero from '../../components/layout/Hero';
+import Loader from '../../components/common/Loader';
+import AlertMessage from '../../components/common/AlertMessage';
+import Modal from '../../components/common/Modal';
+import SectionTitle from '../../components/SectionTitle';
 // REACT ICONS
 import { RiAdminFill } from 'react-icons/ri';
 // UTILITIES
-import DateFormatter from '../utils/DateFormatter';
+import DateFormatter from '../../utils/DateFormatter';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getUser,
   getUserList,
   updateUser,
-} from '../redux/actions/adminActions';
-import { getCourseList } from '../redux/actions/courseActions';
+} from '../../redux/actions/adminActions';
+import { getCourseList } from '../../redux/actions/courseActions';
 
 function DashboardPage({ history }) {
   // REDUX
@@ -39,9 +40,6 @@ function DashboardPage({ history }) {
     success: userUpdateSuccess,
     error: userUpdateError,
   } = userUpdate;
-  // Get Course List
-  const courseList = useSelector(state => state.courseList);
-  const { loading: courseLoading, error: courseError, courses } = courseList;
 
   // MODAL STATE
   const [show, setShow] = useState(false);
@@ -99,22 +97,6 @@ function DashboardPage({ history }) {
       dispatch(updateUser(user._id, { username, email, isAdmin: admin }));
     }
   };
-
-  if (loading) {
-    return (
-      <div className='full__screen-message'>
-        <Loader />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className='full__screen-message'>
-        <AlertMessage message={error} type='danger' />
-      </div>
-    );
-  }
 
   return (
     <Layout pageTitle='- Profile'>
@@ -198,90 +180,73 @@ function DashboardPage({ history }) {
       <Hero heroBg='/images/bg9.jpg'>
         <div className='hero__content'>
           <h1>Admin Dashboard</h1>
+          <ul className='dashboard__nav'>
+            <li className='dashboard__nav-item'>
+              <Link
+                className='dashboard__nav-item__link active'
+                to='/dashboard'
+              >
+                User
+              </Link>
+            </li>
+            <li className='dashboard__nav-item'>
+              <Link
+                className='dashboard__nav-item__link'
+                to='/dashboard/course'
+              >
+                Course
+              </Link>
+            </li>
+          </ul>
         </div>
       </Hero>
       <div className='container'>
         <section>
           <SectionTitle title='User List' />
           <div className='profile__page-wrap'>
-            <table>
-              <thead>
-                <tr>
-                  <th>Username</th>
-                  <th>Email</th>
-                  <th>Admin</th>
-                  <th>Updated At</th>
-                  <th>Edit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users &&
-                  users.map(user => (
-                    <tr key={user._id}>
-                      <td data-label='Username'>
-                        {user.isAdmin && <RiAdminFill />} {user.username}
-                      </td>
-                      <td data-label='Email'>{user.email}</td>
-                      <td data-label='Admin'>
-                        {user.isAdmin ? <span>Yes</span> : <span>No</span>}
-                      </td>
-                      <td data-label='Updated At'>
-                        {user.updatedAt && DateFormatter(user.updatedAt)}
-                      </td>
-                      <td>
-                        <button
-                          className='btn btn-outline-primary'
-                          onClick={() => showModalHandler(user._id)}
-                        >
-                          Edit
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-        <section>
-          <SectionTitle title='Course List' />
-          <div className='profile__page-wrap'>
-            <table>
-              <thead>
-                <tr>
-                  <th>Course name</th>
-                  <th>Instructor</th>
-                  <th>Rating</th>
-                  <th>Reviews</th>
-                  <th>Last Updated</th>
-                  <th>Edit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {courses &&
-                  courses.map(course => (
-                    <tr key={course._id}>
-                      <td data-label='Course Name'>{course.name}</td>
-                      <td data-label='Instructor'>
-                        {course.instructor.firstName}{' '}
-                        {course.instructor.lastName}
-                      </td>
-                      <td data-label='Rating'>{course.rating}</td>
-                      <td data-label='Reviews'>{course.numReviews}</td>
-                      <td data-label='Last Updated'>
-                        {course.updatedAt && DateFormatter(course.updatedAt)}
-                      </td>
-                      <td>
-                        <button
-                          className='btn btn-outline-primary'
-                          // onClick={() => showModalHandler(course._id)}
-                        >
-                          Edit
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
+            {loading ? (
+              <Loader />
+            ) : error ? (
+              <AlertMessage message={error} type='danger' />
+            ) : (
+              <table>
+                <thead>
+                  <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Admin</th>
+                    <th>Last Logged In</th>
+                    <th>Edit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {users &&
+                    users.map(user => (
+                      <tr key={user._id}>
+                        <td data-label='Username'>
+                          {user.isAdmin && <RiAdminFill />} {user.username}
+                        </td>
+                        <td data-label='Email'>{user.email}</td>
+                        <td data-label='Admin'>
+                          {user.isAdmin ? <span>Yes</span> : <span>No</span>}
+                        </td>
+                        <td data-label='Updated At'>
+                          {user.lastTimeLogin &&
+                            DateFormatter(user.lastTimeLogin)}
+                        </td>
+                        <td>
+                          <button
+                            className='btn btn-outline-primary'
+                            onClick={() => showModalHandler(user._id)}
+                          >
+                            Edit
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            )}
           </div>
         </section>
       </div>

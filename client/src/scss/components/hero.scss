@@ -59,3 +59,30 @@
   align-items: center;
   text-align: center;
 }
+
+.dashboard__nav {
+  list-style: none;
+  &-item {
+    margin-bottom: rem(12);
+    &__link {
+      position: relative;
+      font-size: rem(20);
+      color: var(--light-grey-50) !important;
+    }
+    &__link:hover,
+    .active {
+      color: white !important;
+      &::before {
+        @include transition;
+        position: absolute;
+        content: '';
+        left: rem(-24);
+        top: 50%;
+        transform: translateY(-50%);
+        width: rem(12);
+        height: rem(12);
+        background-color: var(--primary);
+      }
+    }
+  }
+}

@@ -171,6 +171,11 @@ function ProfilePage({ history }) {
           <img className='photo' src={user && user.photo} alt='user_photo' />
           <h3 className='username'> {user && user.username} </h3>
           {user.isAdmin && <small className='admin__badge'>Admin</small>}
+          {user.lastTimeLogin && (
+            <small className='last-login'>
+              Latest Logged In: {DateFormatter(user.lastTimeLogin)}
+            </small>
+          )}
         </div>
       </Hero>
       <div className='container'>

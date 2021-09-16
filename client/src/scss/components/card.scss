@@ -262,14 +262,21 @@
     }
 
     &-social {
+      color: var(--text-50);
       margin-top: rem(8);
       & > * {
+        padding: rem(8);
         margin-right: rem(24);
-        padding: rem(6);
+        height: rem(36);
+        width: rem(36);
         border-radius: 50%;
-        font-size: rem(30);
-        color: var(--text);
-        background-color: var(--grey-light);
+        font-size: rem(24);
+        background-color: var(--grey);
+        cursor: pointer;
+        &:hover {
+          @include transition;
+          color: var(--primary);
+        }
       }
     }
   }

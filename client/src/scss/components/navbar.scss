@@ -168,6 +168,7 @@
   }
   &:hover {
     .nav__dropdown {
+      @include shadow;
       display: flex;
     }
   }
@@ -184,12 +185,13 @@
   .user__photo {
     border-radius: 50%;
     border: 1px solid var(--grey-light);
-    width: rem(32);
+    width: rem(38);
     height: auto;
     margin-right: rem(6);
   }
   .dropdown__arrow {
     font-style: rem(20);
+    color: var(--text);
   }
 
   &:hover {
