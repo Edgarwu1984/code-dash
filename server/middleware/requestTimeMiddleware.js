@@ -1,5 +1,5 @@
 const requestTime = (req, res, next) => {
-  req.requestTime = new Date().toLocaleString();
+  req.requestTime = new Date();
   next();
 };
 

@@ -93,7 +93,7 @@ function CourseInstructorPage({ match }) {
             </div>
           )}
           <div className='list-link__btn'>
-            <Link className='btn' to='/courses'>
+            <Link className='btn btn-outline-primary' to='/courses'>
               See More Courses
             </Link>
           </div>

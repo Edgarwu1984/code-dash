@@ -11,12 +11,16 @@ const {
   deleteUser,
 } = require('../controllers/userControllers');
 const requestTime = require('../middleware/requestTimeMiddleware');
+const {
+  registerValidation,
+  loginValidation,
+} = require('../policies/authPolicy');
 
 const router = express.Router();
 
 // USER ROUTES
-router.route('/login').post(requestTime, loginUser);
-router.route('/register').post(registerUser);
+router.route('/login').post(loginValidation, requestTime, loginUser);
+router.route('/register').post(requestTime, registerValidation, registerUser);
 router
   .route('/profile')
   .get(protect, getUserProfile)

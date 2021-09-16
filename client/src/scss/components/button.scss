@@ -89,7 +89,7 @@
 }
 
 .btn:disabled {
-  background-color: var(--grey);
-  border-color: var(--grey);
+  background-color: var(--grey-100);
+  border-color: var(--grey-100);
   pointer-events: none;
 }

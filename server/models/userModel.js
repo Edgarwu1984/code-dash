@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
 const userSchema = mongoose.Schema(
@@ -13,7 +12,6 @@ const userSchema = mongoose.Schema(
       required: [true, 'Email is required.'],
       unique: true,
       lowercase: true,
-      validate: [validator.isEmail, 'Please provide a valid email'],
     },
     password: {
       type: String,

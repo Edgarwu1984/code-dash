@@ -10,9 +10,9 @@ const loginUser = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email: email });
 
   if (user && (await user.matchPassword(password))) {
-    // Create Last login in Date
-    // user.lastTimeLogin = req.requestTime;
-    // await user.save();
+    // Update the last login Date
+    user.lastTimeLogin = req.requestTime;
+    const updatedUser = await user.save();
 
     res.status(201).json({
       status: 'Login Success',
@@ -24,7 +24,7 @@ const loginUser = asyncHandler(async (req, res) => {
         photo: user.photo,
         isAdmin: user.isAdmin,
         token: generateToken(user._id),
-        lastTimeLogin: user.lastTimeLogin,
+        lastTimeLogin: updatedUser.lastTimeLogin,
       },
     });
   } else {
@@ -49,6 +49,7 @@ const registerUser = asyncHandler(async (req, res) => {
     email: email,
     password: password,
     photo: photo,
+    lastTimeLogin: req.requestTime,
   });
 
   if (user) {
@@ -60,6 +61,7 @@ const registerUser = asyncHandler(async (req, res) => {
         email: user.email,
         photo: user.photo,
         isAdmin: user.isAdmin,
+        lastTimeLogin: user.lastTimeLogin,
         token: generateToken(user._id),
       },
     });
