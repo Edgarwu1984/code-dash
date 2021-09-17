@@ -1,0 +1,46 @@
+@use '../utils/' as *;
+
+.nav__card {
+  background-color: var(--bg);
+  width: 70%;
+  height: rem(200);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: rem(6);
+  font-size: rem(24);
+  color: var(--text);
+  @include shadow;
+
+  svg {
+    margin-right: rem(4);
+  }
+
+  &:hover {
+    @include transition;
+    border: 1px solid var(--primary);
+  }
+}
+
+.page__nav {
+  display: block;
+  margin-top: rem(30);
+
+  .back-btn {
+    font-size: rem(20);
+  }
+}
+
+// .course__image {
+//   display: block;
+//   margin: auto;
+//   width: 50%;
+// }
+
+.course__form-wrap {
+  display: block;
+  background-color: var(--bg);
+  padding: rem(20) rem(40);
+  margin: rem(60) auto;
+  width: 70%;
+}

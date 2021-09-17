@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
-const Rating = ({ rating, reviews, showReview }) => {
+const Rating = ({ rating, reviews, showReview, dark }) => {
   return (
     <div className='rating'>
       <div className='rating-star'>
-        <span className='rating__value'>{rating.toFixed(1)}</span>
+        <span className={dark ? 'rating__value dark' : 'rating__value'}>
+          {rating.toFixed(1)}
+        </span>
         <span className='rating__icon'>
           {rating >= 1 ? (
             <FaStar />
@@ -54,7 +56,7 @@ const Rating = ({ rating, reviews, showReview }) => {
         </span>
       </div>
       {showReview && (
-        <div className='rating-review'>
+        <div className={dark ? 'rating-review dark' : 'rating-review'}>
           {reviews && reviews} {reviews > 1 ? 'reviews' : 'review'}
         </div>
       )}
@@ -66,12 +68,14 @@ Rating.defaultProps = {
   rating: 5,
   reviews: 0,
   showReview: false,
+  dark: false,
 };
 
 Rating.propTypes = {
   rating: PropTypes.number.isRequired,
   reviews: PropTypes.number.isRequired,
   showReview: PropTypes.bool,
+  dark: PropTypes.bool,
 };
 
 export default Rating;

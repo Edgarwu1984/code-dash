@@ -19,6 +19,8 @@ import CourseCategoryPage from './pages/Courses/CourseCategoryPage';
 import DashboardPage from './pages/Dashboard';
 import CourseInstructorPage from './pages/Courses/CourseInstructorPage';
 import CourseEditPage from './pages/Dashboard/CourseEditPage';
+import DashboardUserPage from './pages/Dashboard/DashboardUsersPage';
+import DashboardCoursePage from './pages/Dashboard/DashboardCoursesPage';
 
 function App() {
   return (
@@ -50,7 +52,16 @@ function App() {
         <Route path='/register' component={RegisterPage} />
         <Route path='/profile' component={ProfilePage} />
         <Route exact path='/dashboard' component={DashboardPage} />
-        <Route path='/dashboard/course' component={CourseEditPage} />
+        <Route path='/dashboard/users' component={DashboardUserPage} />
+        <Route
+          exact
+          path='/dashboard/courses'
+          component={DashboardCoursePage}
+        />
+        <Route
+          path='/dashboard/courses/edit/:category/:id'
+          component={CourseEditPage}
+        />
         <Route path='/404' component={NotFoundPage} />
         <Redirect to='/404' />
       </Switch>

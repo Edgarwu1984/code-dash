@@ -68,15 +68,19 @@
 
     // Badge Categories
     .php {
+      color: white;
       background-color: var(--php);
     }
     .html {
+      color: white;
       background-color: var(--html);
     }
     .javascript {
+      color: white;
       background-color: var(--javascript);
     }
     .react {
+      color: white;
       background-color: var(--react);
     }
     .unity {
@@ -84,13 +88,15 @@
       background-color: var(--unity);
     }
     .ue4 {
+      color: white;
       background-color: var(--ue4);
     }
     .zbrush {
-      color: var(--dark);
+      color: black;
       background-color: var(--zbrush);
     }
     .blender {
+      color: white;
       background-color: var(--blender);
     }
   }

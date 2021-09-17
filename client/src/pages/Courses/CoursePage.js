@@ -177,6 +177,7 @@ function CoursePage({ match, history }) {
                   rating={rating}
                   showReview={true}
                   reviews={numReviews}
+                  dark={true}
                 />
                 <div className='course__instructor'>
                   Created By:{' '}

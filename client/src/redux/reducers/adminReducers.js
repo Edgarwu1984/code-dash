@@ -9,6 +9,10 @@ import {
   ADMIN_GET_USER_FAIL,
   ADMIN_GET_USER_REQUEST,
   ADMIN_GET_USER_SUCCESS,
+  ADMIN_UPDATE_COURSE_FAIL,
+  ADMIN_UPDATE_COURSE_REQUEST,
+  ADMIN_UPDATE_COURSE_RESET,
+  ADMIN_UPDATE_COURSE_SUCCESS,
   ADMIN_UPDATE_USER_FAIL,
   ADMIN_UPDATE_USER_REQUEST,
   ADMIN_UPDATE_USER_RESET,
@@ -65,6 +69,21 @@ export const userDeleteReducer = (state = {}, action) => {
     case ADMIN_DELETE_USER_FAIL:
       return { loading: false, error: action.payload };
     case ADMIN_DELETE_USER_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const courseUpdateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ADMIN_UPDATE_COURSE_REQUEST:
+      return { loading: true };
+    case ADMIN_UPDATE_COURSE_SUCCESS:
+      return { loading: false, success: true, user: action.payload };
+    case ADMIN_UPDATE_COURSE_FAIL:
+      return { loading: false, error: action.payload };
+    case ADMIN_UPDATE_COURSE_RESET:
       return {};
     default:
       return state;

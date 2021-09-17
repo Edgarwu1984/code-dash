@@ -20,6 +20,7 @@ import {
   userRegisterReducer,
 } from './reducers/userReducers';
 import {
+  courseUpdateReducer,
   singleUserReducer,
   userDeleteReducer,
   userListReducer,
@@ -50,6 +51,7 @@ const reducer = combineReducers({
   singleUser: singleUserReducer,
   userUpdate: userUpdateReducer,
   userDelete: userDeleteReducer,
+  courseUpdate: courseUpdateReducer,
   // REVIEW REDUCERS
   topReviews: topReviewsReducer,
   createReview: createReviewReducer,

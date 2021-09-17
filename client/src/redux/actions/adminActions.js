@@ -10,11 +10,16 @@ import {
   ADMIN_GET_USER_FAIL,
   ADMIN_GET_USER_REQUEST,
   ADMIN_GET_USER_SUCCESS,
+  ADMIN_UPDATE_COURSE_FAIL,
+  ADMIN_UPDATE_COURSE_REQUEST,
+  ADMIN_UPDATE_COURSE_RESET,
+  ADMIN_UPDATE_COURSE_SUCCESS,
   ADMIN_UPDATE_USER_FAIL,
   ADMIN_UPDATE_USER_REQUEST,
   ADMIN_UPDATE_USER_RESET,
   ADMIN_UPDATE_USER_SUCCESS,
 } from '../constants/adminConstants';
+import { GET_COURSE_LIST_SUCCESS } from '../constants/courseConstants';
 
 export const getUserList = () => async (dispatch, getState) => {
   try {
@@ -141,6 +146,54 @@ export const deleteUser = id => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ADMIN_DELETE_USER_FAIL,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
+    });
+  }
+};
+
+export const updateCourse = (id, course) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: ADMIN_UPDATE_COURSE_REQUEST });
+
+    // GET ADMIN TOKEN
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.put(
+      `/api/courses/${id}`,
+      {
+        _id: course._id,
+        name: course.name,
+        image: course.image,
+        category: course.category,
+        courseCategory: course.courseCategory,
+        instructor: course.instructor,
+        description: course.description,
+        language: course.language,
+        duration: course.duration,
+        features: course.features,
+        content: course.content,
+      },
+      config
+    );
+
+    dispatch({ type: ADMIN_UPDATE_COURSE_SUCCESS, payload: data.data });
+    dispatch({ type: ADMIN_UPDATE_COURSE_RESET });
+    dispatch({ type: GET_COURSE_LIST_SUCCESS, payload: data.data });
+  } catch (error) {
+    dispatch({
+      type: ADMIN_UPDATE_COURSE_FAIL,
       payload:
         error.response && error.response.data.messages
           ? error.response.data.messages

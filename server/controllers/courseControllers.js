@@ -94,8 +94,41 @@ const getTopCoursesByRating = asyncHandler(async (req, res) => {
   });
 });
 
+// @description Update Course by ID
+// @route GET /api/courses/:category/:id
+// @access Public
+const updateCourseById = asyncHandler(async (req, res) => {
+  const id = req.params.id;
+  const course = await Course.findById(id);
+
+  if (course) {
+    course.name = req.body.name || course.name;
+    course.image = req.body.image || course.image;
+    course.category = req.body.category || course.category;
+    course.courseCategory = req.body.courseCategory || course.courseCategory;
+    course.instructor = req.body.instructor || course.instructor;
+    course.description = req.body.description || course.description;
+    course.language = req.body.language || course.language;
+    course.duration = req.body.duration || course.duration;
+    course.features = req.body.features || course.features;
+    course.content = req.body.content || course.content;
+
+    const updatedCourse = course.save();
+
+    res.status(200).json({
+      status: 'Success',
+      data: updatedCourse,
+      message: 'Course updated.',
+    });
+  } else {
+    res.status(404);
+    throw new Error('Can not found course.');
+  }
+});
+
 module.exports = {
   createCourse,
+  updateCourseById,
   getCourses,
   getCoursesByCategory,
   getCourseById,
