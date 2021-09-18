@@ -1,0 +1,65 @@
+[{
+  "_id": {
+    "$oid": "614586678177566f6e9c1d17"
+  },
+  "firstName": "Alex",
+  "lastName": "Hunter",
+  "photo": "/images/instructors/instructor_01.jpg",
+  "introduction": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor. ",
+  "createdAt": {
+    "$date": "2021-09-18T06:25:43.440Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T06:25:43.440Z"
+  },
+  "fullName": "Alex Hunter",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "614586678177566f6e9c1d19"
+  },
+  "firstName": "Zoya",
+  "lastName": "Hank",
+  "photo": "/images/instructors/instructor_03.jpg",
+  "introduction": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor. ",
+  "createdAt": {
+    "$date": "2021-09-18T06:25:43.440Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T06:25:43.440Z"
+  },
+  "fullName": "Zoya Hank",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "614586678177566f6e9c1d18"
+  },
+  "firstName": "Jack",
+  "lastName": "Lee",
+  "photo": "/images/instructors/instructor_02.jpg",
+  "introduction": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod",
+  "createdAt": {
+    "$date": "2021-09-18T06:25:43.440Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T06:25:43.440Z"
+  },
+  "fullName": "Jack Lee",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "614586678177566f6e9c1d1a"
+  },
+  "firstName": "Chris",
+  "lastName": "Chen",
+  "photo": "/images/instructors/instructor_04.jpg",
+  "introduction": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor. ",
+  "createdAt": {
+    "$date": "2021-09-18T06:25:43.440Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T06:25:43.440Z"
+  },
+  "fullName": "Chris Chen",
+  "__v": 0
+}]

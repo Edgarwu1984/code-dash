@@ -10,6 +10,9 @@ const instructorSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    fullName: {
+      type: String,
+    },
     photo: {
       type: String,
       required: false,
@@ -24,6 +27,11 @@ const instructorSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+instructorSchema.pre('save', function (next) {
+  this.fullName = this.firstName + ' ' + this.lastName;
+  next();
+});
 
 const Instructor = mongoose.model('Instructor', instructorSchema);
 

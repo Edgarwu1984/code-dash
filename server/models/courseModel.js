@@ -57,10 +57,11 @@ const courseSchema = mongoose.Schema(
     ],
     rating: {
       type: Number,
-      required: true,
-      min: [1, 'Rating must be greater or equal to 1.0'],
-      max: [5, 'Rating must be less or equal to 5.0'],
-      default: 4.5,
+      default: 5,
+    },
+    totalRating: {
+      type: Number,
+      default: 0,
     },
     numReviews: {
       type: Number,
@@ -77,7 +78,7 @@ const courseSchema = mongoose.Schema(
 courseSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'instructor',
-    select: 'firstName lastName',
+    select: 'fullName',
   });
   next();
 });
@@ -93,6 +94,12 @@ courseSchema.virtual('reviews', {
 // Create Slug by Name
 courseSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
+  next();
+});
+
+// Calculate Average Rating
+courseSchema.pre('save', function (next) {
+  this.rating = (this.totalRating / this.numReviews).toFixed(1);
   next();
 });
 

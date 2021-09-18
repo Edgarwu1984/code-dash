@@ -106,6 +106,9 @@
 
     a {
       color: var(--text);
+      .title {
+        font-size: rem(18);
+      }
       &:hover {
         .title {
           @include transition;

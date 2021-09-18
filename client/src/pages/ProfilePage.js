@@ -3,8 +3,8 @@ import { toast } from 'react-toastify';
 //COMPONENTS
 import Layout from '../components/layout';
 import Hero from '../components/layout/Hero';
-import SectionTitle from '../components/SectionTitle';
-import ReviewCard from '../components/ReviewCard';
+import SectionTitle from '../components/common/SectionTitle';
+import ReviewCard from '../components/cards/ReviewCard';
 import AlertMessage from '../components/common/AlertMessage';
 import Loader from '../components/common/Loader';
 import Modal from '../components/common/Modal';

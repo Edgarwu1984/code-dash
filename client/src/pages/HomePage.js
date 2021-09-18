@@ -1,37 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 // COMPONENTS
 import Layout from '../components/layout';
 import Hero from '../components/layout/Hero';
-import CourseCard from '../components/CourseCard';
-import FeatureCard from '../components/FeatureCard';
-import TestimonialCard from '../components/TestimonialCard';
-import Loader from '../components/common/Loader';
-import AlertMessage from '../components/common/AlertMessage';
+import FeatureCard from '../components/cards/FeatureCard';
 import ScrollToTop from '../components/common/ScrollToTop';
+import TopCourseList from '../components/TopCourseList';
+import TopReviewList from '../components/TopReviewList';
 // UTILITIES
 import ResetPagePosition from '../utils/ResetPagePosition';
-// REDUX
-import { useDispatch, useSelector } from 'react-redux';
-import { getTopCourses } from '../redux/actions/courseActions';
-import { getTopReviews } from '../redux/actions/reviewActions';
 
 function HomePage() {
   // RESET PAGE POSITION
   const pathname = useLocation().pathname;
   ResetPagePosition(pathname);
-
-  // REDUX
-  const dispatch = useDispatch();
-  const topCourseList = useSelector(state => state.topCourseList);
-  const { loading, error, courses } = topCourseList;
-  const topReviews = useSelector(state => state.topReviews);
-  const { loading: reviewsLoading, error: reviewsError, reviews } = topReviews;
-
-  useEffect(() => {
-    dispatch(getTopCourses());
-    dispatch(getTopReviews());
-  }, [dispatch]);
 
   return (
     <Layout>
@@ -80,35 +62,7 @@ function HomePage() {
               nonumy eirmod tempor invidunt ut labore et dolore magna.
             </p>
           </header>
-
-          {loading ? (
-            <Loader />
-          ) : error ? (
-            <AlertMessage message={error} type='danger' />
-          ) : (
-            <div className='grid col-4'>
-              {courses &&
-                courses.map(course => (
-                  <CourseCard
-                    key={course._id}
-                    category={course.category}
-                    courseId={course._id}
-                    courseCategory={course.courseCategory}
-                    courseImg={course.image}
-                    courseName={course.name}
-                    courseTutorFirstName={
-                      course.instructor.firstName && course.instructor.firstName
-                    }
-                    courseTutorLastName={
-                      course.instructor.lastName && course.instructor.lastName
-                    }
-                    courseDescription={course.description}
-                    courseRating={course.rating}
-                    numReviews={course.numReviews}
-                  />
-                ))}
-            </div>
-          )}
+          <TopCourseList />
         </div>
       </section>
       <section className='industry-brand__wrap'>
@@ -130,25 +84,7 @@ function HomePage() {
           <header className='section__header'>
             <h3>What Our Students Said</h3>
           </header>
-          <div className='grid col-3'>
-            {reviewsLoading ? (
-              <Loader />
-            ) : reviewsError ? (
-              <AlertMessage error={reviewsError} type='danger' />
-            ) : (
-              reviews &&
-              reviews.map(review => (
-                <TestimonialCard
-                  key={review._id}
-                  comment={review.comment}
-                  userImage={review.user.photo}
-                  userName={review.user.username}
-                  rating={review.rating}
-                  commentDate={review.createdAt}
-                />
-              ))
-            )}
-          </div>
+          <TopReviewList />
         </div>
       </section>
     </Layout>

@@ -7,7 +7,7 @@ import Hero from '../../components/layout/Hero';
 import Loader from '../../components/common/Loader';
 import AlertMessage from '../../components/common/AlertMessage';
 import Modal from '../../components/common/Modal';
-import SectionTitle from '../../components/SectionTitle';
+import SectionTitle from '../../components/common/SectionTitle';
 // REACT ICONS
 import { RiAdminFill } from 'react-icons/ri';
 // UTILITIES

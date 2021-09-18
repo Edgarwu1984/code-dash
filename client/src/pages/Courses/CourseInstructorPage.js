@@ -3,10 +3,10 @@ import { Link, useLocation } from 'react-router-dom';
 // COMPONENTS
 import Layout from '../../components/layout';
 import Hero from '../../components/layout/Hero';
-import SectionTitle from '../../components/SectionTitle';
+import SectionTitle from '../../components/common/SectionTitle';
 import AlertMessage from '../../components/common/AlertMessage';
 import Loader from '../../components/common/Loader';
-import CourseCard from '../../components/CourseCard';
+import CourseCard from '../../components/cards/CourseCard';
 import ScrollToTop from '../../components/common/ScrollToTop';
 // UTILITIES
 import ResetPagePosition from '../../utils/ResetPagePosition';

@@ -6,12 +6,13 @@ import Layout from '../../components/layout';
 import Hero from '../../components/layout/Hero';
 import Loader from '../../components/common/Loader';
 import AlertMessage from '../../components/common/AlertMessage';
-import Rating from '../../components/Rating';
-import SectionTitle from '../../components/SectionTitle';
+import Rating from '../../components/common/Rating';
+import SectionTitle from '../../components/common/SectionTitle';
 import Accordion from '../../components/common/Accordion';
 import ScrollToTop from '../../components/common/ScrollToTop';
 import Modal from '../../components/common/Modal';
-import ReviewCard from '../../components/ReviewCard';
+import ReviewCard from '../../components/cards/ReviewCard';
+import Breadcrumb from '../../components/common/Breadcrumb';
 // UTILITIES
 import ResetPagePosition from '../../utils/ResetPagePosition';
 // REDUX
@@ -19,7 +20,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCourseDetails } from '../../redux/actions/courseActions';
 import { createCourseReview } from '../../redux/actions/reviewActions';
 import { getUserDetails } from '../../redux/actions/userActions';
-import Breadcrumb from '../../components/common/Breadcrumb';
 
 function CoursePage({ match, history }) {
   // RESET PAGE POSITION
@@ -180,17 +180,13 @@ function CoursePage({ match, history }) {
                   dark={true}
                 />
                 <div className='course__instructor'>
-                  Created By:{' '}
-                  <span>
-                    {instructor && instructor.firstName}{' '}
-                    {instructor && instructor.lastName}
-                  </span>
+                  Created By: <span>{instructor?.fullName}</span>
                 </div>
 
                 <div className='course__info'>
                   <div className='update__date'>
                     Last Updated:
-                    <span>{updatedAt && updatedAt.slice(0, 10)}</span>
+                    <span>{updatedAt?.slice(0, 10)}</span>
                   </div>
                   <div className='language'>
                     Language: <span>{language}</span>
@@ -240,7 +236,7 @@ function CoursePage({ match, history }) {
             </section>
             <section className='review__section'>
               <SectionTitle title='latest reviews' />
-              {reviews && reviews.length === 0 ? (
+              {reviews?.length === 0 ? (
                 <div className='empty__reviews'>No reviews</div>
               ) : (
                 reviews &&

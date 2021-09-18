@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Rating from './Rating';
+import Rating from '../common/Rating';
 
 const CourseCard = ({
   courseId,
@@ -9,8 +9,7 @@ const CourseCard = ({
   courseImg,
   courseName,
   courseTutorId,
-  courseTutorFirstName,
-  courseTutorLastName,
+  courseTutorName,
   courseCategory,
   courseDescription,
   courseRating,
@@ -29,9 +28,8 @@ const CourseCard = ({
         </Link>
         <small className='tutor'>
           <Link to={`/courses/instructors/${courseTutorId}`}>
-            <span>{courseTutorFirstName}</span>{' '}
-            <span>{courseTutorLastName}</span>
-          </Link>{' '}
+            <span>{courseTutorName}</span>
+          </Link>
         </small>
         <Rating rating={courseRating} showReview={true} reviews={numReviews} />
         <p>{courseDescription}</p>
@@ -45,8 +43,7 @@ CourseCard.propTypes = {
   courseId: PropTypes.string,
   courseImg: PropTypes.string.isRequired,
   courseName: PropTypes.string.isRequired,
-  courseTutorFirstName: PropTypes.string.isRequired,
-  courseTutorLastName: PropTypes.string.isRequired,
+  courseTutorName: PropTypes.string.isRequired,
   courseCategory: PropTypes.string.isRequired,
   courseDescription: PropTypes.string.isRequired,
   courseRating: PropTypes.number.isRequired,
@@ -56,8 +53,7 @@ CourseCard.propTypes = {
 CourseCard.defaultProps = {
   courseImg: '/images/courses/php.jpg',
   courseName: 'Course name',
-  courseTutorFirstName: 'FirstName',
-  courseTutorLastName: 'LastName',
+  courseTutorName: 'Name',
   courseCategory: 'php',
   courseDescription:
     'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy et magna.',

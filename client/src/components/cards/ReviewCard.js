@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import DateFormatter from '../utils/DateFormatter';
-import Rating from './Rating';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import DateFormatter from '../../utils/DateFormatter';
+import Rating from '../common/Rating';
 
 const ReviewCard = ({
   courseId,

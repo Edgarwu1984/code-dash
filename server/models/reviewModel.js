@@ -48,37 +48,37 @@ reviewSchema.pre(/^find/, function (next) {
 });
 
 // Update the numReviews and Rating
-reviewSchema.statics.calcAverageRating = async function (id) {
-  const stats = await this.aggregate([
-    {
-      $match: { course: id },
-    },
-    {
-      $group: {
-        _id: '$course',
-        numReviews: { $sum: 1 },
-        rating: { $avg: '$rating' },
-      },
-    },
-  ]);
+// reviewSchema.statics.calcAverageRating = async function (id) {
+//   const stats = await this.aggregate([
+//     {
+//       $match: { course: id },
+//     },
+//     {
+//       $group: {
+//         _id: '$course',
+//         numReviews: { $sum: 1 },
+//         rating: { $avg: '$rating' },
+//       },
+//     },
+//   ]);
 
-  if (stats.length > 0) {
-    await Course.findByIdAndUpdate(id, {
-      numReviews: stats[0].numReviews,
-      rating: stats[0].rating,
-    });
-  } else {
-    await Course.findByIdAndUpdate(id, {
-      numReviews: 0,
-      rating: 5,
-    });
-  }
-};
+//   if (stats.length > 0) {
+//     await Course.findByIdAndUpdate(id, {
+//       numReviews: stats[0].numReviews,
+//       rating: stats[0].rating,
+//     });
+//   } else {
+//     await Course.findByIdAndUpdate(id, {
+//       numReviews: 0,
+//       rating: 5,
+//     });
+//   }
+// };
 
-reviewSchema.pre('save', function (next) {
-  this.constructor.calcAverageRating(this.course);
-  next();
-});
+// reviewSchema.pre('save', function (next) {
+//   this.constructor.calcAverageRating(this.course);
+//   next();
+// });
 
 const Review = mongoose.model('Review', reviewSchema);
 

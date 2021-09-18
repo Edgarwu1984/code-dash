@@ -1,0 +1,139 @@
+[{
+  "_id": {
+    "$oid": "614588099ffdc35f911529b3"
+  },
+  "username": "Edgar Wu",
+  "email": "admin@test.com",
+  "password": "$2a$10$OvQU.IObvd4MsKZET7sS0uvDRt.SlrLXb54Bi5aGglYCAlX8LadpG",
+  "photo": "https://www.edgarwu.me/img/edgarwu.jpg",
+  "isAdmin": true,
+  "isActivated": true,
+  "lastTimeLogin": {
+    "$date": "2021-09-18T08:14:31.148Z"
+  },
+  "__v": 0,
+  "createdAt": {
+    "$date": "2021-09-18T06:32:41.962Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:14:31.266Z"
+  }
+},{
+  "_id": {
+    "$oid": "614588099ffdc35f911529b4"
+  },
+  "username": "Grace Moreno",
+  "email": "user1@test.com",
+  "password": "$2a$10$YjZBYC68FKjpWJuoY1sai.k4VmrY6tU7KGw8BULuJ3/0CV80cdG7q",
+  "photo": "https://randomuser.me/api/portraits/women/64.jpg",
+  "isAdmin": false,
+  "isActivated": true,
+  "lastTimeLogin": {
+    "$date": "2021-09-18T08:16:54.622Z"
+  },
+  "__v": 0,
+  "createdAt": {
+    "$date": "2021-09-18T06:32:41.963Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:16:54.734Z"
+  }
+},{
+  "_id": {
+    "$oid": "614588099ffdc35f911529b5"
+  },
+  "username": "Judd Douglas",
+  "email": "user2@test.com",
+  "password": "$2a$10$MMxZkolyJDUma1p03xou9u2ukBG/RfLYP1r25ySRfk9CjgPEd/18G",
+  "photo": "https://randomuser.me/api/portraits/men/68.jpg",
+  "isAdmin": false,
+  "isActivated": true,
+  "lastTimeLogin": {
+    "$date": "2021-09-18T08:18:48.862Z"
+  },
+  "__v": 0,
+  "createdAt": {
+    "$date": "2021-09-18T06:32:41.963Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:18:48.951Z"
+  }
+},{
+  "_id": {
+    "$oid": "614588099ffdc35f911529b6"
+  },
+  "username": "Carla Scott",
+  "email": "user3@test.com",
+  "password": "$2a$10$mOOAErm5stSBPU30uOgddOlC.B5.UyvfvxsRZ0TnqtphzbesknsPy",
+  "photo": "https://randomuser.me/api/portraits/women/33.jpg",
+  "isAdmin": false,
+  "isActivated": true,
+  "lastTimeLogin": {
+    "$date": "2021-09-18T08:20:30.676Z"
+  },
+  "__v": 0,
+  "createdAt": {
+    "$date": "2021-09-18T06:32:41.963Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:20:30.760Z"
+  }
+},{
+  "_id": {
+    "$oid": "614588099ffdc35f911529b7"
+  },
+  "username": "Brayden Gutierrez",
+  "email": "user4@test.com",
+  "password": "$2a$10$Fy45N3KNlwXjERK0YdHt2OSl81v5wGDFRDKE05YdEt8hKVHfe/P2.",
+  "photo": "https://randomuser.me/api/portraits/men/99.jpg",
+  "isAdmin": false,
+  "isActivated": true,
+  "lastTimeLogin": {
+    "$date": "2021-09-18T08:24:23.888Z"
+  },
+  "__v": 0,
+  "createdAt": {
+    "$date": "2021-09-18T06:32:41.963Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:24:23.972Z"
+  }
+},{
+  "_id": {
+    "$oid": "614588099ffdc35f911529b8"
+  },
+  "username": "Juan Armstrong",
+  "email": "user5@test.com",
+  "password": "$2a$10$7pqMctmnEqqbvokpkbnQNuBISMq0aFDNxHzqlPOJXl2wXBd2pUuXG",
+  "photo": "https://randomuser.me/api/portraits/men/97.jpg",
+  "isAdmin": false,
+  "isActivated": true,
+  "lastTimeLogin": {
+    "$date": "2021-09-18T08:29:59.345Z"
+  },
+  "__v": 0,
+  "createdAt": {
+    "$date": "2021-09-18T06:32:41.963Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:29:59.447Z"
+  }
+},{
+  "_id": {
+    "$oid": "614588099ffdc35f911529b9"
+  },
+  "username": "Bessie Graves",
+  "email": "user6@test.com",
+  "password": "$2a$10$nik2tfNZ2pH9pptAXAa6pObUaz2G6GZ9nMhgmJg6vljPnAAjdh4zy",
+  "photo": "https://randomuser.me/api/portraits/women/10.jpg",
+  "isAdmin": false,
+  "isActivated": true,
+  "lastTimeLogin": null,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2021-09-18T06:32:41.963Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T06:32:41.963Z"
+  }
+}]

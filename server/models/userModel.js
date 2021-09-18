@@ -28,6 +28,11 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    isActivated: {
+      type: Boolean,
+      required: true,
+      default: true,
+    },
     lastTimeLogin: {
       type: Date,
     },

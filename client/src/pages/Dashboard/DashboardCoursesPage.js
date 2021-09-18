@@ -5,7 +5,7 @@ import Layout from '../../components/layout';
 import Hero from '../../components/layout/Hero';
 import Loader from '../../components/common/Loader';
 import AlertMessage from '../../components/common/AlertMessage';
-import SectionTitle from '../../components/SectionTitle';
+import SectionTitle from '../../components/common/SectionTitle';
 // UTILITIES
 import DateFormatter from '../../utils/DateFormatter';
 // REDUX

@@ -1,0 +1,229 @@
+[{
+  "_id": {
+    "$oid": "6145a0acc886b38154131f8c"
+  },
+  "rating": 4.8,
+  "comment": "This HTML course is very informative and good. As well easy to understand.",
+  "user": {
+    "$oid": "614588099ffdc35f911529b4"
+  },
+  "course": {
+    "$oid": "614586d48c170e2366a6f1e1"
+  },
+  "createdAt": {
+    "$date": "2021-09-18T08:17:48.387Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:17:48.387Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6145a0cfc886b38154131fd6"
+  },
+  "rating": 5,
+  "comment": "Feel really thankful and enjoyable to have this amazing course. It provides me solid knowledge of JavaScript and also teaches me how to think like a developer. Thanks your team for great effort !",
+  "user": {
+    "$oid": "614588099ffdc35f911529b4"
+  },
+  "course": {
+    "$oid": "614586d48c170e2366a6f1e4"
+  },
+  "createdAt": {
+    "$date": "2021-09-18T08:18:23.165Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:18:23.165Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6145a104c886b3815413203e"
+  },
+  "rating": 4.7,
+  "comment": "Great Course, i learned what i wanted to learn long time ago but i was afraid of being not unable to achieve it.",
+  "user": {
+    "$oid": "614588099ffdc35f911529b5"
+  },
+  "course": {
+    "$oid": "614586d48c170e2366a6f1f4"
+  },
+  "createdAt": {
+    "$date": "2021-09-18T08:19:16.146Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:19:16.146Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6145a137c886b3815413208a"
+  },
+  "rating": 4.9,
+  "comment": "One of the best and most comprehensive course I have taken so far on game character design and creation. Gives me a solid foundation to build upon for further development.",
+  "user": {
+    "$oid": "614588099ffdc35f911529b5"
+  },
+  "course": {
+    "$oid": "614586d48c170e2366a6f1f8"
+  },
+  "createdAt": {
+    "$date": "2021-09-18T08:20:07.999Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:20:07.999Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6145a183c886b381541320ee"
+  },
+  "rating": 4.9,
+  "comment": "A very interesting, exiting and helpfull course - thank you very much for it. It gives me a re new view to developing a web site.",
+  "user": {
+    "$oid": "614588099ffdc35f911529b6"
+  },
+  "course": {
+    "$oid": "614586d48c170e2366a6f1e8"
+  },
+  "createdAt": {
+    "$date": "2021-09-18T08:21:23.320Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:21:23.320Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6145a1c7c886b3815413213d"
+  },
+  "rating": 4.8,
+  "comment": "I am happy to learn a lot of topics in this course. The thing which attracts the most is the way he explains every concept in this course and implement.",
+  "user": {
+    "$oid": "614588099ffdc35f911529b6"
+  },
+  "course": {
+    "$oid": "614586d48c170e2366a6f1e4"
+  },
+  "createdAt": {
+    "$date": "2021-09-18T08:22:31.156Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:22:31.156Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6145a219c886b3815413218a"
+  },
+  "rating": 5,
+  "comment": "Really a great experience. My first course and it was such a pleasant journey. A lot of knowledge. Now, is up to me to practice!",
+  "user": {
+    "$oid": "614588099ffdc35f911529b6"
+  },
+  "course": {
+    "$oid": "614586d48c170e2366a6f1e1"
+  },
+  "createdAt": {
+    "$date": "2021-09-18T08:23:53.414Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:23:53.414Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6145a2a2c886b38154132256"
+  },
+  "rating": 4.8,
+  "comment": "Overall good, but I expected a bit more after learning from other gamedev.tv courses. Got what I came for (mobile specific stuff) and I'm happy with a purchase, but there's a room to improve.",
+  "user": {
+    "$oid": "614588099ffdc35f911529b7"
+  },
+  "course": {
+    "$oid": "614586d48c170e2366a6f1ec"
+  },
+  "createdAt": {
+    "$date": "2021-09-18T08:26:10.609Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:26:10.609Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6145a36a6cf21bc579037ee8"
+  },
+  "rating": 5,
+  "comment": "I truly appreciate your teaching. I enjoyed every minute of your lecture. Thank you very much for the course.",
+  "user": {
+    "$oid": "614588099ffdc35f911529b7"
+  },
+  "course": {
+    "$oid": "614586d48c170e2366a6f1f8"
+  },
+  "createdAt": {
+    "$date": "2021-09-18T08:29:30.766Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:29:30.766Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6145a3b06cf21bc579037f7f"
+  },
+  "rating": 4.9,
+  "comment": "One of the best and most comprehensive course I have taken so far on game character design and creation. Gives me a solid foundation to build upon for further development.",
+  "user": {
+    "$oid": "614588099ffdc35f911529b8"
+  },
+  "course": {
+    "$oid": "614586d48c170e2366a6f1dd"
+  },
+  "createdAt": {
+    "$date": "2021-09-18T08:30:40.715Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:30:40.715Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6145a40a6cf21bc57903804f"
+  },
+  "rating": 4.7,
+  "comment": "I took this course because I wanted to extend my skills from environment / props to characters. I enjoyed it very much and learned new techniques, while reinforced my core modeling skills.",
+  "user": {
+    "$oid": "614588099ffdc35f911529b8"
+  },
+  "course": {
+    "$oid": "614586d48c170e2366a6f1f8"
+  },
+  "createdAt": {
+    "$date": "2021-09-18T08:32:10.190Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:32:10.190Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6145a4496cf21bc57903809b"
+  },
+  "rating": 4.5,
+  "comment": "Although there may be good practical examples in the course, it is lost in lengthy and meandering videos. I have found myself speeding up the video and skipping quite a few videos.",
+  "user": {
+    "$oid": "614588099ffdc35f911529b8"
+  },
+  "course": {
+    "$oid": "614586d48c170e2366a6f1f0"
+  },
+  "createdAt": {
+    "$date": "2021-09-18T08:33:13.246Z"
+  },
+  "updatedAt": {
+    "$date": "2021-09-18T08:33:13.246Z"
+  },
+  "__v": 0
+}]

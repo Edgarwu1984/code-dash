@@ -6,7 +6,7 @@ import Hero from '../components/layout/Hero';
 import ScrollToTop from '../components/common/ScrollToTop';
 import Loader from '../components/common/Loader';
 import AlertMessage from '../components/common/AlertMessage';
-import InstructorCard from '../components/InstructorCard';
+import InstructorCard from '../components/cards/InstructorCard';
 // UTILITIES
 import ResetPagePosition from '../utils/ResetPagePosition';
 // REACT ICONS
@@ -87,7 +87,7 @@ function AboutPage() {
                   key={instructor._id}
                   id={instructor._id}
                   photo={instructor.photo}
-                  name={`${instructor.firstName} ${instructor.lastName}`}
+                  name={instructor.fullName}
                   intro={instructor.introduction}
                 />
               ))

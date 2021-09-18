@@ -1,4 +1,5 @@
 const Review = require('../models/reviewModel');
+const Course = require('../models/courseModel');
 const asyncHandler = require('../utils/asyncHandler');
 
 // @description Get  Reviews
@@ -24,6 +25,7 @@ const getReviews = asyncHandler(async (req, res) => {
 // @access Private
 const createReview = asyncHandler(async (req, res, next) => {
   const { rating, comment } = req.body;
+  const course = await Course.findById(req.params.id);
 
   if (rating && comment) {
     await Review.create({
@@ -32,6 +34,11 @@ const createReview = asyncHandler(async (req, res, next) => {
       course: req.params.id,
       user: req.user.id,
     });
+
+    // Update numReviews & totalRating in Course Model
+    course.numReviews += 1;
+    course.totalRating += Number(rating);
+    await course.save();
 
     res.status(201).send('New review added.');
   } else {
