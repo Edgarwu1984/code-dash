@@ -1,9 +1,5 @@
 import axios from 'axios';
 import {
-  ADMIN_DELETE_USER_FAIL,
-  ADMIN_DELETE_USER_REQUEST,
-  ADMIN_DELETE_USER_RESET,
-  ADMIN_DELETE_USER_SUCCESS,
   ADMIN_GET_USERS_FAIL,
   ADMIN_GET_USERS_REQUEST,
   ADMIN_GET_USERS_SUCCESS,
@@ -20,6 +16,7 @@ import {
   ADMIN_UPDATE_USER_SUCCESS,
 } from '../constants/adminConstants';
 import { GET_COURSE_LIST_SUCCESS } from '../constants/courseConstants';
+import { ERROR_RESET } from '../constants/userConstants';
 
 export const getUserList = () => async (dispatch, getState) => {
   try {
@@ -48,6 +45,7 @@ export const getUserList = () => async (dispatch, getState) => {
           ? error.response.data.messages
           : error.messages,
     });
+    dispatch({ type: ERROR_RESET });
   }
 };
 
@@ -78,6 +76,7 @@ export const getUser = id => async (dispatch, getState) => {
           ? error.response.data.messages
           : error.messages,
     });
+    dispatch({ type: ERROR_RESET });
   }
 };
 
@@ -103,6 +102,7 @@ export const updateUser = (id, user) => async (dispatch, getState) => {
         _id: user._id,
         username: user.username,
         email: user.email,
+        isActivated: user.isActivated,
         isAdmin: user.isAdmin,
       },
       config
@@ -119,38 +119,7 @@ export const updateUser = (id, user) => async (dispatch, getState) => {
           ? error.response.data.messages
           : error.messages,
     });
-  }
-};
-
-export const deleteUser = id => async (dispatch, getState) => {
-  try {
-    dispatch({ type: ADMIN_DELETE_USER_REQUEST });
-
-    // GET ADMIN TOKEN
-    const {
-      userLogin: { userInfo },
-    } = getState();
-
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
-
-    await axios.delete(`/api/users/${id}`, config);
-
-    dispatch({ type: ADMIN_DELETE_USER_SUCCESS });
-    dispatch({ type: ADMIN_DELETE_USER_RESET });
-    dispatch({ type: ADMIN_GET_USERS_SUCCESS });
-  } catch (error) {
-    dispatch({
-      type: ADMIN_DELETE_USER_FAIL,
-      payload:
-        error.response && error.response.data.messages
-          ? error.response.data.messages
-          : error.messages,
-    });
+    dispatch({ type: ERROR_RESET });
   }
 };
 
@@ -199,5 +168,6 @@ export const updateCourse = (id, course) => async (dispatch, getState) => {
           ? error.response.data.messages
           : error.messages,
     });
+    dispatch({ type: ERROR_RESET });
   }
 };

@@ -6,8 +6,11 @@ import Loader from '../components/common/Loader';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../redux/actions/userActions';
+import LoadTheme from '../utils/LoadTheme';
 
-function LoginPage({ history, location }) {
+function LoginPage({ history }) {
+  LoadTheme();
+
   const getCurrentYear = new Date().getFullYear();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

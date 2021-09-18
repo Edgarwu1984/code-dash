@@ -6,8 +6,10 @@ import Loader from '../components/common/Loader';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../redux/actions/userActions';
+import LoadTheme from '../utils/LoadTheme';
 
 function RegisterPage({ history }) {
+  LoadTheme();
   const getCurrentYear = new Date().getFullYear();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');

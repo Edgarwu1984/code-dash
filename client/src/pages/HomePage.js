@@ -5,10 +5,10 @@ import Layout from '../components/layout';
 import Hero from '../components/layout/Hero';
 import FeatureCard from '../components/cards/FeatureCard';
 import ScrollToTop from '../components/common/ScrollToTop';
-import TopCourseList from '../components/TopCourseList';
 import TopReviewList from '../components/TopReviewList';
 // UTILITIES
 import ResetPagePosition from '../utils/ResetPagePosition';
+import CourseList from '../components/CourseList';
 
 function HomePage() {
   // RESET PAGE POSITION
@@ -62,7 +62,7 @@ function HomePage() {
               nonumy eirmod tempor invidunt ut labore et dolore magna.
             </p>
           </header>
-          <TopCourseList />
+          <CourseList isTopCourses={true} />
         </div>
       </section>
       <section className='industry-brand__wrap'>

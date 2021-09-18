@@ -180,7 +180,10 @@ function CoursePage({ match, history }) {
                   dark={true}
                 />
                 <div className='course__instructor'>
-                  Created By: <span>{instructor?.fullName}</span>
+                  Created By:{' '}
+                  <Link to={`/courses/instructors/${instructor?._id}`}>
+                    <span>{instructor?.fullName}</span>
+                  </Link>
                 </div>
 
                 <div className='course__info'>

@@ -7,6 +7,7 @@ import { IoMdSunny, IoMdMoon } from 'react-icons/io';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../redux/actions/userActions';
+import LoadTheme from '../../utils/LoadTheme';
 
 const Navbar = () => {
   const history = useHistory();
@@ -14,22 +15,10 @@ const Navbar = () => {
   const [navStyleChanged, setNavStyleChanged] = useState(false);
 
   // DARK MODE HANDLER
+  LoadTheme();
   const root = document.documentElement.classList;
   const defaultTheme = localStorage.getItem('theme');
   const [theme, setTheme] = useState(defaultTheme);
-
-  useEffect(() => {
-    if (!defaultTheme) {
-      localStorage.setItem('theme', 'light');
-      window.location.reload();
-    } else if (defaultTheme === 'light') {
-      root.add('light');
-      root.remove('dark');
-    } else if (defaultTheme === 'dark') {
-      root.add('dark');
-      root.remove('light');
-    }
-  }, [root, defaultTheme]);
 
   const themeToggler = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');

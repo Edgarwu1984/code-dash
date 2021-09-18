@@ -125,11 +125,7 @@ function CourseEditPage({ history, match }) {
             <AlertMessage message={courseError} type='danger' />
           ) : (
             <form onSubmit={submitHandler}>
-              {courseLoading && <Loader />}
               {courseUpdateLoading && <Loader />}
-              {courseError && (
-                <AlertMessage message={courseError} type='danger' />
-              )}
               {courseUpdateError && (
                 <AlertMessage message={courseUpdateError} type='danger' />
               )}
@@ -198,17 +194,13 @@ function CourseEditPage({ history, match }) {
                   className='form-control'
                   onChange={e => setInstructor({ _id: e.target.value })}
                 >
-                  <option
-                    hidden
-                    value={`${instructor.firstName} ${instructor.lastName}`}
-                  >
-                    {`${instructor.firstName} ${instructor.lastName}`}
+                  <option hidden value={instructor.fullName}>
+                    {instructor.fullName}
                   </option>
                   {instructors.map(i => (
-                    <option
-                      key={i._id}
-                      value={i._id}
-                    >{`${i.firstName} ${i.lastName}`}</option>
+                    <option key={i._id} value={i._id}>
+                      {i.fullName}
+                    </option>
                   ))}
                 </select>
               </div>

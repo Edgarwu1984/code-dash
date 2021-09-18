@@ -71,8 +71,7 @@ function DashboardCoursesPage({ history }) {
                       <tr key={course._id}>
                         <td data-label='Course Name'>{course.name}</td>
                         <td data-label='Instructor'>
-                          {course.instructor.firstName}{' '}
-                          {course.instructor.lastName}
+                          {course.instructor.fullName}
                         </td>
                         <td data-label='Rating'>{course.rating.toFixed(1)}</td>
                         <td data-label='Reviews'>{course.numReviews}</td>

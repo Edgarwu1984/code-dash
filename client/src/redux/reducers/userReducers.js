@@ -1,4 +1,5 @@
 import {
+  ERROR_RESET,
   GET_USER_DETAILS_FAIL,
   GET_USER_DETAILS_REQUEST,
   GET_USER_DETAILS_RESET,
@@ -7,6 +8,10 @@ import {
   UPDATE_USER_DETAILS_REQUEST,
   UPDATE_USER_DETAILS_RESET,
   UPDATE_USER_DETAILS_SUCCESS,
+  USER_DELETE_FAIL,
+  USER_DELETE_REQUEST,
+  USER_DELETE_RESET,
+  USER_DELETE_SUCCESS,
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -24,6 +29,8 @@ export const userLoginReducer = (state = {}, action) => {
       return { loading: false, userInfo: action.payload };
     case USER_LOGIN_FAIL:
       return { loading: false, error: action.payload };
+    case ERROR_RESET:
+      return {};
     case USER_LOGOUT:
       return {};
     default:
@@ -68,6 +75,21 @@ export const userDetailsUpdateReducer = (state = {}, action) => {
     case UPDATE_USER_DETAILS_FAIL:
       return { loading: false, error: action.payload };
     case UPDATE_USER_DETAILS_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const userDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_DELETE_REQUEST:
+      return { loading: true };
+    case USER_DELETE_SUCCESS:
+      return { loading: false, success: true, user: action.payload };
+    case USER_DELETE_FAIL:
+      return { loading: false, error: action.payload };
+    case USER_DELETE_RESET:
       return {};
     default:
       return state;

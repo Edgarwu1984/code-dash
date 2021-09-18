@@ -6,13 +6,12 @@ import Hero from '../../components/layout/Hero';
 import SectionTitle from '../../components/common/SectionTitle';
 import AlertMessage from '../../components/common/AlertMessage';
 import Loader from '../../components/common/Loader';
-import CourseCard from '../../components/cards/CourseCard';
 import ScrollToTop from '../../components/common/ScrollToTop';
+import CourseList from '../../components/CourseList';
 // UTILITIES
 import ResetPagePosition from '../../utils/ResetPagePosition';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { getInstructorCourseList } from '../../redux/actions/courseActions';
 import { getInstructorDetails } from '../../redux/actions/instructorActions';
 
 function CourseInstructorPage({ match }) {
@@ -24,8 +23,7 @@ function CourseInstructorPage({ match }) {
 
   // REDUX
   const dispatch = useDispatch();
-  const instructorCourseList = useSelector(state => state.instructorCourseList);
-  const { loading, error, courses } = instructorCourseList;
+
   const instructorDetails = useSelector(state => state.instructorDetails);
   const {
     loading: instructorLoading,
@@ -35,7 +33,6 @@ function CourseInstructorPage({ match }) {
 
   useEffect(() => {
     dispatch(getInstructorDetails(instructorId));
-    dispatch(getInstructorCourseList(instructorId));
   }, [dispatch, instructorId]);
 
   return (
@@ -50,10 +47,7 @@ function CourseInstructorPage({ match }) {
           instructor && (
             <div className='user-info__wrap'>
               <img className='photo' src={instructor.photo} alt='user_photo' />
-              <h3 className='username'>
-                {instructor.firstName} {instructor.lastName}
-              </h3>
-              <small>Total Courses: {courses.length}</small>
+              <h3 className='username'>{instructor.fullName}</h3>
             </div>
           )
         )}
@@ -63,35 +57,7 @@ function CourseInstructorPage({ match }) {
           <SectionTitle
             title={`${instructor.firstName && instructor.firstName}'s courses`}
           />
-          {loading ? (
-            <Loader />
-          ) : error ? (
-            <AlertMessage message={error} type='danger' />
-          ) : (
-            <div className='grid col-4'>
-              {courses &&
-                courses.map(course => (
-                  <CourseCard
-                    key={course._id}
-                    courseId={course._id}
-                    category={course.category}
-                    courseCategory={course.courseCategory}
-                    courseImg={course.image}
-                    courseName={course.name}
-                    courseTutorId={course.instructor._id}
-                    courseTutorFirstName={
-                      course.instructor.firstName && course.instructor.firstName
-                    }
-                    courseTutorLastName={
-                      course.instructor.lastName && course.instructor.lastName
-                    }
-                    courseDescription={course.description}
-                    courseRating={course.rating}
-                    numReviews={course.numReviews}
-                  />
-                ))}
-            </div>
-          )}
+          <CourseList isInstructorCourses={true} instructorId={instructorId} />
           <div className='list-link__btn'>
             <Link className='btn btn-outline-primary' to='/courses'>
               See More Courses

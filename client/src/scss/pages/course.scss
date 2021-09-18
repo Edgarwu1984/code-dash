@@ -50,11 +50,18 @@
     }
   }
   &__instructor {
+    margin-bottom: rem(8);
     span {
       margin-left: rem(8);
-      color: whitesmoke;
+      color: gainsboro;
+      text-decoration: underline;
+      &:hover {
+        @include transition;
+        color: var(--primary);
+      }
     }
   }
+
   &__info {
     width: max-content;
     display: flex;
@@ -75,7 +82,7 @@
       text-transform: capitalize;
       span {
         margin-left: rem(8);
-        color: whitesmoke;
+        color: gainsboro;
       }
     }
   }

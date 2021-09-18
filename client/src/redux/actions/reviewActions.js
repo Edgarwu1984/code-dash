@@ -8,6 +8,7 @@ import {
   GET_TOP_REVIEWS_REQUEST,
   GET_TOP_REVIEWS_SUCCESS,
 } from '../constants/reviewConstants';
+import { ERROR_RESET } from '../constants/userConstants';
 
 export const getTopReviews = () => async dispatch => {
   try {
@@ -23,6 +24,7 @@ export const getTopReviews = () => async dispatch => {
           ? error.response.data.messages
           : error.messages,
     });
+    dispatch({ type: ERROR_RESET });
   }
 };
 
@@ -53,5 +55,6 @@ export const createCourseReview =
             ? error.response.data.messages
             : error.messages,
       });
+      dispatch({ type: ERROR_RESET });
     }
   };

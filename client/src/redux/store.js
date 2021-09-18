@@ -18,11 +18,11 @@ import {
   userDetailsUpdateReducer,
   userLoginReducer,
   userRegisterReducer,
+  userDeleteReducer,
 } from './reducers/userReducers';
 import {
   courseUpdateReducer,
   singleUserReducer,
-  userDeleteReducer,
   userListReducer,
   userUpdateReducer,
 } from './reducers/adminReducers';
@@ -46,11 +46,11 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userDetailsUpdate: userDetailsUpdateReducer,
+  userDelete: userDeleteReducer,
   // ADMIN REDUCERS
   userList: userListReducer,
   singleUser: singleUserReducer,
   userUpdate: userUpdateReducer,
-  userDelete: userDeleteReducer,
   courseUpdate: courseUpdateReducer,
   // REVIEW REDUCERS
   topReviews: topReviewsReducer,

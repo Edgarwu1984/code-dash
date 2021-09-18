@@ -48,6 +48,7 @@ function UserPage({ history }) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [admin, setAdmin] = useState(false);
+  const [isActivated, setIsActivated] = useState(true);
   const [activeBtn, setActiveBtn] = useState(false);
 
   useEffect(() => {
@@ -94,7 +95,9 @@ function UserPage({ history }) {
     } else if (!emailFormat) {
       toast.error('Invalid Email format.');
     } else {
-      dispatch(updateUser(user._id, { username, email, isAdmin: admin }));
+      dispatch(
+        updateUser(user._id, { username, email, isAdmin: admin, isActivated })
+      );
     }
   };
 
@@ -145,6 +148,15 @@ function UserPage({ history }) {
                 className='form-control'
                 placeholder={user.email}
                 onChange={e => setEmail(e.target.value)}
+              />
+            </div>
+            <div className='form-group radio'>
+              <label htmlFor='isActivated' className='form-label'>
+                isActivated
+              </label>
+              <input
+                type='checkbox'
+                onChange={e => setIsActivated(e.target.checked)}
               />
             </div>
             {/* PREVENT ADMIN USER CHANGE ADMIN-SELF "isAdmin" DATA */}
@@ -206,6 +218,7 @@ function UserPage({ history }) {
                     <th>Username</th>
                     <th>Email</th>
                     <th>Admin</th>
+                    <th>Activated</th>
                     <th>Last Logged In</th>
                     <th>Edit</th>
                   </tr>
@@ -219,7 +232,18 @@ function UserPage({ history }) {
                         </td>
                         <td data-label='Email'>{user.email}</td>
                         <td data-label='Admin'>
-                          {user.isAdmin ? <span>Yes</span> : <span>No</span>}
+                          {user.isAdmin ? (
+                            <span className='text-success'>Yes</span>
+                          ) : (
+                            <span className='text-danger'>No</span>
+                          )}
+                        </td>
+                        <td data-label='Activated'>
+                          {user.isActivated ? (
+                            <span className='text-success'>Yes</span>
+                          ) : (
+                            <span className='text-danger'>No</span>
+                          )}
                         </td>
                         <td data-label='Updated At'>
                           {user.lastTimeLogin &&
