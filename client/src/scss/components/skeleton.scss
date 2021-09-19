@@ -1,0 +1,65 @@
+@use '../utils/' as *;
+
+.skeleton-card {
+  position: relative;
+  &__image {
+    background-color: var(--grey);
+    overflow: hidden;
+    position: relative;
+    @include skeletonAnimation;
+    .badge {
+      background-color: var(--grey-50);
+      height: rem(24);
+      width: rem(50);
+    }
+  }
+
+  &__body {
+    .title,
+    .tutor,
+    .description {
+      overflow: hidden;
+      position: relative;
+      background-color: var(--grey);
+      border-radius: rem(4);
+      margin-bottom: rem(12);
+      @include skeletonAnimation;
+    }
+
+    .title {
+      height: rem(20);
+    }
+
+    .tutor {
+      height: rem(12);
+      width: 30%;
+    }
+
+    .rating {
+      display: flex;
+      justify-content: space-between;
+      height: rem(18);
+      margin-bottom: rem(12);
+      .stars,
+      .reviews {
+        height: 100%;
+        background-color: var(--grey);
+        border-radius: rem(4);
+        overflow: hidden;
+        position: relative;
+        @include skeletonAnimation;
+      }
+
+      .stars {
+        width: 60%;
+      }
+      .reviews {
+        width: 20%;
+      }
+    }
+
+    .description {
+      height: rem(90);
+    }
+  }
+}

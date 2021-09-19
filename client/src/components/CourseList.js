@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 // COMPONENTS
 import CourseCard from './cards/CourseCard';
-import Loader from './common/Loader';
+import CardListSkeleton from './skeleton/CardListSkeleton';
 import AlertMessage from './common/AlertMessage';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
@@ -47,7 +47,7 @@ const CourseList = ({
   return (
     <>
       {loading ? (
-        <Loader />
+        <CardListSkeleton />
       ) : error ? (
         <AlertMessage message={error} type='danger' />
       ) : (

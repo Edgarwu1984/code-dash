@@ -204,6 +204,23 @@
         }
       }
     }
+
+    .delete-btn {
+      position: absolute;
+      right: rem(20);
+      top: rem(20);
+      border: none;
+      outline: none;
+      background: none;
+      font-size: rem(20);
+      color: var(--text-50);
+      cursor: pointer;
+
+      &:hover {
+        @include transition;
+        color: var(--danger);
+      }
+    }
   }
 
   &__comment {

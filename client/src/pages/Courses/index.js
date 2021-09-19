@@ -8,6 +8,7 @@ import CourseList from '../../components/CourseList';
 import ScrollToTop from '../../components/common/ScrollToTop';
 // UTILITIES
 import ResetPagePosition from '../../utils/ResetPagePosition';
+import CardListSkeleton from '../../components/skeleton/CardListSkeleton';
 
 function CoursesPage() {
   // RESET PAGE POSITION

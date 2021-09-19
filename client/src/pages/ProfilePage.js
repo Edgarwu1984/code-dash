@@ -17,6 +17,7 @@ import {
   getUserDetails,
   updateUserDetails,
 } from '../redux/actions/userActions';
+import { deleteCourseReview } from '../redux/actions/reviewActions';
 
 function ProfilePage({ history }) {
   // REDUX
@@ -32,11 +33,13 @@ function ProfilePage({ history }) {
     error: updateError,
   } = userDetailsUpdate;
   const userDelete = useSelector(state => state.userDelete);
+  const { loading: deleteLoading, error: deleteError } = userDelete;
+  const deleteReview = useSelector(state => state.deleteReview);
   const {
-    loading: deleteLoading,
-    // success: deleteSuccess,
-    error: deleteError,
-  } = userDelete;
+    loading: deleteReviewLoading,
+    success: deleteReviewSuccess,
+    error: deleteReviewError,
+  } = deleteReview;
 
   // HANDLE MODAL
   const [show, setShow] = useState(false);
@@ -64,13 +67,21 @@ function ProfilePage({ history }) {
     } else if (updateError) {
       toast.error(updateError);
     }
+
+    if (deleteReviewSuccess) {
+      toast.success('Review deleted.');
+    } else if (deleteReviewError) {
+      toast.error(deleteReviewError);
+    }
   }, [
     dispatch,
     history,
+    userInfo,
+    user?.isActivated,
     updateError,
     updateSuccess,
-    user.isActivated,
-    userInfo,
+    deleteReviewError,
+    deleteReviewSuccess,
   ]);
 
   const submitHandler = e => {
@@ -90,7 +101,7 @@ function ProfilePage({ history }) {
     }
   };
 
-  const deleteHandler = () => {
+  const deleteUserHandler = () => {
     if (window.confirm('Are you sure?')) {
       dispatch(
         deleteUser({
@@ -98,6 +109,13 @@ function ProfilePage({ history }) {
           isActivated: deactivated,
         })
       );
+    }
+  };
+
+  const deleteReviewHandler = id => {
+    if (window.confirm('Are you sure?')) {
+      dispatch(deleteCourseReview(id));
+      dispatch(getUserDetails());
     }
   };
 
@@ -187,7 +205,7 @@ function ProfilePage({ history }) {
                 {!user.isAdmin && (
                   <div className='form-group'>
                     <input
-                      onClick={deleteHandler}
+                      onClick={deleteUserHandler}
                       type='button'
                       className='btn btn-danger form-button'
                       value='Delete Account'
@@ -249,11 +267,11 @@ function ProfilePage({ history }) {
               </section>
               <section className='review__section'>
                 <SectionTitle title='My Reviews' />
-                {loading ? (
+                {loading || deleteReviewLoading ? (
                   <Loader />
                 ) : error ? (
                   <AlertMessage message={error} type='danger' />
-                ) : user.reviews ? (
+                ) : user.reviews?.length > 0 ? (
                   user.reviews.map(review => (
                     <ReviewCard
                       key={review._id}
@@ -264,6 +282,8 @@ function ProfilePage({ history }) {
                       rating={review.rating}
                       comment={review.comment}
                       commentDate={review.createdAt}
+                      isProfile={true}
+                      onDelete={() => deleteReviewHandler(review._id)}
                     />
                   ))
                 ) : (

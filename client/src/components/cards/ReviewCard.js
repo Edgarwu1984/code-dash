@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import DateFormatter from '../../utils/DateFormatter';
 import Rating from '../common/Rating';
+// REACT-ICONS
+import { ImBin } from 'react-icons/im';
 
 const ReviewCard = ({
+  reviewId,
   courseId,
   courseCategory,
   comment,
@@ -14,7 +17,13 @@ const ReviewCard = ({
   commentDate,
   courseName,
   courseImage,
+  onDelete,
+  isProfile,
 }) => {
+  const handleDelete = id => {
+    onDelete(id);
+  };
+
   return (
     <figure className='review-card'>
       <div className='review-card__user'>
@@ -41,6 +50,12 @@ const ReviewCard = ({
           </small>
           <Rating rating={rating} />
         </div>
+
+        {isProfile && (
+          <button className='delete-btn' onClick={() => handleDelete(reviewId)}>
+            <ImBin />
+          </button>
+        )}
       </div>
       <p className='review-card__comment'>{comment}</p>
     </figure>
@@ -56,6 +71,8 @@ ReviewCard.propTypes = {
   courseName: PropTypes.string,
   courseId: PropTypes.string,
   courseCategory: PropTypes.string,
+  onDelete: PropTypes.func,
+  isProfile: PropTypes.bool,
 };
 
 ReviewCard.defaultProps = {
@@ -65,6 +82,7 @@ ReviewCard.defaultProps = {
   userImage: '/images/user_photo_default.jpg',
   userName: 'Username',
   commentDate: '12 Aug 2021',
+  isProfile: false,
 };
 
 export default ReviewCard;

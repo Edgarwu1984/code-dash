@@ -28,6 +28,7 @@ import {
 } from './reducers/adminReducers';
 import {
   createReviewReducer,
+  deleteReviewReducer,
   topReviewsReducer,
 } from './reducers/reviewReducers';
 
@@ -55,6 +56,7 @@ const reducer = combineReducers({
   // REVIEW REDUCERS
   topReviews: topReviewsReducer,
   createReview: createReviewReducer,
+  deleteReview: deleteReviewReducer,
 });
 
 // GET USER INFO FROM LOCAL STORAGE

@@ -23,7 +23,7 @@ const getReviews = asyncHandler(async (req, res) => {
 // @description Create Reviews
 // @route POST /api/courses/:id/reviews
 // @access Private
-const createReview = asyncHandler(async (req, res, next) => {
+const createReview = asyncHandler(async (req, res) => {
   const { rating, comment } = req.body;
   const course = await Course.findById(req.params.id);
 
@@ -51,14 +51,20 @@ const createReview = asyncHandler(async (req, res, next) => {
 // @route DELETE /api/courses/:id/reviews
 // @access Private
 const deleteReview = asyncHandler(async (req, res) => {
-  const review = await Review.findByIdAndDelete(req.params.id);
+  const review = await Review.findById(req.params.id);
+  const course = await Course.findById(review.course.id);
+
   if (!review) {
     res.status(400);
     throw new Error('Error, Can not found review.');
   } else {
+    course.numReviews -= 1;
+    course.totalRating = course.totalRating - review.rating;
+    await course.save();
+    await review.remove();
     res.status(200).json({
       status: 'success',
-      message: 'Review delete.',
+      message: 'Review deleted.',
     });
   }
 });

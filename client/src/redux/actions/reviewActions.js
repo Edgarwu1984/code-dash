@@ -4,6 +4,10 @@ import {
   CREATE_REVIEW_REQUEST,
   CREATE_REVIEW_RESET,
   CREATE_REVIEW_SUCCESS,
+  DELETE_REVIEW_FAIL,
+  DELETE_REVIEW_REQUEST,
+  DELETE_REVIEW_RESET,
+  DELETE_REVIEW_SUCCESS,
   GET_TOP_REVIEWS_FAIL,
   GET_TOP_REVIEWS_REQUEST,
   GET_TOP_REVIEWS_SUCCESS,
@@ -58,3 +62,33 @@ export const createCourseReview =
       dispatch({ type: ERROR_RESET });
     }
   };
+
+export const deleteCourseReview = id => async (dispatch, getState) => {
+  try {
+    dispatch({ type: DELETE_REVIEW_REQUEST });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    await axios.delete(`/api/courses/${id}/reviews`, config);
+    dispatch({ type: DELETE_REVIEW_SUCCESS });
+    dispatch({ type: DELETE_REVIEW_RESET });
+  } catch (error) {
+    dispatch({
+      type: DELETE_REVIEW_FAIL,
+      payload:
+        error.response && error.response.data.messages
+          ? error.response.data.messages
+          : error.messages,
+    });
+    dispatch({ type: ERROR_RESET });
+  }
+};

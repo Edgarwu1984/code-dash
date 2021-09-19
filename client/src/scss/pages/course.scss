@@ -125,14 +125,14 @@
   }
 }
 
-.review__section {
-  .empty__reviews {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: rem(60) rem(12);
-    border-radius: rem(6);
-    margin-bottom: rem(100);
-    background-color: var(--bg);
-  }
+.empty__reviews {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: rem(60) rem(12);
+  border-radius: rem(6);
+  margin-bottom: rem(100);
+  color: var(--text-50);
+  background-color: var(--bg);
 }
