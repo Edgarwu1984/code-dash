@@ -25,7 +25,7 @@ const TopReviewList = () => {
         <AlertMessage message={error} type='danger' />
       ) : reviews?.length > 0 ? (
         <div className='grid col-3'>
-          {reviews.map(review => (
+          {reviews?.map(review => (
             <TestimonialCard
               key={review._id}
               comment={review.comment}

@@ -7,20 +7,20 @@ import {
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // PAGES
-import HomePage from './pages/HomePage';
-import CoursesPage from './pages/Courses';
-import CoursePage from './pages/Courses/CoursePage';
-import AboutPage from './pages/AboutPage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import NotFoundPage from './pages/NotFoundPage';
-import ProfilePage from './pages/ProfilePage';
-import CourseCategoryPage from './pages/Courses/CourseCategoryPage';
-import DashboardPage from './pages/Dashboard';
-import CourseInstructorPage from './pages/Courses/CourseInstructorPage';
-import CourseEditPage from './pages/Dashboard/CourseEditPage';
-import DashboardUserPage from './pages/Dashboard/DashboardUsersPage';
-import DashboardCoursePage from './pages/Dashboard/DashboardCoursesPage';
+import HomePage from 'pages/HomePage';
+import CoursesPage from 'pages/Courses';
+import CoursePage from 'pages/Courses/CoursePage';
+import AboutPage from 'pages/AboutPage';
+import LoginPage from 'pages/LoginPage';
+import RegisterPage from 'pages/RegisterPage';
+import NotFoundPage from 'pages/NotFoundPage';
+import ProfilePage from 'pages/ProfilePage';
+import CourseCategoryPage from 'pages/Courses/CourseCategoryPage';
+import DashboardPage from 'pages/Dashboard';
+import CourseInstructorPage from 'pages/Courses/CourseInstructorPage';
+import CourseEditPage from 'pages/Dashboard/CourseEditPage';
+import DashboardUserPage from 'pages/Dashboard/DashboardUsersPage';
+import DashboardCoursePage from 'pages/Dashboard/DashboardCoursesPage';
 
 function App() {
   return (

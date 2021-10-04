@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import DateFormatter from '../../utils/DateFormatter';
+import DateFormatter from 'utils/DateFormatter';
 import Rating from '../common/Rating';
 // REACT-ICONS
 import { ImBin } from 'react-icons/im';

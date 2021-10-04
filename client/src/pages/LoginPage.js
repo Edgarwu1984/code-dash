@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 // COMPONENTS
-import Loader from '../components/common/Loader';
+import Loader from 'components/common/Loader';
+// UTILITIES
+import LoadTheme from 'utils/LoadTheme';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../redux/actions/userActions';
-import LoadTheme from '../utils/LoadTheme';
+import { loginUser } from 'redux/actions/userActions';
 
 function LoginPage({ history }) {
   LoadTheme();

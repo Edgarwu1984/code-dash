@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaQuoteLeft } from 'react-icons/fa';
 import Rating from '../common/Rating';
-import DateFormatter from '../../utils/DateFormatter';
+import DateFormatter from 'utils/DateFormatter';
 
 const TestimonialCard = ({
   comment,

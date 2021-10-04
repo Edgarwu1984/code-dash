@@ -114,7 +114,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     user.email = email || user.email;
     user.photo = photo || user.photo;
     user.password = password || user.password;
-    user.isActivated = isActivated;
+    user.isActivated = isActivated || user.isActivated;
 
     const updatedUser = await user.save();
 

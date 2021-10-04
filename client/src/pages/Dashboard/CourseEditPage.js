@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 //COMPONENTS
-import Layout from '../../components/layout';
-import Hero from '../../components/layout/Hero';
-import Loader from '../../components/common/Loader';
-import AlertMessage from '../../components/common/AlertMessage';
+import Layout from 'components/layout';
+import Hero from 'components/layout/Hero';
+import Loader from 'components/common/Loader';
+import AlertMessage from 'components/common/AlertMessage';
 // UTILITIES
-import ResetPagePosition from '../../utils/ResetPagePosition';
+import ResetPagePosition from 'utils/ResetPagePosition';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { getCourseDetails } from '../../redux/actions/courseActions';
-import { updateCourse } from '../../redux/actions/adminActions';
-import { getInstructorList } from '../../redux/actions/instructorActions';
+import { getCourseDetails } from 'redux/actions/courseActions';
+import { updateCourse } from 'redux/actions/adminActions';
+import { getInstructorList } from 'redux/actions/instructorActions';
 
 function CourseEditPage({ history, match }) {
   // RESET PAGE POSITION

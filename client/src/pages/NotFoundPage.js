@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+// REACT-ICONS
 import { BiError } from 'react-icons/bi';
 
 function NotFoundPage({ history }) {

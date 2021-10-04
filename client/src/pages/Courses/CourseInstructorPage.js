@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 // COMPONENTS
-import Layout from '../../components/layout';
-import Hero from '../../components/layout/Hero';
-import SectionTitle from '../../components/common/SectionTitle';
-import AlertMessage from '../../components/common/AlertMessage';
-import Loader from '../../components/common/Loader';
-import ScrollToTop from '../../components/common/ScrollToTop';
-import CourseList from '../../components/CourseList';
+import Layout from 'components/layout';
+import Hero from 'components/layout/Hero';
+import SectionTitle from 'components/common/SectionTitle';
+import AlertMessage from 'components/common/AlertMessage';
+import Loader from 'components/common/Loader';
+import ScrollToTop from 'components/common/ScrollToTop';
+import CourseList from 'components/CourseList';
 // UTILITIES
-import ResetPagePosition from '../../utils/ResetPagePosition';
+import ResetPagePosition from 'utils/ResetPagePosition';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { getInstructorDetails } from '../../redux/actions/instructorActions';
+import { getInstructorDetails } from 'redux/actions/instructorActions';
 
 function CourseInstructorPage({ match }) {
   // RESET PAGE POSITION

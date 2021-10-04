@@ -2,24 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 // COMPONENTS
-import Layout from '../../components/layout';
-import Hero from '../../components/layout/Hero';
-import Loader from '../../components/common/Loader';
-import AlertMessage from '../../components/common/AlertMessage';
-import Rating from '../../components/common/Rating';
-import SectionTitle from '../../components/common/SectionTitle';
-import Accordion from '../../components/common/Accordion';
-import ScrollToTop from '../../components/common/ScrollToTop';
-import Modal from '../../components/common/Modal';
-import ReviewCard from '../../components/cards/ReviewCard';
-import Breadcrumb from '../../components/common/Breadcrumb';
+import Layout from 'components/layout';
+import Hero from 'components/layout/Hero';
+import Loader from 'components/common/Loader';
+import AlertMessage from 'components/common/AlertMessage';
+import Rating from 'components/common/Rating';
+import SectionTitle from 'components/common/SectionTitle';
+import Accordion from 'components/common/Accordion';
+import ScrollToTop from 'components/common/ScrollToTop';
+import Modal from 'components/common/Modal';
+import ReviewCard from 'components/cards/ReviewCard';
+import Breadcrumb from 'components/common/Breadcrumb';
 // UTILITIES
-import ResetPagePosition from '../../utils/ResetPagePosition';
+import ResetPagePosition from 'utils/ResetPagePosition';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { getCourseDetails } from '../../redux/actions/courseActions';
-import { createCourseReview } from '../../redux/actions/reviewActions';
-import { getUserDetails } from '../../redux/actions/userActions';
+import { getCourseDetails } from 'redux/actions/courseActions';
+import { createCourseReview } from 'redux/actions/reviewActions';
+import { getUserDetails } from 'redux/actions/userActions';
 
 function CoursePage({ match, history }) {
   // RESET PAGE POSITION

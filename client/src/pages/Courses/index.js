@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 // COMPONENTS
-import Layout from '../../components/layout';
-import Hero from '../../components/layout/Hero';
-import SectionTitle from '../../components/common/SectionTitle';
-import CourseList from '../../components/CourseList';
-import ScrollToTop from '../../components/common/ScrollToTop';
+import Layout from 'components/layout';
+import Hero from 'components/layout/Hero';
+import SectionTitle from 'components/common/SectionTitle';
+import CourseList from 'components/CourseList';
+import ScrollToTop from 'components/common/ScrollToTop';
 // UTILITIES
-import ResetPagePosition from '../../utils/ResetPagePosition';
-import CardListSkeleton from '../../components/skeleton/CardListSkeleton';
+import ResetPagePosition from 'utils/ResetPagePosition';
 
 function CoursesPage() {
   // RESET PAGE POSITION

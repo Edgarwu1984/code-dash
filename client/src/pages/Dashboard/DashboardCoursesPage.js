@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 //COMPONENTS
-import Layout from '../../components/layout';
-import Hero from '../../components/layout/Hero';
-import Loader from '../../components/common/Loader';
-import AlertMessage from '../../components/common/AlertMessage';
-import SectionTitle from '../../components/common/SectionTitle';
+import Layout from 'components/layout';
+import Hero from 'components/layout/Hero';
+import Loader from 'components/common/Loader';
+import AlertMessage from 'components/common/AlertMessage';
+import SectionTitle from 'components/common/SectionTitle';
 // UTILITIES
-import DateFormatter from '../../utils/DateFormatter';
+import DateFormatter from 'utils/DateFormatter';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { getCourseList } from '../../redux/actions/courseActions';
+import { getCourseList } from 'redux/actions/courseActions';
 
 function DashboardCoursesPage({ history }) {
   // REDUX

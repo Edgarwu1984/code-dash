@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 //COMPONENTS
-import Layout from '../../components/layout';
-import Hero from '../../components/layout/Hero';
+import Layout from 'components/layout';
+import Hero from 'components/layout/Hero';
 // REACT-ICONS
 import { ImUsers, ImBook } from 'react-icons/im';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { getCourseList } from '../../redux/actions/courseActions';
+import { getCourseList } from 'redux/actions/courseActions';
 
 function DashboardPage({ history }) {
   // REDUX

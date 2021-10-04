@@ -4,10 +4,11 @@ import { Link, NavLink, useHistory } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { RiArrowDownSFill, RiLogoutBoxRLine } from 'react-icons/ri';
 import { IoMdSunny, IoMdMoon } from 'react-icons/io';
+// UTILITIES
+import LoadTheme from 'utils/LoadTheme';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { logoutUser } from '../../redux/actions/userActions';
-import LoadTheme from '../../utils/LoadTheme';
+import { logoutUser } from 'redux/actions/userActions';
 
 const Navbar = () => {
   const history = useHistory();

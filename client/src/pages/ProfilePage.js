@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 //COMPONENTS
-import Layout from '../components/layout';
-import Hero from '../components/layout/Hero';
-import SectionTitle from '../components/common/SectionTitle';
-import ReviewCard from '../components/cards/ReviewCard';
-import AlertMessage from '../components/common/AlertMessage';
-import Loader from '../components/common/Loader';
-import Modal from '../components/common/Modal';
+import Layout from 'components/layout';
+import Hero from 'components/layout/Hero';
+import SectionTitle from 'components/common/SectionTitle';
+import ReviewCard from 'components/cards/ReviewCard';
+import AlertMessage from 'components/common/AlertMessage';
+import Loader from 'components/common/Loader';
+import Modal from 'components/common/Modal';
 // UTILITIES
-import DateFormatter from '../utils/DateFormatter';
+import DateFormatter from 'utils/DateFormatter';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -59,6 +59,10 @@ function ProfilePage({ history }) {
       history.push('/');
     } else {
       dispatch(getUserDetails());
+      setUsername(user.username);
+      setEmail(user.email);
+      setPassword(user.password);
+      setPhoto(user.photo);
     }
 
     if (updateSuccess) {
@@ -77,11 +81,14 @@ function ProfilePage({ history }) {
     dispatch,
     history,
     userInfo,
-    user?.isActivated,
     updateError,
     updateSuccess,
     deleteReviewError,
     deleteReviewSuccess,
+    user.username,
+    user.email,
+    user.password,
+    user.photo,
   ]);
 
   const submitHandler = e => {
@@ -142,7 +149,7 @@ function ProfilePage({ history }) {
                   <input
                     type='text'
                     className='form-control'
-                    defaultValue={user.username}
+                    value={username || ''}
                     onChange={e => setUsername(e.target.value)}
                   />
                 </div>
@@ -153,7 +160,7 @@ function ProfilePage({ history }) {
                   <input
                     type='text'
                     className='form-control'
-                    defaultValue={user.email}
+                    value={email || ''}
                     onChange={e => setEmail(e.target.value)}
                   />
                 </div>
@@ -164,7 +171,6 @@ function ProfilePage({ history }) {
                   <input
                     type='password'
                     className='form-control'
-                    defaultValue={user.password}
                     onChange={e => setPassword(e.target.value)}
                   />
                 </div>
@@ -175,14 +181,13 @@ function ProfilePage({ history }) {
                   <input
                     type='password'
                     className='form-control'
-                    defaultValue={user.password}
                     onChange={e => setConfirmPassword(e.target.value)}
                   />
                 </div>
                 <div className='form-group'>
                   <img
                     className='form-group__image'
-                    src={user.photo}
+                    src={user?.photo}
                     alt='user_photo'
                   />
                   <label htmlFor='description' className='form-label'>
@@ -191,7 +196,7 @@ function ProfilePage({ history }) {
                   <input
                     type='text'
                     className='form-control'
-                    defaultValue={user.photo}
+                    value={photo || ''}
                     onChange={e => setPhoto(e.target.value)}
                   />
                 </div>
@@ -216,18 +221,12 @@ function ProfilePage({ history }) {
             </Modal>
             <Hero heroBg='/images/bg6.jpg'>
               <div className='user-info__wrap'>
-                <img
-                  className='photo'
-                  src={user && user.photo}
-                  alt='user_photo'
-                />
-                <h3 className='username'> {user && user.username} </h3>
-                {user.isAdmin && <small className='admin__badge'>Admin</small>}
-                {user.lastTimeLogin && (
-                  <small className='last-login'>
-                    Latest Logged In: {DateFormatter(user.lastTimeLogin)}
-                  </small>
-                )}
+                <img className='photo' src={user?.photo} alt='user_photo' />
+                <h3 className='username'> {user?.username} </h3>
+                {user?.isAdmin && <small className='admin__badge'>Admin</small>}
+                <small className='last-login'>
+                  Latest Logged In: {DateFormatter(user?.lastTimeLogin)}
+                </small>
               </div>
             </Hero>
             <div className='container'>
@@ -245,12 +244,10 @@ function ProfilePage({ history }) {
                     </thead>
                     <tbody>
                       <tr>
-                        <td data-label='Username'>
-                          {user.username && user.username}
-                        </td>
-                        <td data-label='Email'>{user.email && user.email}</td>
+                        <td data-label='Username'>{user?.username}</td>
+                        <td data-label='Email'>{user?.email}</td>
                         <td data-label='Updated At'>
-                          {user.updatedAt && DateFormatter(user.updatedAt)}
+                          {DateFormatter(user?.updatedAt)}
                         </td>
                         <td>
                           <button
@@ -272,7 +269,7 @@ function ProfilePage({ history }) {
                 ) : error ? (
                   <AlertMessage message={error} type='danger' />
                 ) : user.reviews?.length > 0 ? (
-                  user.reviews.map(review => (
+                  user.reviews?.map(review => (
                     <ReviewCard
                       key={review._id}
                       courseCategory={review.course.category}

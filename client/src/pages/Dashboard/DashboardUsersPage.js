@@ -2,24 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 //COMPONENTS
-import Layout from '../../components/layout';
-import Hero from '../../components/layout/Hero';
-import Loader from '../../components/common/Loader';
-import AlertMessage from '../../components/common/AlertMessage';
-import Modal from '../../components/common/Modal';
-import SectionTitle from '../../components/common/SectionTitle';
+import Layout from 'components/layout';
+import Hero from 'components/layout/Hero';
+import Loader from 'components/common/Loader';
+import AlertMessage from 'components/common/AlertMessage';
+import Modal from 'components/common/Modal';
+import SectionTitle from 'components/common/SectionTitle';
 // REACT ICONS
 import { RiAdminFill } from 'react-icons/ri';
 // UTILITIES
-import DateFormatter from '../../utils/DateFormatter';
+import DateFormatter from 'utils/DateFormatter';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  getUser,
-  getUserList,
-  updateUser,
-} from '../../redux/actions/adminActions';
-import { getCourseList } from '../../redux/actions/courseActions';
+import { getUser, getUserList, updateUser } from 'redux/actions/adminActions';
+import { getCourseList } from 'redux/actions/courseActions';
 
 function UserPage({ history }) {
   // REDUX
