@@ -14,7 +14,7 @@ import { getCourseDetails } from 'redux/actions/courseActions';
 import { updateCourse } from 'redux/actions/adminActions';
 import { getInstructorList } from 'redux/actions/instructorActions';
 
-function CourseEditPage({ history, match }) {
+function EditCoursePage({ history, match }) {
   // RESET PAGE POSITION
   const pathname = useLocation();
   ResetPagePosition(pathname);
@@ -118,13 +118,14 @@ function CourseEditPage({ history, match }) {
             {'<'} Back
           </Link>
         </div>
-        <div className='course__form-wrap'>
+
+        <section>
           {courseLoading ? (
             <Loader />
           ) : courseError ? (
             <AlertMessage message={courseError} type='danger' />
           ) : (
-            <form onSubmit={submitHandler}>
+            <form onSubmit={submitHandler} className='edit__form'>
               {courseUpdateLoading && <Loader />}
               {courseUpdateError && (
                 <AlertMessage message={courseUpdateError} type='danger' />
@@ -235,10 +236,10 @@ function CourseEditPage({ history, match }) {
               </div>
             </form>
           )}
-        </div>
+        </section>
       </div>
     </Layout>
   );
 }
 
-export default CourseEditPage;
+export default EditCoursePage;

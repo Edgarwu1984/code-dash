@@ -41,7 +41,7 @@ export const singleUserReducer = (state = { user: {} }, action) => {
   }
 };
 
-export const userUpdateReducer = (state = {}, action) => {
+export const userUpdateReducer = (state = { user: {} }, action) => {
   switch (action.type) {
     case ADMIN_UPDATE_USER_REQUEST:
       return { loading: true };
@@ -50,7 +50,7 @@ export const userUpdateReducer = (state = {}, action) => {
     case ADMIN_UPDATE_USER_FAIL:
       return { loading: false, error: action.payload };
     case ADMIN_UPDATE_USER_RESET:
-      return {};
+      return { user: {} };
     default:
       return state;
   }

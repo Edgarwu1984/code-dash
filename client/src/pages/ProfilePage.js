@@ -20,6 +20,11 @@ import {
 import { deleteCourseReview } from '../redux/actions/reviewActions';
 
 function ProfilePage({ history }) {
+  // HANDLE MODAL
+  const [show, setShow] = useState(false);
+  const showModalHandler = () => setShow(true);
+  const modalOnCloseHandler = () => setShow(false);
+
   // REDUX
   const dispatch = useDispatch();
   const userLogin = useSelector(state => state.userLogin);
@@ -40,11 +45,6 @@ function ProfilePage({ history }) {
     success: deleteReviewSuccess,
     error: deleteReviewError,
   } = deleteReview;
-
-  // HANDLE MODAL
-  const [show, setShow] = useState(false);
-  const showModalHandler = () => setShow(!show);
-  const closeModalHandle = () => setShow(false);
 
   // UPDATE PROFILE FORM
   const [username, setUsername] = useState('');
@@ -135,7 +135,7 @@ function ProfilePage({ history }) {
       ) : (
         user && (
           <Layout pageTitle='- Profile'>
-            <Modal show={show} onClose={closeModalHandle}>
+            <Modal show={show} onClose={modalOnCloseHandler}>
               <form onSubmit={submitHandler}>
                 {updateLoading && <Loader />}
                 {deleteLoading && <Loader />}
