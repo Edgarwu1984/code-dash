@@ -64,6 +64,7 @@ function LoginPage({ history }) {
               <input
                 type='text'
                 className='form-control'
+                placeholder='Email'
                 onChange={e => setEmail(e.target.value)}
               />
             </div>
@@ -74,6 +75,7 @@ function LoginPage({ history }) {
               <input
                 type='password'
                 className='form-control'
+                placeholder='Password'
                 onChange={e => setPassword(e.target.value)}
               />
             </div>

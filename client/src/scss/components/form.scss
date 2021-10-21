@@ -102,3 +102,15 @@
     margin-right: rem(8);
   }
 }
+
+.edit__form {
+  max-width: 70%;
+  background-color: var(--bg);
+  border-radius: rem(6);
+  padding: rem(40);
+  margin: 0 auto;
+
+  @include breakpoint-down(medium) {
+    max-width: 100%;
+  }
+}

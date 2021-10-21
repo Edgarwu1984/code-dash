@@ -114,6 +114,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     user.email = email || user.email;
     user.photo = photo || user.photo;
     user.password = password || user.password;
+    user.isAdmin = isAdmin || user.isAdmin;
     user.isActivated = isActivated || user.isActivated;
 
     const updatedUser = await user.save();
@@ -125,6 +126,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
         username: updatedUser.username,
         email: updatedUser.email,
         photo: updatedUser.photo,
+        isAdmin: updatedUser.isAdmin,
         isActivated: updatedUser.isActivated,
         token: generateToken(updatedUser._id),
       },
@@ -139,7 +141,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 // @route GET /api/users
 // @access Private/Admin
 const getUsers = asyncHandler(async (req, res) => {
-  const users = await User.find().populate('reviews');
+  const users = await User.find().sort({ isAdmin: -1 }).populate('reviews');
   if (users) {
     res.status(200).json({
       status: 'Success',
@@ -174,7 +176,7 @@ const updateUser = asyncHandler(async (req, res) => {
   if (user) {
     user.username = username || user.username;
     user.email = email || user.email;
-    user.isActivated = isActivated || user.isActivated;
+    user.isActivated = isActivated;
     user.isAdmin = isAdmin;
 
     const updatedUser = user.save();

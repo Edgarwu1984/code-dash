@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useHistory } from 'react-router-dom';
 // REACT-ICONS
 import { FaBars, FaTimes } from 'react-icons/fa';
@@ -46,16 +46,16 @@ const Navbar = () => {
     }
   };
 
-  // REDUX
-  const dispatch = useDispatch();
-  const userLogin = useSelector(state => state.userLogin);
-  const { userInfo } = userLogin;
-
   useEffect(() => {
     // NAVAR SCROLL EVENT
     window.addEventListener('scroll', navStyleHandler);
     return () => window.removeEventListener('scroll', navStyleHandler);
   }, []);
+
+  // REDUX
+  const dispatch = useDispatch();
+  const userLogin = useSelector(state => state.userLogin);
+  const { loading, userInfo } = userLogin;
 
   const logoutHandler = () => {
     dispatch(logoutUser());
@@ -98,7 +98,9 @@ const Navbar = () => {
               <div className='user__info-link'>
                 <img
                   className='user__photo'
-                  src={userInfo.photo}
+                  src={
+                    loading ? `images/user_photo_default.jpg` : userInfo.photo
+                  }
                   alt='user_photo'
                 />
                 <RiArrowDownSFill className='dropdown__arrow' size='1.2rem' />

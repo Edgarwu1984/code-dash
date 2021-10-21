@@ -162,14 +162,19 @@
 
 .dropdown__item {
   height: 100%;
-  @include breakpoint-down(medium) {
-    display: flex;
-    flex-direction: column;
-  }
   &:hover {
     .nav__dropdown {
       @include shadow;
       display: flex;
+    }
+  }
+  @include breakpoint-down(medium) {
+    display: flex;
+    flex-direction: column;
+    &:hover {
+      .nav__dropdown {
+        box-shadow: none;
+      }
     }
   }
 }
