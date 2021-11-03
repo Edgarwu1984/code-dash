@@ -58,11 +58,13 @@ function ProfilePage({ history }) {
     if (!userInfo) {
       history.push('/');
     } else {
-      dispatch(getUserDetails());
       setUsername(user.username);
       setEmail(user.email);
       setPassword(user.password);
       setPhoto(user.photo);
+      if (!user || user._id !== userInfo._id) {
+        dispatch(getUserDetails());
+      }
     }
 
     if (updateSuccess) {
