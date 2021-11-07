@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 // COMPONENTS
@@ -16,6 +16,7 @@ function RegisterPage({ history }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const confirmPasswordRef = useRef();
 
   // REDUX
   const dispatch = useDispatch();
@@ -33,9 +34,9 @@ function RegisterPage({ history }) {
 
   const submitHandler = e => {
     e.preventDefault();
-    if (!username || !email || !password || !confirmPassword) {
+    if (!username || !email || !password) {
       toast.error('Input filed can not be empty.');
-    } else if (password !== confirmPassword) {
+    } else if (password !== confirmPasswordRef.current.value) {
       toast.error('Password does not match.');
     } else {
       dispatch(registerUser(username, email, password));
@@ -96,7 +97,7 @@ function RegisterPage({ history }) {
               <input
                 type='password'
                 className='form-control'
-                onChange={e => setConfirmPassword(e.target.value)}
+                ref={confirmPasswordRef}
               />
             </div>
             <div className='form-group'>

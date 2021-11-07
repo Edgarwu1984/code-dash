@@ -27,6 +27,7 @@ const loginUser = asyncHandler(async (req, res) => {
           email: user.email,
           photo: user.photo,
           isAdmin: user.isAdmin,
+          isActivated: user.isActivated,
           token: generateToken(user._id),
           lastTimeLogin: updatedUser.lastTimeLogin,
         },
@@ -114,8 +115,8 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     user.email = email || user.email;
     user.photo = photo || user.photo;
     user.password = password || user.password;
-    user.isAdmin = isAdmin || user.isAdmin;
-    user.isActivated = isActivated || user.isActivated;
+    user.isAdmin = isAdmin;
+    user.isActivated = isActivated;
 
     const updatedUser = await user.save();
 

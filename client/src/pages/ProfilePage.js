@@ -91,6 +91,7 @@ function ProfilePage({ history }) {
     user.email,
     user.password,
     user.photo,
+    user,
   ]);
 
   const submitHandler = e => {
