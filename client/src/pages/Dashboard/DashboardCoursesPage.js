@@ -25,7 +25,7 @@ function DashboardCoursesPage({ history }) {
 
   useEffect(() => {
     // Redirect to Home page if Current User not an Admin or User haven't logged in;
-    if (userInfo && userInfo.isAdmin) {
+    if (userInfo || userInfo?.isAdmin) {
       dispatch(getCourseList());
     } else {
       history.push('/');

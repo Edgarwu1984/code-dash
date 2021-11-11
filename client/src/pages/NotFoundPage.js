@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // REACT-ICONS
 import { BiError } from 'react-icons/bi';
 
-function NotFoundPage({ history }) {
+function NotFoundPage() {
   // SET BACK TO HOME PAGE
   const [time, setTime] = useState(5);
 
@@ -13,13 +13,13 @@ function NotFoundPage({ history }) {
         setTime(time - 1);
       }, 1000);
     } else {
-      history.push('/');
+      document.location.href = '/';
     }
 
     return () => {
       clearTimeout(time);
     };
-  }, [history, time]);
+  }, [time]);
 
   return (
     <div

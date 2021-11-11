@@ -87,10 +87,10 @@ function ProfilePage({ history }) {
     updateSuccess,
     deleteReviewError,
     deleteReviewSuccess,
-    user.username,
-    user.email,
-    user.password,
-    user.photo,
+    user?.username,
+    user?.email,
+    user?.password,
+    user?.photo,
     user,
   ]);
 

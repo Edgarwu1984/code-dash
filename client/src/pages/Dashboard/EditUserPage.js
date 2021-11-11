@@ -14,6 +14,8 @@ function EditUserPage({ match, history }) {
   const userId = match.params.id;
   // REDUX
   const dispatch = useDispatch();
+  const userLogin = useSelector(state => state.userLogin);
+  const { userInfo } = userLogin;
   // Get User Details
   const singleUser = useSelector(state => state.singleUser);
   const { loading: userLoading, error: userError, user } = singleUser;
@@ -33,31 +35,36 @@ function EditUserPage({ match, history }) {
   const [activeBtn, setActiveBtn] = useState(false);
 
   useEffect(() => {
-    if (user._id !== userId) {
-      dispatch(getUser(userId));
+    if (!userInfo || !userInfo?.isAdmin) {
+      history.push('/404');
     } else {
-      setUsername(user.username);
-      setEmail(user.email);
-      setIsAdmin(user.isAdmin);
-      setIsActivated(user.isActivated);
-    }
+      if (user._id !== userId) {
+        dispatch(getUser(userId));
+      } else {
+        setUsername(user.username);
+        setEmail(user.email);
+        setIsAdmin(user.isAdmin);
+        setIsActivated(user.isActivated);
+      }
 
-    // Notification Messages
-    if (userUpdateSuccess) {
-      toast.success('User updated.');
-      history.push('/dashboard/users');
-    } else if (userUpdateError) {
-      toast.error(userUpdateError);
+      // Notification Messages
+      if (userUpdateSuccess) {
+        toast.success('User updated.');
+        history.push('/dashboard/users');
+      } else if (userUpdateError) {
+        toast.error(userUpdateError);
+      }
     }
   }, [
     dispatch,
     history,
-    user._id,
-    user.email,
-    user.isActivated,
-    user.isAdmin,
-    user.username,
+    user?._id,
+    user?.email,
+    user?.isActivated,
+    user?.isAdmin,
+    user?.username,
     userId,
+    userInfo,
     userUpdateError,
     userUpdateSuccess,
   ]);

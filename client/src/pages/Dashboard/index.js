@@ -19,7 +19,7 @@ function DashboardPage({ history }) {
   useEffect(() => {
     dispatch(getCourseList());
     // Redirect to Home page if Current User not an Admin or User haven't logged in;
-    if (!userInfo && !userInfo.isAdmin) {
+    if (!userInfo || !userInfo?.isAdmin) {
       history.push('/');
     }
   }, [dispatch, history, userInfo]);
