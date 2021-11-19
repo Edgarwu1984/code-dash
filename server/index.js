@@ -1,6 +1,6 @@
 // IMPORT MODULES && DEPENDENCIES
 const express = require('express');
-// const morgan = require('morgan');
+const morgan = require('morgan');
 const dotenv = require('dotenv');
 const colors = require('colors');
 const helmet = require('helmet');
@@ -29,6 +29,11 @@ connectDB();
 
 const app = express();
 
+// Request logger
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+
 // GLOBAL MIDDLEWARE
 app.use(helmet()); // Set HTTP Headers security
 
@@ -51,11 +56,6 @@ app.use(
 
 // Limit the request
 app.use('/api/', limiter);
-
-// Request logger
-// if (process.env.NODE_ENV === 'development') {
-//   app.use(morgan('dev'));
-// }
 
 // ROUTES
 app.use('/api/users', userRoutes);
