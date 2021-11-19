@@ -15,7 +15,6 @@ function RegisterPage({ history }) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const confirmPasswordRef = useRef();
 
   // REDUX
