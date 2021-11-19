@@ -4,12 +4,11 @@
   "description": "A Free Course Website",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index",
-    "server": "nodemon server/index",
-    "client": "npm start --prefix client",
+    "start": "node index",
+    "server": "nodemon index",
+    "client": "cd ../ && npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client \"",
-    "data:import": "node server/data/seeder",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "data:import": "node server/data/seeder"
   },
   "author": "Edgar Wu",
   "license": "ISC",
