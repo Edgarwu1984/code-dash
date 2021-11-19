@@ -1,6 +1,6 @@
 // IMPORT MODULES && DEPENDENCIES
 const express = require('express');
-const morgan = require('morgan');
+// const morgan = require('morgan');
 const dotenv = require('dotenv');
 const colors = require('colors');
 const helmet = require('helmet');
@@ -53,9 +53,9 @@ app.use(
 app.use('/api/', limiter);
 
 // Request logger
-if (process.env.NODE_ENV === 'development') {
-  app.use(morgan('dev'));
-}
+// if (process.env.NODE_ENV === 'development') {
+//   app.use(morgan('dev'));
+// }
 
 // ROUTES
 app.use('/api/users', userRoutes);
