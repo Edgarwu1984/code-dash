@@ -9,7 +9,7 @@
     "client": "cd ../ && npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client \"",
     "data:import": "node server/data/seeder",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd ../ && npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd ../ && npm install --prefix client && cd ../ &&npm run build --prefix client"
   },
   "author": "Edgar Wu",
   "license": "ISC",
