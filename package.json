@@ -4,8 +4,8 @@
   "description": "A Free Course Website",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
-    "server": "nodemon index",
+    "start": "node server/index",
+    "server": "nodemon server/index",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client \"",
     "data:import": "node server/data/seeder",
