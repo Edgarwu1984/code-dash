@@ -67,7 +67,7 @@ const Navbar = () => {
       <div className='navbar__menu'>
         <Link to='/' className='navbar__menu-brand'>
           <span className='text'>CodeDash</span>
-          <img className='logo' src='/images/logo.png' alt='logo' />
+          <img className='logo' src='/images/Logo.png' alt='logo' />
         </Link>
         <button className='navbar__menu-toggler' onClick={collapseHandler}>
           {collapse ? <FaBars /> : <FaTimes />}
