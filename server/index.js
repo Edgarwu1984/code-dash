@@ -36,7 +36,11 @@ const app = express();
 // }
 
 // GLOBAL MIDDLEWARE
-app.use(helmet()); // Set HTTP Headers security
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+); // Set HTTP Headers security
 
 // Read json data
 app.use(express.json({ limit: '10kb' }));
