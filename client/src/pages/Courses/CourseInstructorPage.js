@@ -7,7 +7,7 @@ import SectionTitle from 'components/common/SectionTitle';
 import AlertMessage from 'components/common/AlertMessage';
 import Loader from 'components/common/Loader';
 import ScrollToTop from 'components/common/ScrollToTop';
-import CourseList from 'components/CourseList';
+import InstructorCourseList from 'components/InstructorCourseList';
 // UTILITIES
 import ResetPagePosition from 'utils/ResetPagePosition';
 // REDUX
@@ -57,7 +57,7 @@ function CourseInstructorPage({ match }) {
           <SectionTitle
             title={`${instructor.firstName && instructor.firstName}'s courses`}
           />
-          <CourseList isInstructorCourses={true} instructorId={instructorId} />
+          <InstructorCourseList instructorId={instructorId} />
           <div className='list-link__btn'>
             <Link className='btn btn-outline-primary' to='/courses'>
               See More Courses

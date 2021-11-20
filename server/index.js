@@ -62,24 +62,24 @@ app.use(
 // Limit the request
 app.use('/api/', limiter);
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.resolve(__dirname, '../client/build')));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-  });
-} else {
-  app.get('/', (req, res) => {
-    res.send('API is running....');
-  });
-}
 // ROUTES
 app.use('/api/users', userRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/instructors', instructorRoutes);
 app.use('/api/reviews', reviewRoutes);
 
-// const __dirname = path.resolve();
+// Get Production build
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.resolve(__dirname, '../client/build')));
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'))
+  );
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running....');
+  });
+}
 
 // ERROR HANDLING MIDDLEWARE
 app.use(notFound);

@@ -12,10 +12,10 @@ import {
   GET_TOP_REVIEWS_SUCCESS,
 } from '../constants/reviewConstants';
 
-export const topReviewsReducer = (state = {}, action) => {
+export const topReviewsReducer = (state = { reviews: [] }, action) => {
   switch (action.type) {
     case GET_TOP_REVIEWS_REQUEST:
-      return { loading: true };
+      return { loading: true, reviews: [] };
     case GET_TOP_REVIEWS_SUCCESS:
       return { loading: false, reviews: action.payload };
     case GET_TOP_REVIEWS_FAIL:

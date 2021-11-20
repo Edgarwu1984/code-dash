@@ -4,8 +4,8 @@ import { Link, useLocation } from 'react-router-dom';
 import Layout from 'components/layout';
 import Hero from 'components/layout/Hero';
 import SectionTitle from 'components/common/SectionTitle';
-import CourseList from 'components/CourseList';
 import ScrollToTop from 'components/common/ScrollToTop';
+import CourseCategoryList from 'components/CourseCategoryList';
 // UTILITIES
 import ResetPagePosition from 'utils/ResetPagePosition';
 
@@ -26,7 +26,7 @@ function CoursesPage() {
       <div className='container'>
         <section className='courses__section'>
           <SectionTitle title='web development courses' />
-          <CourseList />
+          <CourseCategoryList />
           <div className='list-link__btn'>
             <Link className='btn btn-outline-primary' to='/courses/web-dev'>
               See More
@@ -35,7 +35,7 @@ function CoursesPage() {
         </section>
         <section className='courses__section'>
           <SectionTitle title='game development courses' />
-          <CourseList category='game-dev' />
+          <CourseCategoryList category='game-dev' />
           <div className='list-link__btn'>
             <Link className='btn btn-outline-primary' to='/courses/game-dev'>
               See More

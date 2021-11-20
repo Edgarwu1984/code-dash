@@ -6,43 +6,19 @@ import CardListSkeleton from './skeleton/CardListSkeleton';
 import AlertMessage from './common/AlertMessage';
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  getCourseList,
-  getInstructorCourseList,
-  getTopCourses,
-} from '../redux/actions/courseActions';
+import { getCourseList } from '../redux/actions/courseActions';
 
-const CourseList = ({
-  category,
-  isTopCourses,
-  isInstructorCourses,
-  instructorId,
-}) => {
+const CourseCategoryList = ({ category }) => {
   // REDUX
   const dispatch = useDispatch();
-  const courseList = useSelector(state =>
-    isInstructorCourses
-      ? state.instructorCourseList
-      : isTopCourses
-      ? state.topCourseList
-      : state.courseList
-  );
+  const courseList = useSelector(state => state.courseList);
   const { loading, error, courses } = courseList;
 
   useEffect(() => {
-    if (isInstructorCourses) {
-      dispatch(getInstructorCourseList(instructorId));
-    } else if (isTopCourses) {
-      dispatch(getTopCourses());
-    } else {
-      dispatch(getCourseList());
-    }
-  }, [dispatch, instructorId, isInstructorCourses, isTopCourses]);
+    dispatch(getCourseList());
+  }, [dispatch]);
 
-  const coursesList =
-    isInstructorCourses || isTopCourses
-      ? courses
-      : courses.filter(c => c.category === category);
+  const coursesList = courses && courses.filter(c => c.category === category);
 
   return (
     <>
@@ -73,17 +49,12 @@ const CourseList = ({
   );
 };
 
-CourseList.propTypes = {
+CourseCategoryList.propTypes = {
   category: PropTypes.string.isRequired,
-  instructorId: PropTypes.string,
-  isInstructorCourses: PropTypes.bool,
-  isTopCourses: PropTypes.bool,
 };
 
-CourseList.defaultProps = {
+CourseCategoryList.defaultProps = {
   category: 'web-dev',
-  isInstructorCourses: false,
-  isTopCourses: false,
 };
 
-export default CourseList;
+export default CourseCategoryList;

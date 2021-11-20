@@ -5,8 +5,8 @@ import Layout from 'components/layout';
 import Hero from 'components/layout/Hero';
 import FeatureCard from 'components/cards/FeatureCard';
 import ScrollToTop from 'components/common/ScrollToTop';
+import TopCourseList from 'components/TopCourseList';
 import TopReviewList from 'components/TopReviewList';
-import CourseList from 'components/CourseList';
 // UTILITIES
 import ResetPagePosition from 'utils/ResetPagePosition';
 
@@ -62,7 +62,8 @@ function HomePage() {
               nonumy eirmod tempor invidunt ut labore et dolore magna.
             </p>
           </header>
-          <CourseList isTopCourses={true} />
+          <TopCourseList />
+          {/* <CourseList isTopCourses={true} /> */}
         </div>
       </section>
       <section className='industry-brand__wrap'>

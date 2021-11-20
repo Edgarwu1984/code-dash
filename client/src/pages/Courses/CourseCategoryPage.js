@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import Layout from 'components/layout';
 import Hero from 'components/layout/Hero';
 import SectionTitle from 'components/common/SectionTitle';
-import CourseList from 'components/CourseList';
+import CourseList from 'components/CourseCategoryList';
 import ScrollToTop from 'components/common/ScrollToTop';
 import Breadcrumb from 'components/common/Breadcrumb';
 // UTILITIES
