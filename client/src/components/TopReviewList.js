@@ -25,16 +25,17 @@ const TopReviewList = () => {
         <AlertMessage message={error} type='danger' />
       ) : reviews?.length > 0 ? (
         <div className='grid col-3'>
-          {reviews?.map(review => (
-            <TestimonialCard
-              key={review._id}
-              comment={review.comment}
-              userImage={review.user.photo}
-              userName={review.user.username}
-              rating={review.rating}
-              commentDate={review.createdAt}
-            />
-          ))}
+          {reviews &&
+            reviews.map(review => (
+              <TestimonialCard
+                key={review._id}
+                comment={review.comment}
+                userImage={review.user.photo}
+                userName={review.user.username}
+                rating={review.rating}
+                commentDate={review.createdAt}
+              />
+            ))}
         </div>
       ) : (
         <div className='empty__reviews'>No reviews</div>

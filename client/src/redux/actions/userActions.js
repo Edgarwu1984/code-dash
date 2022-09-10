@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { apiUrl } from 'config';
 import {
   ERROR_RESET,
   GET_USER_DETAILS_FAIL,
@@ -31,7 +32,7 @@ export const loginUser = (email, password) => async dispatch => {
       },
     };
     const { data } = await axios.post(
-      '/api/users/login',
+      `${apiUrl}/api/users/login`,
       { email, password },
       config
     );
@@ -65,7 +66,7 @@ export const registerUser = (username, email, password) => async dispatch => {
       },
     };
     const { data } = await axios.post(
-      '/api/users/register',
+      `${apiUrl}/api/users/register`,
       { username, email, password },
       config
     );
@@ -98,7 +99,7 @@ export const getUserDetails = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/users/profile`, config);
+    const { data } = await axios.get(`${apiUrl}/api/users/profile`, config);
 
     dispatch({ type: GET_USER_DETAILS_SUCCESS, payload: data.data });
   } catch (error) {
@@ -127,7 +128,11 @@ export const updateUserDetails = user => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.put(`/api/users/profile`, user, config);
+    const { data } = await axios.put(
+      `${apiUrl}/api/users/profile`,
+      user,
+      config
+    );
 
     dispatch({ type: UPDATE_USER_DETAILS_SUCCESS, payload: data.data });
     dispatch({ type: UPDATE_USER_DETAILS_RESET });
@@ -161,7 +166,7 @@ export const deleteUser = user => async (dispatch, getState) => {
       },
     };
 
-    await axios.put(`/api/users/profile`, user, config);
+    await axios.put(`${apiUrl}/api/users/profile`, user, config);
     dispatch({ type: USER_DELETE_SUCCESS });
     dispatch({ type: USER_DELETE_RESET });
     dispatch({ type: USER_LOGOUT });

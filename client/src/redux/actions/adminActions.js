@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { apiUrl } from 'config';
 import {
   ADMIN_GET_USERS_FAIL,
   ADMIN_GET_USERS_REQUEST,
@@ -34,7 +35,7 @@ export const getUserList = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get('/api/users', config);
+    const { data } = await axios.get(`${apiUrl}/api/users`, config);
 
     dispatch({ type: ADMIN_GET_USERS_SUCCESS, payload: data.data });
   } catch (error) {
@@ -65,7 +66,7 @@ export const getUser = id => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/users/${id}`, config);
+    const { data } = await axios.get(`${apiUrl}/api/users/${id}`, config);
 
     dispatch({ type: ADMIN_GET_USER_SUCCESS, payload: data.data });
   } catch (error) {
@@ -97,7 +98,7 @@ export const updateUser = (id, user) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/users/${id}`,
+      `${apiUrl}/api/users/${id}`,
       {
         _id: user._id,
         username: user.username,
@@ -140,7 +141,7 @@ export const updateCourse = (id, course) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/courses/${id}`,
+      `${apiUrl}/api/courses/${id}`,
       {
         _id: course._id,
         name: course.name,

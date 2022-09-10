@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { apiUrl } from 'config';
 import {
   GET_INSTRUCTOR_LIST_REQUEST,
   GET_INSTRUCTOR_LIST_SUCCESS,
@@ -11,7 +12,7 @@ import {
 export const getInstructorList = () => async dispatch => {
   try {
     dispatch({ type: GET_INSTRUCTOR_LIST_REQUEST });
-    const { data } = await axios.get('/api/instructors');
+    const { data } = await axios.get(`${apiUrl}/api/instructors`);
     dispatch({ type: GET_INSTRUCTOR_LIST_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({
@@ -27,7 +28,7 @@ export const getInstructorList = () => async dispatch => {
 export const getInstructorDetails = id => async dispatch => {
   try {
     dispatch({ type: GET_INSTRUCTOR_DETAILS_REQUEST });
-    const { data } = await axios.get(`/api/instructors/${id}`);
+    const { data } = await axios.get(`${apiUrl}/api/instructors/${id}`);
     dispatch({ type: GET_INSTRUCTOR_DETAILS_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({

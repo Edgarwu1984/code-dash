@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { apiUrl } from 'config';
 import {
   CREATE_REVIEW_FAIL,
   CREATE_REVIEW_REQUEST,
@@ -18,7 +19,7 @@ export const getTopReviews = () => async dispatch => {
   try {
     dispatch({ type: GET_TOP_REVIEWS_REQUEST });
 
-    const { data } = await axios.get('/api/reviews/top');
+    const { data } = await axios.get(`${apiUrl}/api/reviews/top`);
     dispatch({ type: GET_TOP_REVIEWS_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({
@@ -48,7 +49,7 @@ export const createCourseReview =
         },
       };
 
-      await axios.post(`/api/courses/${id}/reviews`, review, config);
+      await axios.post(`${apiUrl}/api/courses/${id}/reviews`, review, config);
       dispatch({ type: CREATE_REVIEW_SUCCESS });
       dispatch({ type: CREATE_REVIEW_RESET });
     } catch (error) {
@@ -78,7 +79,7 @@ export const deleteCourseReview = id => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`/api/courses/${id}/reviews`, config);
+    await axios.delete(`${apiUrl}/api/courses/${id}/reviews`, config);
     dispatch({ type: DELETE_REVIEW_SUCCESS });
     dispatch({ type: DELETE_REVIEW_RESET });
   } catch (error) {

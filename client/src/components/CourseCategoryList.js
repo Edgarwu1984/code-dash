@@ -28,21 +28,22 @@ const CourseCategoryList = ({ category }) => {
         <AlertMessage message={error} type='danger' />
       ) : (
         <div className='grid col-4'>
-          {coursesList.map(course => (
-            <CourseCard
-              key={course._id}
-              courseId={course._id}
-              category={course.category}
-              courseCategory={course.courseCategory}
-              courseImg={course.image}
-              courseName={course.name}
-              courseTutorId={course.instructor?._id}
-              courseTutorName={course.instructor?.fullName}
-              courseDescription={course.description}
-              courseRating={course.rating}
-              numReviews={course.numReviews}
-            />
-          ))}
+          {coursesList &&
+            coursesList.map(course => (
+              <CourseCard
+                key={course._id}
+                courseId={course._id}
+                category={course.category}
+                courseCategory={course.courseCategory}
+                courseImg={course.image}
+                courseName={course.name}
+                courseTutorId={course.instructor?._id}
+                courseTutorName={course.instructor?.fullName}
+                courseDescription={course.description}
+                courseRating={course.rating}
+                numReviews={course.numReviews}
+              />
+            ))}
         </div>
       )}
     </>

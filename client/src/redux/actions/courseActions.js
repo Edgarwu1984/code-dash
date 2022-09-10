@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { apiUrl } from 'config';
 import {
   GET_COURSE_LIST_REQUEST,
   GET_COURSE_LIST_SUCCESS,
@@ -20,7 +21,8 @@ import {
 export const getCourseList = () => async dispatch => {
   try {
     dispatch({ type: GET_COURSE_LIST_REQUEST });
-    const { data } = await axios.get('/api/courses');
+    const { data } = await axios.get(`${apiUrl}/api/courses`);
+    console.log(data);
     dispatch({ type: GET_COURSE_LIST_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({
@@ -36,7 +38,7 @@ export const getCourseList = () => async dispatch => {
 export const getTopCourses = () => async dispatch => {
   try {
     dispatch({ type: GET_TOP_COURSES_REQUEST });
-    const { data } = await axios.get('/api/courses/top-4');
+    const { data } = await axios.get(`${apiUrl}/api/courses/top-4`);
     dispatch({ type: GET_TOP_COURSES_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({
@@ -52,7 +54,7 @@ export const getTopCourses = () => async dispatch => {
 export const getCourseCategoryList = category => async dispatch => {
   try {
     dispatch({ type: GET_COURSE_CATEGORY_LIST_REQUEST });
-    const { data } = await axios.get(`/api/courses/${category}`);
+    const { data } = await axios.get(`${apiUrl}//api/courses/${category}`);
     dispatch({ type: GET_COURSE_CATEGORY_LIST_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({
@@ -68,7 +70,7 @@ export const getCourseCategoryList = category => async dispatch => {
 export const getInstructorCourseList = id => async dispatch => {
   try {
     dispatch({ type: GET_INSTRUCTOR_COURSE_LIST_REQUEST });
-    const { data } = await axios.get(`/api/courses/instructors/${id}`);
+    const { data } = await axios.get(`${apiUrl}/api/courses/instructors/${id}`);
     dispatch({ type: GET_INSTRUCTOR_COURSE_LIST_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({
@@ -84,7 +86,7 @@ export const getInstructorCourseList = id => async dispatch => {
 export const getCourseDetails = (category, id) => async dispatch => {
   try {
     dispatch({ type: GET_COURSE_DETAILS_REQUEST });
-    const { data } = await axios.get(`/api/courses/${category}/${id}`);
+    const { data } = await axios.get(`${apiUrl}/api/courses/${category}/${id}`);
     dispatch({ type: GET_COURSE_DETAILS_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({
