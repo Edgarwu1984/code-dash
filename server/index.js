@@ -1,8 +1,9 @@
 // IMPORT MODULES && DEPENDENCIES
 const path = require('path');
 const express = require('express');
-// const morgan = require('morgan');
+const morgan = require('morgan');
 const dotenv = require('dotenv');
+const cors = require('cors');
 const colors = require('colors');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
@@ -30,10 +31,12 @@ connectDB();
 
 const app = express();
 
+app.use(cors());
+
 // Request logger
-// if (process.env.NODE_ENV === 'development') {
-//   app.use(morgan('dev'));
-// }
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 // GLOBAL MIDDLEWARE
 app.use(
